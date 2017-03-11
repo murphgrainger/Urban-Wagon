@@ -12,19 +12,12 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'create.html'
 })
 export class CreatePage {
-  difficulty: number;
-  game = {};
+  public game:any = {};
   logForm(){
+    this.game.date_started = new Date();
     console.log(this.game)
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreatePage');
-  }
-
-
-
 }

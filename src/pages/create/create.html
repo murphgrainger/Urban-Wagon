@@ -6,15 +6,52 @@
 
 <ion-content>
   <form (ngSubmit)="logForm()">
-
-    <ion-item>
-      <ion-range min="1" max="5" step="1" snaps="true" name="difficulty" [(ngModel)]="game.difficulty">
-        <ion-label range-left class=" small-text">Easy</ion-label>
-        <ion-label range-right class="small-text">Hard</ion-label>
-      </ion-range>
-    </ion-item>
-    <button ion-button type="submit" block>Start Game</button>
-
+    <ion-list>
+      <ion-list-header>
+        <ion-icon name="pin"></ion-icon>
+        Location
+      </ion-list-header>
+      <ion-item>
+        <ion-input placeholder="Name" type="text" name="location" [(ngModel)]="game.location"></ion-input>
+      </ion-item>
+      <ion-list-header>
+        <ion-icon name="clipboard"></ion-icon>
+        Goals
+      </ion-list-header>
+      <ion-item>
+        <ion-select multiple="true" name="goals" placeholder="Select your game preferences" [(ngModel)]="game.goals" [ngModelOptions]="{standalone: true}">
+          <ion-option value="network">Professionally Network</ion-option>
+          <ion-option value="friends">Meet Friends</ion-option>
+          <ion-option value="drink">Drink</ion-option>
+          <ion-option value="laugh">Laugh</ion-option>
+          <ion-option value="flirt">Flirt</ion-option>
+          <ion-option value="goofy">Be Goofy</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-list-header>
+        <ion-icon name="star"></ion-icon>
+        Difficulty
+        <ion-badge item-right>{{game.difficulty}}</ion-badge>
+      </ion-list-header>
+      <ion-item>
+        <ion-range min="1" max="3" step="1" snaps="true" name="difficulty" [(ngModel)]="game.difficulty">
+          <ion-label range-left class=" small-text">Easy</ion-label>
+          <ion-label range-right class="small-text">Hard</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-list-header>
+        <ion-icon name="people"></ion-icon>
+        Player Count
+        <ion-badge item-right>{{game.playerCount}}</ion-badge>
+      </ion-list-header>
+      <ion-item>
+        <ion-range min="1" max="4" step="1" snaps="true" name="playerCount" [(ngModel)]="game.player_count">
+          <ion-label range-left class=" small-text">1</ion-label>
+          <ion-label range-right class="small-text">4</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-list>
+    <button ion-button type="submit" block>Add Players</button>
   </form>
 
 </ion-content>
