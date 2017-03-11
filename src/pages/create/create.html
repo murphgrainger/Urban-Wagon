@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>New Game</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="logForm()">
+
+    <ion-item>
+      <ion-range min="1" max="5" step="1" snaps="true" name="difficulty" [(ngModel)]="game.difficulty">
+        <ion-label range-left class=" small-text">Easy</ion-label>
+        <ion-label range-right class="small-text">Hard</ion-label>
+      </ion-range>
+    </ion-item>
+    <button ion-button type="submit" block>Start Game</button>
+
+  </form>
+
+</ion-content>
