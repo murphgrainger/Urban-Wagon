@@ -5,20 +5,30 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="logForm()">
+  <form (ngSubmit)="addPlayers()">
     <ion-list>
       <ion-list-header>Player 1</ion-list-header>
       <ion-item>
         <ion-icon name="person" item-left></ion-icon>
-        <ion-input type="text" placeholder="Name"></ion-input>
+        <ion-input type="text" name="player_one" placeholder="Name" [(ngModel)]="players.player_one"></ion-input>
       </ion-item>
-      <ion-list-header>{{game.player_count}}</ion-list-header>
-      <ion-item >
+      <ion-list-header *ngIf="game.player_count > 1">Player 2</ion-list-header>
+      <ion-item *ngIf="game.player_count > 1">
         <ion-icon name="person" item-left></ion-icon>
-        <ion-input type="text" placeholder="Name"></ion-input>
+        <ion-input type="text" name="player_two" placeholder="Name" [(ngModel)]="players.player_two"></ion-input>
+      </ion-item>
+      <ion-list-header *ngIf="game.player_count > 2">Player 3</ion-list-header>
+      <ion-item *ngIf="game.player_count > 2">
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-input type="text" name="player_three" placeholder="Name" [(ngModel)]="players.player_three"></ion-input>
+      </ion-item>
+      <ion-list-header *ngIf="game.player_count > 3">Player 4</ion-list-header>
+      <ion-item *ngIf="game.player_count > 3">
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-input type="text" name="player_four" placeholder="Name" [(ngModel)]="players.player_four"></ion-input>
       </ion-item>
     </ion-list>
-    <button ion-button type="submit" block>Add Players</button>
+    <button ion-button type="submit" block>Start Game</button>
   </form>
 </ion-content>
 

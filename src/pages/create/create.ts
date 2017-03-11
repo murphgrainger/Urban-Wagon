@@ -11,6 +11,7 @@ export class CreatePage {
   public game:any = {};
   logForm(){
     this.game.date_started = new Date();
+    console.log(this.game)
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
