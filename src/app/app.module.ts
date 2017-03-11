@@ -5,8 +5,9 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { DetailPage } from '../pages/detail/detail';
 import { CreatePage } from '../pages/create/create';
+import { AddplayerPage } from '../pages/addplayer/addplayer';
+
 
 
 @NgModule({
@@ -16,8 +17,8 @@ import { CreatePage } from '../pages/create/create';
     ContactPage,
     HomePage,
     TabsPage,
-    DetailPage,
-    CreatePage
+    CreatePage,
+    AddplayerPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -29,8 +30,8 @@ import { CreatePage } from '../pages/create/create';
     ContactPage,
     HomePage,
     TabsPage,
-    DetailPage,
-    CreatePage
+    CreatePage,
+    AddplayerPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

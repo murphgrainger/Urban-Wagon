@@ -2,18 +2,20 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
-  selector: 'page-detail',
-  templateUrl: 'detail.html'
+  selector: 'page-addplayer',
+  templateUrl: 'addplayer.html'
 })
-export class DetailPage {
-  item:any;
+export class AddplayerPage {
+  game:any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.item = navParams.get('item');
+  this.game = navParams.get('game');
+    console.log(this.game)
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailPage');
+    console.log('ionViewDidLoad AddplayerPage');
   }
 
 }

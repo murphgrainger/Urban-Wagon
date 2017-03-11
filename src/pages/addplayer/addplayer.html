@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Players</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="logForm()">
+    <ion-list>
+      <ion-list-header>Player 1</ion-list-header>
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-input type="text" placeholder="Name"></ion-input>
+      </ion-item>
+      <ion-list-header>{{game.player_count}}</ion-list-header>
+      <ion-item >
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-input type="text" placeholder="Name"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button type="submit" block>Add Players</button>
+  </form>
+</ion-content>
+
+<!-- *ngIf="game.player_count > 1" -->

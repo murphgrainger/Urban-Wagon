@@ -42,7 +42,7 @@
       <ion-list-header>
         <ion-icon name="people"></ion-icon>
         Player Count
-        <ion-badge item-right>{{game.playerCount}}</ion-badge>
+        <ion-badge item-right>{{game.player_count}}</ion-badge>
       </ion-list-header>
       <ion-item>
         <ion-range min="1" max="4" step="1" snaps="true" name="playerCount" [(ngModel)]="game.player_count">
@@ -51,7 +51,6 @@
         </ion-range>
       </ion-item>
     </ion-list>
-    <button ion-button type="submit" block>Add Players</button>
+    <button ion-button type="submit" (click)="addPlayers(game)" block>Add Players</button>
   </form>
-
 </ion-content>
