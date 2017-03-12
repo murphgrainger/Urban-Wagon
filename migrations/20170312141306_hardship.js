@@ -3,9 +3,8 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.text('title').notNullable();
     table.text('description').notNullable();
-    table.text('type');
     table.integer('allotted_time').notNullable();
-    table.integer('game_id').references('game.id').unsigned().onDelete('cascade');
+    table.integer('goal_id').references('goal.id').unsigned().onDelete('cascade');
   });
 };
 

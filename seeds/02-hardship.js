@@ -2,29 +2,25 @@ exports.seed = function(knex, Promise) {
   return knex.raw('DELETE FROM hardship; ALTER SEQUENCE hardship_id_seq RESTART WITH 1;')
     .then(function() {
       const hardship = [{
-        title: 'Get Business Card',
-        description: 'Go talk to someone you have not before and bring back a business card to the group.',
-        type: 'professional',
-        allotted_time: 10,
-        difficulty: 2
-      }, {
-        title: 'Cheers with a Stranger',
-        description: 'Go find a stranger to cheers with.  Bonus points for a champagne toast, selfie, or group toast with strangers.',
-        type: 'drink',
-        allotted_time: 5,
-        difficulty: 2
-      }, {
-        title: 'Dog or Cheetos',
-        description: 'Ask a stranger: Would you rather smell dog breath every morning when you wake up, or have cheetos on your fingers every day between 2 and 5?',
-        type: 'funny',
+        title: 'Drink Spill',
+        description: 'Someone has spilled their drink on your right shoulder.  Please go wash out the stain by dabbing the area with water.',
         allotted_time: 7,
-        difficulty: 2
+        goal_id: 2
       }, {
-        title: 'Wink',
-        description: 'Wink at someone looking at you.  Bonus points for the double wink to the same person.',
-        type: 'flirt',
+        title: 'Awkward Silence',
+        description: 'You are tongue tied! Must remain silent for 10 minutes without a single word!',
+        allotted_time: 10,
+        goal_id: 1
+      }, {
+        title: 'Laugh Attack!',
+        description: 'Laugh as loudly as you can next to the nearest person for 20 seconds straight.',
+        allotted_time: 1,
+        goal_id: 3
+      }, {
+        title: 'Ex Alert!',
+        description: 'Your ex just walked in! Proceed to the nearest dark corner and hide for 5 minutes.',
         allotted_time: 9,
-        difficulty: 1
+        goal_id: 4
       }];
       return knex('hardship').insert(hardship);
     });
