@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CreatePage } from '../pages/create/create';
 import { AddplayerPage } from '../pages/addplayer/addplayer';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 
 
 
@@ -18,7 +19,8 @@ import { AddplayerPage } from '../pages/addplayer/addplayer';
     HomePage,
     TabsPage,
     CreatePage,
-    AddplayerPage
+    AddplayerPage,
+    DashboardPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -31,7 +33,8 @@ import { AddplayerPage } from '../pages/addplayer/addplayer';
     HomePage,
     TabsPage,
     CreatePage,
-    AddplayerPage
+    AddplayerPage,
+    DashboardPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
