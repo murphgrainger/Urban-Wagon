@@ -5,13 +5,13 @@ const Hardship_Status = require('./hardship_statusModel')
 const Hardship = bookshelf.Model.extend({
   tableName: 'hardship',
   goals: function() {
-    return this.belongsTo(Goal, 'goal');
+    return this.belongsTo('Goal');
   },
 
   hardship_statuses: function() {
-    return this.hasMany(Hardship_Status, 'hardship_status');
+    return this.hasMany('Hardship_Status');
   }
 
 });
 
-module.exports = ('Hardship', Hardship);
+module.exports = bookshelf.model('Hardship', Hardship);

@@ -16,7 +16,7 @@ const Goal = bookshelf.Model.extend({
   },
 
   hardships: function() {
-    return this.hasMany('hardship');
+    return this.hasMany('Hardship');
   }
 });
 

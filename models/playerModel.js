@@ -7,17 +7,17 @@ const Hardship_Status = require('./hardship_statusModel');
 const Player = bookshelf.Model.extend({
   tableName: 'player',
   games: function() {
-    return this.belongsTo(Game, 'game');
+    return this.belongsTo('Game');
   },
 
   task_statuses: function() {
-    return this.hasMany(Task_Status, 'task_status');
+    return this.hasMany('Task_Status');
   },
 
   hardship_statuses: function() {
-    return this.hasMany(Hardship_Status, 'hardship_status');
+    return this.hasMany('Hardship_Status');
   }
 
 });
 
-module.exports = ('Player', Player);
+module.exports = bookshelf.model('Player', Player);

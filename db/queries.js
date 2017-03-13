@@ -1,15 +1,15 @@
 const knex = require('./knex');
 
 const bookshelf = require('../models/bookshelf_config');
-const Game = require('../models/gameModel').game;
+const Game = require('../models/gameModel');
 const Goal = require('../models/goalModel');
-const Game_Goal = require('../models/game_goalModel').game_goal;
-const Hardship = require('../models/hardshipModel').hardship;
-const Hardship_Status = require('../models/hardship_statusModel').hardship_status;
+const Game_Goal = require('../models/game_goalModel');
+const Hardship = require('../models/hardshipModel');
+const Hardship_Status = require('../models/hardship_statusModel');
 const Task = require('../models/taskModel');
-const Task_Status = require('../models/task_statusModel').task_status;
-const User = require('../models/userModel').user;
-const Player = require('../models/playerModel').player;
+const Task_Status = require('../models/task_statusModel');
+const User = require('../models/userModel');
+const Player = require('../models/playerModel');
 
 
 module.exports = {

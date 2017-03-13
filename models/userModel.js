@@ -4,8 +4,8 @@ const Game = require('./gameModel')
 const User = bookshelf.Model.extend({
   tableName: 'user',
   games: function() {
-    return this.hasMany(Game);
+    return this.hasMany('Game');
   }
 });
 
-module.exports = ('User', User);
+module.exports = bookshelf.model('User', User);

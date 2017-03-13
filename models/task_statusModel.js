@@ -5,12 +5,12 @@ const Player = require('./playerModel');
 const Task_Status = bookshelf.Model.extend({
   tableName: 'task_status',
   tasks: function() {
-    return this.belongsTo(Task, 'task');
+    return this.belongsTo('Task');
   },
   players: function() {
-    return this.belongsTo(Player, 'player')
+    return this.belongsTo('Player')
   }
 
 });
 
-module.exports = ('Task_Status', Task_Status);
+module.exports = bookshelf.model('Task_Status', Task_Status);

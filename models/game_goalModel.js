@@ -14,4 +14,4 @@ const Game_Goal = bookshelf.Model.extend({
   }
 });
 
-module.exports = (Game_Goal, 'Game_Goal');
+module.exports = bookshelf.model('Game_Goal', Game_Goal);
