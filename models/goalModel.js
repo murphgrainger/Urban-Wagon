@@ -1,6 +1,6 @@
 const bookshelf = require('./bookshelf_config');
 require('./gameModel')
-require('./taskModel')
+const Task = require('./taskModel')
 require('./hardshipModel')
 require('./game_goalModel');
 
@@ -12,7 +12,7 @@ const Goal = bookshelf.Model.extend({
   },
 
   tasks: function() {
-    return this.hasMany('Task');
+    return this.hasMany(Task);
   },
 
   hardships: function() {

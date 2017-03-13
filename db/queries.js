@@ -15,13 +15,44 @@ const Player = require('../models/playerModel');
 module.exports = {
   getTask: function() {
     console.log('getting tasks');
-    Task.fetchAll()
+    return Task.fetchAll()
       .then(task => {
         // console.log(task.related('goal').toJSON());
         console.log(task.toJSON());
 
         return task.toJSON();
       });
+
+  },
+  getGoal: function() {
+    console.log('getting goals');
+    return Goal.fetchAll()
+      .then(goal => {
+        // console.log(task.related('goal').toJSON());
+        console.log(goal.toJSON());
+
+        return goal.toJSON();
+      });
+  },
+
+  getGoalsAndTasks: function() {
+    console.log('getting goals & tasks');
+    return Goal
+      .where({
+        id: 1
+      })
+      .fetch({
+        withRelated: ['task']
+      })
+      .then(goal => {
+        console.log('got data!');
+        console.log(goal.related('task').toJSON());
+        console.log(goal.toJSON());
+
+        return goal.toJSON();
+      }).catch(err => {
+        res.json(err)
+      })
 
   }
 };

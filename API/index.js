@@ -22,4 +22,26 @@ router.get('/task', function(req, res, next) {
     });
 });
 
+router.get('/goal', function(req, res, next) {
+  queries.getGoal()
+    .then(goals => {
+      console.log('hi', {
+        goals
+      });
+      res.json('Success');
+    });
+});
+
+router.get('/goals', function(req, res, next) {
+  queries.getGoalsAndTasks()
+    .then(data => {
+      console.log('hi', {
+        data
+      });
+      res.json('Success');
+    }).catch(err => {
+      next(err)
+    });
+});
+
 module.exports = router;

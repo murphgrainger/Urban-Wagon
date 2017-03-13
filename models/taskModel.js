@@ -1,14 +1,14 @@
 const bookshelf = require('./bookshelf_config');
-require('./goalModel')
+const Goal = require('./goalModel')
 require('./task_statusModel')
 
 const Task = bookshelf.Model.extend({
   tableName: 'task',
-  goals: function() {
-    return this.belongsTo('Goal');
+  goal: function() {
+    return this.belongsTo(Goal);
   },
 
-  task_statuses: function() {
+  task_status: function() {
     return this.hasMany('Task_Status');
   }
 

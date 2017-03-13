@@ -8,7 +8,7 @@ const Task_Status = bookshelf.Model.extend({
     return this.belongsTo('Task');
   },
   players: function() {
-    return this.belongsTo('Player')
+    return this.belongsTo('Player');
   }
 
 });
