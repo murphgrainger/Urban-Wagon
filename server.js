@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var dotenv = require("dotenv").config();
 
-var index = require('./routes/index');
+var index = require('./API/index');
 
 var app = express();
 const knex = require('./db/knex');

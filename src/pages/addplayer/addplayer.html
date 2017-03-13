@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="addPlayers()">
+  <form (ngSubmit)="startGame()">
     <ion-list>
       <ion-list-header>Player 1</ion-list-header>
       <ion-item>
@@ -28,6 +28,6 @@
         <ion-input type="text" name="player_four" placeholder="Name" [(ngModel)]="players.player_four"></ion-input>
       </ion-item>
     </ion-list>
-    <button ion-button type="submit" (click)="startGame(game)" block>Start Game</button>
+    <button ion-button type="submit" block>Start Game</button>
   </form>
 </ion-content>
