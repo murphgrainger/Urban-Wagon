@@ -20,4 +20,4 @@ const Player = bookshelf.Model.extend({
 
 });
 
-module.exports = Player;
+module.exports = ('Player', Player);

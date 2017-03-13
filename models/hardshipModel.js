@@ -14,4 +14,4 @@ const Hardship = bookshelf.Model.extend({
 
 });
 
-module.exports = Hardship;
+module.exports = ('Hardship', Hardship);

@@ -1,23 +1,23 @@
 const bookshelf = require('./bookshelf_config');
-const User = require('./userModel');
-const Player = require('./playerModel');
-const Goal = require('./goalModel');
-const Game_Goal = require('./game_goalModel');
+require('./userModel');
+require('./playerModel');
+require('./goalModel');
+require('./game_goalModel');
 
 
 const Game = bookshelf.Model.extend({
   tableName: 'game',
   users: function() {
-    return this.belongsTo(User, 'user');
+    return this.belongsTo('User');
   },
 
   players: function() {
-    return this.hasMany(Player, 'player');
+    return this.hasMany('Player');
   },
 
   goals: function() {
-    return this.belongsToMany(Goal).through(Game_Goal);
+    return this.belongsToMany('Goal').through('Game_Goal');
   },
 });
 
-module.exports = Game;
+module.exports = ('Game', Game);

@@ -1,18 +1,26 @@
 const knex = require('./knex');
 
 const bookshelf = require('../models/bookshelf_config');
-const Game = require('../models/gameModel');
+const Game = require('../models/gameModel').game;
 const Goal = require('../models/goalModel');
+const Game_Goal = require('../models/game_goalModel').game_goal;
+const Hardship = require('../models/hardshipModel').hardship;
+const Hardship_Status = require('../models/hardship_statusModel').hardship_status;
+const Task = require('../models/taskModel');
+const Task_Status = require('../models/task_statusModel').task_status;
+const User = require('../models/userModel').user;
+const Player = require('../models/playerModel').player;
 
 
 module.exports = {
-  getGoals: function() {
-    return Goal
-      .fetch({
-        withRelated: ['game']
-      })
-      .then(goals => {
-        return goals.toJSON();
+  getTask: function() {
+    console.log('getting tasks');
+    Task.fetchAll()
+      .then(task => {
+        // console.log(task.related('goal').toJSON());
+        console.log(task.toJSON());
+
+        return task.toJSON();
       });
 
   }

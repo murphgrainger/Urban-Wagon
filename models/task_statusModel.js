@@ -13,4 +13,4 @@ const Task_Status = bookshelf.Model.extend({
 
 });
 
-module.exports = Task_Status;
+module.exports = ('Task_Status', Task_Status);

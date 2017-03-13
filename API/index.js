@@ -12,11 +12,11 @@ router.post('/game', function(req, res, next) {
   //   });
 });
 
-router.get('/goal', function(req, res, next) {
-  queries.getGoals()
-    .then(goals => {
-      console.log({
-        goals
+router.get('/task', function(req, res, next) {
+  queries.getTask()
+    .then(tasks => {
+      console.log('hi', {
+        tasks
       });
       res.json('Success');
     });

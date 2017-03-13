@@ -13,4 +13,4 @@ const Hardship_Status = bookshelf.Model.extend({
 
 });
 
-module.exports = Hardship_Status;
+module.exports = ('Hardship_Status', Hardship_Status);

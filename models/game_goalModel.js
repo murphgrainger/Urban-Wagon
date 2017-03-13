@@ -1,17 +1,17 @@
 const bookshelf = require('./bookshelf_config');
-const Game = require('./gameModel')
-const Goal = require('./goalModel')
+require('./gameModel');
+require('./goalModel');
 
 
 const Game_Goal = bookshelf.Model.extend({
   tableName: 'game_goal',
   games: function() {
-    return this.hasMany(Game, 'game');
+    return this.hasMany('Game');
   },
 
   goals: function() {
-    return this.hasMany(Goal, 'goal');
+    return this.hasMany('Goal');
   }
 });
 
-module.exports = Game_Goal;
+module.exports = (Game_Goal, 'Game_Goal');
