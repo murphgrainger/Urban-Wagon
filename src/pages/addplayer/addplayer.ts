@@ -19,13 +19,24 @@ export class AddplayerPage {
   this.game = navParams.get('game');
   }
 
+
   startGame() {
-    this.game.players = this.players;
+    this.game.players = this.objToArr(this.players);
+    console.log(this.game.players)
     this.gameService.postGame(this.game)
     this.navCtrl.push(DashboardPage, {
       game: this.game
     });
   }
+
+  objToArr(obj) {
+ let arr = [];
+ for (var key in obj) {
+   arr.push(obj[key]);
+ }
+   return arr;
+ }
+
 
 
 }
