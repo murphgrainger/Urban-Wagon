@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.text('location');
     table.timestamp('date_started');
+    table.text('access_code');
     table.integer('difficulty').notNullable();
     table.integer('player_count').notNullable();
     table.integer('progress').notNullable();
