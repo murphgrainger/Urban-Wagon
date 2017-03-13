@@ -4,17 +4,22 @@ const knex = require('../db/knex');
 const queries = require("../db/queries");
 
 router.post('/game', function(req, res, next) {
-  console.log(req.body);
+  // console.log(req.body);
   // queries.postNewGame(req.body)
   //   .then((all) => {
   //     console.log('hi', all);
   //     res.json('Server Notice: Game Successfully Posted!');
   //   });
-})
+});
 
-
-router.post('/jobs/newjob', function(req, res) {
-
+router.get('/goal', function(req, res, next) {
+  queries.getGoals()
+    .then(goals => {
+      console.log({
+        goals
+      });
+      res.json('Success');
+    });
 });
 
 module.exports = router;

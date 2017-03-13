@@ -21,6 +21,7 @@
     "@angular/platform-server": "2.4.8",
     "@ionic/storage": "2.0.0",
     "body-parser": "^1.17.1",
+    "bookshelf": "^0.10.3",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",

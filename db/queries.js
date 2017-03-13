@@ -1,26 +1,42 @@
 const knex = require('./knex');
 
+const bookshelf = require('../models/bookshelf_config');
+const Game = require('../models/gameModel');
+const Goal = require('../models/goalModel');
+
+
 module.exports = {
-  postNewGame: function(body) {
-    return knex('game')
-      .insert({
-        date_started: body.date_started,
-        location: body.location,
-        player_count: body.player_count,
-        difficulty: body.difficulty,
-        progress: 0,
-      }, 'id')
-      .then((id) => {
-        console.log(id[0]);
-        return knex('player')
-          .insert({
-            trail_name: body.players.player_1,
-            game_id: id[0],
-          }, 'id');
+  getGoals: function() {
+    return Goal
+      .fetch({
+        withRelated: ['game']
       })
+      .then(goals => {
+        return goals.toJSON();
+      });
+
   }
 };
 
+
+// postNewGame: function(body) {
+//   return knex('game')
+//     .insert({
+//       date_started: body.date_started,
+//       location: body.location,
+//       player_count: body.player_count,
+//       difficulty: body.difficulty,
+//       progress: 0,
+//     }, 'id')
+//     .then((id) => {
+//       console.log(id[0]);
+//       return knex('player')
+//         .insert({
+//           trail_name: body.players.player_1,
+//           game_id: id[0],
+//         }, 'id');
+//     })
+// }
 //
 // postNewJob: function(body) {
 //   return knex('location')
