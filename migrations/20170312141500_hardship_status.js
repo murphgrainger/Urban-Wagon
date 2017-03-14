@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.timestamp('start_time');
     table.timestamp('end_time');
     table.integer('hardship_id').references('hardship.id').unsigned().onDelete('cascade');
+    table.integer('player_id').references('player.id').unsigned().onDelete('cascade');
   });
 };
 

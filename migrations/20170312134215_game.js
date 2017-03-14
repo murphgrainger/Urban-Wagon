@@ -1,6 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('game', function(table) {
     table.increments();
+    table.text('access_code');
     table.text('location');
     table.timestamp('date_started');
     table.integer('difficulty').notNullable();
