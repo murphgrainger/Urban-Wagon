@@ -38,7 +38,10 @@ router.get('/goals', function(req, res, next) {
       console.log(goals);
       res.json(goals);
     })
-    .catch(next);
+    .catch(err => {
+      res.send(err)
+      console.log('uh oh', err);
+    });
 });
 
 router.get('/goal/:id/task', function(req, res, next) {
