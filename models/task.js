@@ -6,36 +6,10 @@ class Task extends Model {
     return 'task';
   }
 
-  static get jsonSchema() {
-    return {
-      type: 'object',
-      properties: {
-        id: {
-          type: 'integer'
-        },
-        title: {
-          type: 'string'
-        },
-        description: {
-          type: 'string'
-        },
-        allotted_time: {
-          type: 'integer'
-        },
-        difficulty: {
-          type: 'integer'
-        },
-        goal_id: {
-          type: 'integer'
-        }
-      }
-    };
-  }
-
   static get relationMappings() {
     return {
-      pets: {
-        relation: Model.HasManyRelation,
+      goal: {
+        relation: Model.BelongsToOneRelation,
         modelClass: Goal,
         join: {
           from: 'task.goal_id',
@@ -45,15 +19,5 @@ class Task extends Model {
     };
   }
 }
-// Task.relationMappings = {
-//   goals: {
-//     relation: Model.BelongsToOneRelation,
-//     modelClass: Goal,
-//     join: {
-//       from: 'task.goal_id',
-//       to: 'goal.id'
-//     }
-//   }
-// };
 
 module.exports = Task;

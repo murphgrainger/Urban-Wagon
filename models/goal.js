@@ -7,27 +7,6 @@ class Goal extends Model {
     return 'goal';
   }
 
-  static get defaultEager() {
-    return 'tasks'
-  }
-
-  static get jsonSchema() {
-    return {
-      type: 'object',
-      properties: {
-        id: {
-          type: 'integer'
-        },
-        name: {
-          type: 'string'
-        },
-        game_id: {
-          type: 'integer'
-        },
-      }
-    };
-  }
-
   static get relationMappings() {
     return {
       tasks: {

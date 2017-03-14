@@ -61,8 +61,6 @@ router.get('/goal/:id/task', function(req, res, next) {
 
 });
 
-
-
 router.get('/oldschool', function(req, res, next) {
   return knex('goal')
     .join('task', 'goal_id', '=', 'goal.id')
