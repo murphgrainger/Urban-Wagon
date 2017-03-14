@@ -1,6 +1,5 @@
 const Model = require('objection').Model;
 const Player = require('./player');
-const Goal = require('./goal');
 
 class Game extends Model {
   static get tableName() {
@@ -27,7 +26,7 @@ class Game extends Model {
       },
       goal: {
         relation: Model.BelongsToOneRelation,
-        modelClass: __dirname + '/user',
+        modelClass: __dirname + '/goal',
         join: {
           from: 'game.goal_id',
           to: 'goal.id'
