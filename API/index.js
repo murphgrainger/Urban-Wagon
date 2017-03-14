@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const queries = require("../db/queries");
-
+const transaction = require('objection').transaction;
 const objection = require('objection');
 const Goal = require('../models/goal');
 const Task = require('../models/task');
@@ -19,21 +19,20 @@ router.post('/game', function(req, res, next) {
 
 router.get('/goal', function(req, res, next) {
   console.log('hey there');
-  Goal
+  return Goal
     .query()
     .skipUndefined()
     .then(function(goals) {
       console.log(goals);
-      res.json(goals);
+      return res.json(goals);
     })
     .catch(next);
 });
 
 router.get('/goals', function(req, res, next) {
   console.log('trying eager');
-  Goal
+  return Goal
     .query()
-    .where('id', 2)
     .eager('tasks')
     .then(function(goals) {
       console.log(goals);
@@ -43,7 +42,7 @@ router.get('/goals', function(req, res, next) {
 });
 
 router.get('/goal/:id/task', function(req, res, next) {
-  Goal
+  return Goal
     .query()
     .findById(req.params.id)
     .then(function(goal) {
@@ -54,7 +53,6 @@ router.get('/goal/:id/task', function(req, res, next) {
       return goal
         .$relatedQuery('tasks')
         .skipUndefined()
-
     })
     .then(function(tasks) {
       console.log(tasks);
@@ -63,19 +61,34 @@ router.get('/goal/:id/task', function(req, res, next) {
 
 });
 
-router.get('/lastcall', function(req, res, next) {
+
+
+router.get('/oldschool', function(req, res, next) {
   return knex('goal')
     .join('task', 'goal_id', '=', 'goal.id')
     .select('task.title', 'goal.name')
     .then(data => {
       console.log(data);
+      res.json(data)
     })
 });
 
-router.post('/jobs/newjob', function(req, res) {
+router.get('/goals/:id/tasks', function* (req, res, next) {
+  console.log('hiiii!!');
+  const goal = yield Goal
+    .query()
+    .findById(req.params.id);
+  console.log(req.params.id);
+  if (!goal) {
+    throwNotFound();
+  }
 
+  const tasks = yield goal
+    .$relatedQuery('tasks')
+    .skipUndefined()
+
+  res.json(tasks);
 });
-
 
 function throwNotFound() {
   var error = new Error();

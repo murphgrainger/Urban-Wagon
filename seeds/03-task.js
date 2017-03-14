@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
         description: 'Ask a stranger: Would you rather smell dog breath every morning when you wake up, or have cheetos on your fingers every day between 2 and 5?',
         allotted_time: 7,
         difficulty: 2,
-        goal_id: 3
+        goal_id: 2
       }, {
         title: 'Wink',
         description: 'Wink at someone looking at you.  Bonus points for the double wink to the same person.',
