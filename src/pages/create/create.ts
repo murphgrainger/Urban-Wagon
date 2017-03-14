@@ -9,16 +9,16 @@ import { AddplayerPage } from '../addplayer/addplayer';
 })
 export class CreatePage {
   public game:any = {};
-  logForm(){
-    this.game.date_started = new Date();
+
+  logForm() {
+    this.navCtrl.push(AddplayerPage, {
+      game: this.game
+    });
   }
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
-  addPlayers(game) {
-    this.navCtrl.push(AddplayerPage, {
-      game: game
-    });
-  }
+
 }
