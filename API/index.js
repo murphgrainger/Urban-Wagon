@@ -8,42 +8,46 @@ const Goal = require('../models/goal');
 const Task = require('../models/task');
 
 
-router.post('/game', function(req, res, next) {
-  console.log(req.body);
-  queries.postNewGame(req.body)
-    .then((all) => {
-      console.log('hi', all);
-      res.json('Server Notice: Game Successfully Posted!');
-    }).catch(err => {
-      console.log(err);
-    });
-})
+router.post('/user/:id/game', function(req, res, next) {
+   queries.postNewGame(req.body, req.params.id)
+  .then(function (game) {
+    console.log('through query', game);
+    res.json(game);
+  }).catch(err => {
+    console.log(err);
+    res.json(err)
+  });
+});
 
 router.get('/goal', function(req, res, next) {
-  console.log('hey there');
   return Goal
     .query()
     .skipUndefined()
     .then(function(goals) {
-      console.log(goals);
       return res.json(goals);
     })
     .catch(next);
 });
 
-router.get('/goals', function(req, res, next) {
-  console.log('trying eager');
-  return Goal
-    .query()
-    .eager('tasks')
-    .then(function(goals) {
-      console.log(goals);
-      res.json(goals);
+router.get('/game/:id', function(req, res, next) {
+  console.log('getting game');
+  queries.getGame(req.params.id)
+    .then(function(games) {
+      return res.json(games);
     })
     .catch(err => {
-      res.send(err)
-      console.log('uh oh', err);
+      res.send(err);
     });
+});
+
+router.get('/goals', function(req, res, next) {
+  queries.getGoalsAndTasks()
+  .then(goals => {
+    res.json(goals);
+  }).catch(err => {
+    console.log('err', err);
+    res.send(err)
+  });
 });
 
 router.get('/goal/:id/task', function(req, res, next) {

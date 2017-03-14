@@ -14,7 +14,7 @@ export class GameService {
   }
 
   postGame(game) {
-	 this.http.post(SERVER_URL + '/game', game)
+	 this.http.post(SERVER_URL + `/user/1/game`, game)
    .subscribe(data => {
    }, error => {
      console.log('Error: Game did not save!')
