@@ -27,17 +27,13 @@ class Goal extends Model {
         }
       },
       games: {
-        relation: Model.ManyToManyRelation,
+        relation: Model.HasManyRelation,
         modelClass: Game,
         join: {
           from: 'goal.id',
-          through: {
-            from: 'game_goal.goal_id',
-            to: 'game_goal.game_id'
-          },
-          to: 'game.id'
+          to: 'game.goal_id'
         }
-      },
+      }
     };
   }
 }

@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.integer('player_count');
     table.integer('progress');
     table.integer('user_id').references('user.id').unsigned().onDelete('cascade');
+    table.integer('goal_id').references('goal.id').unsigned().onDelete('cascade');
   });
 };
 

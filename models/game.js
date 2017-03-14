@@ -25,18 +25,14 @@ class Game extends Model {
           to: 'player.game_id'
         }
       },
-      goals: {
-        relation: Model.ManyToManyRelation,
-        modelClass: Goal,
+      goal: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: __dirname + '/user',
         join: {
-          from: 'game.id',
-          through: {
-            from: 'game_goal.game_id',
-            to: 'game_goal.goal_id'
-          },
+          from: 'game.goal_id',
           to: 'goal.id'
         }
-      },
+      }
     };
   }
 }
