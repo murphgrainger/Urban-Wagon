@@ -1,9 +1,9 @@
 const Model = require('objection').Model;
-const Task_Status = require('./task_status');
+const Hardship_Status = require('./hardship_status');
 
-class Task extends Model {
+class Hardship extends Model {
   static get tableName() {
-    return 'task';
+    return 'hardship';
   }
 
   static get relationMappings() {
@@ -12,20 +12,20 @@ class Task extends Model {
         relation: Model.BelongsToOneRelation,
         modelClass: __dirname + '/goal',
         join: {
-          from: 'task.goal_id',
+          from: 'hardship.goal_id',
           to: 'goal.id'
         }
       },
-      task_status: {
+      hardship_status: {
         relation: Model.HasManyRelation,
-        modelClass: Task_Status,
+        modelClass: Hardship_Status,
         join: {
-          from: 'task.id',
-          to: 'task_status.task_id'
+          from: 'hardship.id',
+          to: 'hardship_status.hardship_id'
         }
       }
     };
   }
 }
 
-module.exports = Task;
+module.exports = Hardship;
