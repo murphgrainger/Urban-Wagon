@@ -16,12 +16,34 @@ router.get('/user/:id', function(req, res, next) {
   });
 });
 
-router.get('/goals', function(req, res, next) {
+router.get('/goal/task', function(req, res, next) {
   queries.getGoalsAndTasks()
   .then(goals => {
     res.json(goals);
   }).catch(err => {
     res.send(err)
+  });
+});
+
+router.get('/goal', function(req, res, next) {
+  queries.getGoals()
+ .then(function (goal) {
+   res.json(goal);
+ }).catch(err => {
+   console.log(err);
+   res.json(err);
+ });
+});
+
+router.post('/game/:id/goal', function(req, res, next) {
+  console.log(req.params.id);
+  queries.postGoalToGame(req.body, req.params.id)
+  .then(function (game) {
+    console.log('through query', game);
+    res.json(game);
+  }).catch(err => {
+    console.log(err);
+    res.json(err);
   });
 });
 
@@ -41,7 +63,7 @@ router.post('/user', function(req, res, next) {
   .then(function (user) {
     res.json(user);
   }).catch(err => {
-    res.json(err)
+    res.json(err);
   });
 });
 
@@ -52,18 +74,19 @@ router.post('/user/:id/game', function(req, res, next) {
     res.json(game);
   }).catch(err => {
     console.log(err);
-    res.json(err)
+    res.json(err);
   });
 });
 
-router.get('/goal', function(req, res, next) {
-  return Goal
-    .query()
-    .skipUndefined()
-    .then(function(goals) {
-      return res.json(goals);
-    })
-    .catch(next);
+router.post('/user/:id/games', function(req, res, next) {
+   queries.postNewGameFromUser(req.body, req.params.id)
+  .then(function (game) {
+    console.log('through query', game);
+    res.json(game);
+  }).catch(err => {
+    console.log(err);
+    res.json(err);
+  });
 });
 
 
@@ -89,17 +112,17 @@ router.get('/goal/:id/task', function(req, res, next) {
 
 });
 
-router.get('/oldschool', function(req, res, next) {
-  return knex('goal')
-    .join('task', 'goal_id', '=', 'goal.id')
-    .select('task.title', 'goal.name')
-    .then(data => {
-      console.log(data);
-      res.json(data)
-    }).catch(err => {
-      console.log(err);
-    })
-});
+// router.get('/oldschool', function(req, res, next) {
+//   return knex('goal')
+//     .join('task', 'goal_id', '=', 'goal.id')
+//     .select('task.title', 'goal.name')
+//     .then(data => {
+//       console.log(data);
+//       res.json(data)
+//     }).catch(err => {
+//       console.log(err);
+//     })
+// });
 
 
 function throwNotFound() {

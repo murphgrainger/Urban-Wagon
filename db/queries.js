@@ -24,6 +24,12 @@ module.exports = {
       .insert(body)
   },
 
+  getGoals: function() {
+    return Goal
+      .query()
+      .skipUndefined()
+  },
+
   getGoalsAndTasks: function() {
     return Goal
       .query()
@@ -61,25 +67,34 @@ module.exports = {
       .insert(gameBody);
   },
 
-postNewGameandGoal: function() {
-  // Inserting a movie for a person creates two queries: the movie insert query
-  // and the join table row insert query. It is wise to use a transaction here.
-  objection.transaction(Goal, function (Goal) {
-    console.log('heyo');
-    return Goal
+postNewGameFromUser: function(body, id) {
+  console.log(body);
+  console.log('posting game from user!');
+    return User
       .query()
       .findById(id)
-      .then(function (goal) {
-        console.log('hi there');
-        if (!goal) { throwNotFound();
-        }
-        return goal
+      .then(function (user) {
+        if (!user) { throwNotFound(); }
+        return user
           .$relatedQuery('games')
-          .insert(goalBody);
-      }).catch(err => {
-        console.log(err);
-      });
-  })
+          .insert(body);
+      })
+},
+
+postGoalToGame: function(body, id) {
+
+  // Add existing Person as an actor to a movie.
+  // Add existing Goal as goal for a game
+  return Game
+      .query()
+      .findById(id)
+      .then(function (game) {
+        if (!game) { throwNotFound(); }
+        return game
+          .$relatedQuery('goals')
+          .relate(body.id);
+      })
+
 }
 
 
