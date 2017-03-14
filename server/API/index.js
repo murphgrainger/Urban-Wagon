@@ -10,11 +10,13 @@ const Task = require('../models/task');
 
 router.post('/game', function(req, res, next) {
   console.log(req.body);
-  // queries.postNewGame(req.body)
-  //   .then((all) => {
-  //     console.log('hi', all);
-  //     res.json('Server Notice: Game Successfully Posted!');
-  //   });
+  queries.postNewGame(req.body)
+    .then((all) => {
+      console.log('hi', all);
+      res.json('Server Notice: Game Successfully Posted!');
+    }).catch(err => {
+      console.log(err);
+    });
 })
 
 router.get('/goal', function(req, res, next) {
@@ -71,25 +73,11 @@ router.get('/oldschool', function(req, res, next) {
     .then(data => {
       console.log(data);
       res.json(data)
+    }).catch(err => {
+      console.log(err);
     })
 });
 
-router.get('/goals/:id/tasks', function* (req, res, next) {
-  console.log('hiiii!!');
-  const goal = yield Goal
-    .query()
-    .findById(req.params.id);
-  console.log(req.params.id);
-  if (!goal) {
-    throwNotFound();
-  }
-
-  const tasks = yield goal
-    .$relatedQuery('tasks')
-    .skipUndefined()
-
-  res.json(tasks);
-});
 
 function throwNotFound() {
   var error = new Error();
