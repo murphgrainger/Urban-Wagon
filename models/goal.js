@@ -26,18 +26,18 @@ class Goal extends Model {
           to: 'hardship.goal_id'
         }
       },
-      games: {
-        relation: Model.ManyToManyRelation,
-        modelClass: Game,
-        join: {
-          from: 'goal.id',
-          through: {
-            from: 'game_goal.goal_id',
-            to: 'game_goal.game_id'
-          },
-          to: 'game.id'
-        }
-      },
+      // games: {
+      //   relation: Model.ManyToManyRelation,
+      //   modelClass: Game,
+      //   join: {
+      //     from: 'goal.id',
+      //     through: {
+      //       from: 'game_goal.goal_id',
+      //       to: 'game_goal.game_id'
+      //     },
+      //     to: 'game.id'
+      //   }
+      // },
     };
   }
 }

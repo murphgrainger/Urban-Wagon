@@ -4,9 +4,9 @@ exports.up = function(knex, Promise) {
     table.text('access_code');
     table.text('location');
     table.timestamp('date_started');
-    table.integer('difficulty').notNullable();
-    table.integer('player_count').notNullable();
-    table.integer('progress').notNullable();
+    table.integer('difficulty');
+    table.integer('player_count');
+    table.integer('progress');
     table.integer('user_id').references('user.id').unsigned().onDelete('cascade');
   });
 };
