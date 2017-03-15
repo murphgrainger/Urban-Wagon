@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const queries = require("../db/queries");
-// const transaction = require('objection').transaction;
-// const objection = require('objection');
 
 // Master GET Route with all related references
 router.get('/game/:id/all', function(req, res, next) {

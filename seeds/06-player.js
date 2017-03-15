@@ -3,18 +3,23 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       const player = [{
         trail_name: 'Johnny',
+        health: 1,
         game_id: 1,
       }, {
         trail_name: 'Susie',
+        health: 1,
         game_id: 1,
       }, {
         trail_name: 'Georgiana',
+        health: 1,
         game_id: 2,
       }, {
         trail_name: 'Marni',
+        health: 1,
         game_id: 2,
       }, {
         trail_name: 'Carol',
+        health: 1,
         game_id: 2
       }];
       return knex('player').insert(player);

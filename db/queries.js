@@ -54,7 +54,7 @@ module.exports = {
         return goal
           .$relatedQuery('tasks')
           .skipUndefined()
-      })
+      });
   },
 
   getGame: function(id) {
