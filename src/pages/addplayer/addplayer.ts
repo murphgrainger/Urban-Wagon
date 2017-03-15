@@ -21,9 +21,7 @@ export class AddplayerPage {
 
 
   startGame() {
-    console.log(this.players)
     this.game.players = this.playersToArr(this.players);
-    console.log(this.game.players)
     this.game.access_code = this.makeid();
     this.game.date_started = new Date();
     this.game.progress = 0;

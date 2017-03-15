@@ -77,14 +77,6 @@ module.exports = {
       user_id: body.user_id
     };
 
-    let playerBody = {
-      trail_name: body.trail_name
-    };
-
-    let goalBody = {
-      name: body.name
-    };
-
     return Game
       .query()
       .insert(gameBody);
@@ -102,6 +94,32 @@ postNewGameFromUser: function(body, id) {
           .$relatedQuery('games')
           .insert(body);
       })
+},
+
+postNewPlayerFromGame: function(body, id) {
+return Goal
+    .query()
+    .findById(id)
+    .then(goal => {
+      return goal
+      .$relatedQuery('games')
+      .insertGraph({
+        location: body.location,
+        difficulty: body.difficulty,
+        player_count: body.player_count,
+        access_code: body.access_code,
+        date_started: body.date_started,
+        progress: body.progress,
+        user_id: body.user_id,
+
+        players: [{
+          trail_name: body.player[0],
+        }, {
+          trail_name: body.player[1]
+        }
+      ]
+    });
+  });
 },
 
 postGoalToGame: function(body, id) {

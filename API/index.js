@@ -97,12 +97,23 @@ router.post('/user/:id/games', function(req, res, next) {
   });
 });
 
+router.post('/goal/:id/gametest', function(req, res, next) {
+   queries.postNewPlayerFromGame(req.body, req.params.id)
+  .then(function (player) {
+    console.log('through query', player);
+    res.json(player);
+  }).catch(err => {
+    console.log(err);
+    res.json(err);
+  });
+});
+
 router.get('/goal/:id/tasks', function(req, res, next) {
   queries.getTasksbyGoalID(req.params.id)
     .then(function(tasks) {
       console.log(tasks);
       res.json(tasks);
-    })
+    });
 
 });
 
