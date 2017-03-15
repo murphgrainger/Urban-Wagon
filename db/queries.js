@@ -11,6 +11,13 @@ const Player = require('../models/player');
 
 module.exports = {
 
+  getGameAndRelated: function(id) {
+    return Goal
+      .query()
+      .findById(id)
+      .eager('[games.players.[hardship_statuses, task_statuses], tasks.task_status, hardships.hardship_status]');
+  },
+
   getUser: function(id) {
     return User
       .query()
@@ -30,10 +37,26 @@ module.exports = {
       .skipUndefined()
   },
 
-  getGoalsAndTasks: function() {
+  getGoalWithTasks: function(id) {
     return Goal
       .query()
+      .findById(id)
       .eager('tasks');
+  },
+
+  getTasksbyGoalID: function(id) {
+    return Goal
+      .query()
+      .findById(id)
+      .then(function(goal) {
+        if (!goal) {
+          throwNotFound();
+        }
+        console.log(goal);
+        return goal
+          .$relatedQuery('tasks')
+          .skipUndefined()
+      })
   },
 
   getGame: function(id) {

@@ -4,8 +4,16 @@ const knex = require('../db/knex');
 const queries = require("../db/queries");
 const transaction = require('objection').transaction;
 const objection = require('objection');
-// const Goal = require('../models/goal');
-// const Task = require('../models/task');
+
+
+router.get('/game/:id/everything', function(req, res, next) {
+   queries.getGameAndRelated(req.params.id)
+  .then(function (game) {
+    res.json(game);
+  }).catch(err => {
+    res.json(err);
+  });
+});
 
 router.get('/user/:id', function(req, res, next) {
    queries.getUser(req.params.id)
@@ -16,8 +24,8 @@ router.get('/user/:id', function(req, res, next) {
   });
 });
 
-router.get('/goal/task', function(req, res, next) {
-  queries.getGoalsAndTasks()
+router.get('/goal/:id/task', function(req, res, next) {
+  queries.getGoalWithTasks(req.params.id)
   .then(goals => {
     res.json(goals);
   }).catch(err => {
@@ -89,22 +97,8 @@ router.post('/user/:id/games', function(req, res, next) {
   });
 });
 
-
-
-
-router.get('/goal/:id/task', function(req, res, next) {
-  return Goal
-    .query()
-    .findById(req.params.id)
-    .then(function(goal) {
-      if (!goal) {
-        throwNotFound();
-      }
-      console.log(goal);
-      return goal
-        .$relatedQuery('tasks')
-        .skipUndefined()
-    })
+router.get('/goal/:id/tasks', function(req, res, next) {
+  queries.getTasksbyGoalID(req.params.id)
     .then(function(tasks) {
       console.log(tasks);
       res.json(tasks);
