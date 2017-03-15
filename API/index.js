@@ -97,13 +97,12 @@ router.post('/user/:id/games', function(req, res, next) {
   });
 });
 
-router.post('/goal/:id/gametest', function(req, res, next) {
+// Master Game/Player Post Route
+router.post('/goal/:id/game', function(req, res, next) {
    queries.postNewPlayerFromGame(req.body, req.params.id)
   .then(function (player) {
-    console.log('through query', player);
     res.json(player);
   }).catch(err => {
-    console.log(err);
     res.json(err);
   });
 });

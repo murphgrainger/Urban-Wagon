@@ -113,9 +113,9 @@ return Goal
         user_id: body.user_id,
 
         players: [{
-          trail_name: body.player[0],
+          trail_name: body.players[0],
         }, {
-          trail_name: body.player[1]
+          trail_name: body.players[1]
         }
       ]
     });

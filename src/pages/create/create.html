@@ -19,13 +19,12 @@
         Goals
       </ion-list-header>
       <ion-item>
-        <ion-select multiple="true" name="goals" placeholder="Select your game preferences" [(ngModel)]="game.goals" [ngModelOptions]="{standalone: true}">
-          <ion-option value="network">Professionally Network</ion-option>
-          <ion-option value="friends">Meet Friends</ion-option>
-          <ion-option value="drink">Drink</ion-option>
-          <ion-option value="laugh">Laugh</ion-option>
-          <ion-option value="flirt">Flirt</ion-option>
-          <ion-option value="goofy">Be Goofy</ion-option>
+        <ion-select name="goal" placeholder="Select your game preferences" [(ngModel)]="game.goal" [ngModelOptions]="{standalone: true}">
+          <ion-option value="1">Professionally Network</ion-option>
+          <ion-option value="2">Drink</ion-option>
+          <ion-option value="3">Laugh</ion-option>
+          <ion-option value="4">Meet Friends</ion-option>
+          <ion-option value="5">Flirt</ion-option>
         </ion-select>
       </ion-item>
       <ion-list-header>
