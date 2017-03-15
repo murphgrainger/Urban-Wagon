@@ -21,7 +21,9 @@ export class AddplayerPage {
 
 
   startGame() {
-    this.game.players = this.objToArr(this.players);
+    console.log(this.players)
+    this.game.players = this.playersToArr(this.players);
+    console.log(this.game.players)
     this.game.access_code = this.makeid();
     this.game.date_started = new Date();
     this.game.progress = 0;
@@ -32,13 +34,19 @@ export class AddplayerPage {
     });
   }
 
-  objToArr(obj) {
- let arr = [];
- for (var key in obj) {
-   arr.push(obj[key]);
- }
-   return arr;
- }
+playersToArr(obj) {
+   let arr = [];
+   let arr2 = [];
+   for (var key in obj) {
+     arr.push(obj[key]);
+   }
+      arr.forEach(function(item) {
+        arr2.push({
+           trail_name : item
+        });
+      });
+      return arr2;
+  }
 
 makeid() {
      let text = "";
