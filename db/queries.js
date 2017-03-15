@@ -21,20 +21,19 @@ module.exports = {
   getUser: function(id) {
     return User
       .query()
-      .findById(id)
+      .findById(id);
   },
 
   postNewUser: function(body) {
-    console.log(body);
     return User
       .query()
-      .insert(body)
+      .insert(body);
   },
 
   getGoals: function() {
     return Goal
       .query()
-      .skipUndefined()
+      .skipUndefined();
   },
 
   getGoalWithTasks: function(id) {
@@ -52,7 +51,6 @@ module.exports = {
         if (!goal) {
           throwNotFound();
         }
-        console.log(goal);
         return goal
           .$relatedQuery('tasks')
           .skipUndefined()
@@ -60,31 +58,13 @@ module.exports = {
   },
 
   getGame: function(id) {
-    console.log(id);
     return Game
       .query()
-      .findById(id)
+      .findById(id);
   },
 
-  postNewGame: function(body) {
-    let gameBody = {
-      location: body.location,
-      difficulty: body.difficulty,
-      player_count: body.player_count,
-      access_code: body.access_code,
-      date_started: body.date_started,
-      progress: body.progress,
-      user_id: body.user_id
-    };
-
-    return Game
-      .query()
-      .insert(gameBody);
-  },
-
+// Not in use but is useful to see auto-ties of game to user
 postNewGameFromUser: function(body, id) {
-  console.log(body);
-  console.log('posting game from user!');
     return User
       .query()
       .findById(id)
@@ -93,11 +73,13 @@ postNewGameFromUser: function(body, id) {
         return user
           .$relatedQuery('games')
           .insert(body);
-      })
+      });
 },
 
-postNewPlayerFromGame: function(body, id) {
-return Goal
+
+//Master game and player insert at once, need to map players instead of hard code
+postGameAndPlayer: function(body, id) {
+  return Goal
     .query()
     .findById(id)
     .then(goal => {
@@ -116,29 +98,10 @@ return Goal
           trail_name: body.players[0],
         }, {
           trail_name: body.players[1]
-        }
-      ]
+        }]
+      });
     });
-  });
-},
-
-postGoalToGame: function(body, id) {
-
-  // Add existing Person as an actor to a movie.
-  // Add existing Goal as goal for a game
-  return Game
-      .query()
-      .findById(id)
-      .then(function (game) {
-        if (!game) { throwNotFound(); }
-        return game
-          .$relatedQuery('goals')
-          .relate(body.id);
-      })
-
-}
-
-
+  },
 
 
 };

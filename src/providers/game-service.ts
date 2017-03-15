@@ -19,7 +19,7 @@ export class GameService {
    .subscribe(data => {
      console.log(data)
    }, error => {
-     console.log('Error: Game did not save!')
+     console.log(error)
    });
  }
 
