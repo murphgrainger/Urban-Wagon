@@ -26,6 +26,7 @@ router.get('/goal/:id/all', function(req, res, next) {
 
 // Master Game/Player Post Route
 router.post('/goal/:id/game', function(req, res, next) {
+  console.log(req.body);
    queries.postGameAndPlayer(req.body, req.params.id)
   .then(function (player) {
     res.json(player);

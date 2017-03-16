@@ -23,21 +23,25 @@ export class DashboardPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService) {
     this.gameID = navParams.get('id');
+    console.log('component', this.gameID)
     this.objDate = Date.now();
     this.updateProgress(30)
   }
 
   ionViewDidLoad() {
-    this.gameService.getGameDetails(this.gameID)
-    .then(game => {
-      this.game = game
-      console.log(this.game)
-    }).catch(error => {
-      console.log(error)
-    }).then(() => {
-      this.splitObject()
-    })
+    this.getGame()
     };
+
+    getGame() {
+      this.gameService.getGameDetails(this.gameID)
+      .then(game => {
+        this.game = game
+      }).catch(error => {
+        console.log(error)
+      }).then(() => {
+        this.splitObject()
+      })
+    }
 
   splitObject() {
     this.players = this.game.players;
