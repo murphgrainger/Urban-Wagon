@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+
 
 const SERVER_URL = 'http://localhost:8080';
 
@@ -16,17 +18,14 @@ export class GameService {
 
   postGame(game) {
   let goalID = Number(game.goal);
-	 this.http.post(SERVER_URL + `/goal/${goalID}/game`, game)
-   .subscribe(response => {
-     console.log('Success!')
-   }, error => {
-     console.log(error)
-   });
+	 return this.http.post(SERVER_URL + `/goal/${goalID}/game`, game)
+
  }
 
- // getGameDetails() {
- //   this.http.get(SERVER_URL + `game/${gameID}`)
- // }
+ getGameDetails() {
+   return this.http.get(SERVER_URL + `/game/1`)
+   .map(response => response.json())
+ }
 
   handleError(error) {
   console.log(error);
