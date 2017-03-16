@@ -3,9 +3,20 @@ const router = express.Router();
 const knex = require('../db/knex');
 const queries = require("../db/queries");
 
-// Master GET Route with all related references
-router.get('/game/:id/all', function(req, res, next) {
+
+// Get Game and everything related to the game
+router.get('/game/:id', function(req, res, next) {
    queries.getGameAndRelated(req.params.id)
+  .then(function (game) {
+    res.json(game);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+// Get all games by goal ID
+router.get('/goal/:id/all', function(req, res, next) {
+   queries.getGoalAndRelated(req.params.id)
   .then(function (game) {
     res.json(game);
   }).catch(err => {

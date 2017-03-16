@@ -12,6 +12,13 @@ const Player = require('../models/player');
 module.exports = {
 
   getGameAndRelated: function(id) {
+    return Game
+      .query()
+      .findById(id)
+      .eager('[goal.[tasks, hardships], players.[task_statuses, hardship_statuses]]')
+  },
+
+  getGoalAndRelated: function(id) {
     return Goal
       .query()
       .findById(id)

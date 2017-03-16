@@ -30,6 +30,7 @@ page-dashboard {
 
   }
 
+//Progress
 .progress-outer {
   margin-top: 1em;
   color: white;
@@ -45,6 +46,14 @@ page-dashboard {
   z-index: 1;
 }
 
+//Task Card
+.image-holder {
+  width: 100%;
+  overflow: hidden;
+  height: 8em;
+}
+
+//Player
 .player-row {
   width: 100%;
 }
@@ -68,4 +77,10 @@ page-dashboard {
 ion-col p {
   margin: 0;
 }
+
+.button-row {
+  display: flex;
+  justify-content: center;
+}
+
 }

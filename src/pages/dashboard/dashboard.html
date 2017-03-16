@@ -47,15 +47,31 @@
           Tasks
         </ion-list-header>
         <ion-card>
-          <img src="https://s3.amazonaws.com/digitaltrends-uploads-prod/2014/02/business-card.jpg" alt="">
+          <div class="image-holder">
+            <img src="https://s3.amazonaws.com/digitaltrends-uploads-prod/2014/02/business-card.jpg" alt="">
+          </div>
           <ion-card-content>
             <ion-card-title>
               Get A Business Card
             </ion-card-title>
             <p>
-              Go talk to someone you have not before and bring back a business card to the group.
+              Bring one back to the group.
             </p>
           </ion-card-content>
+          <ion-row>
+            <ion-col class="button-row">
+              <button ion-button icon-left round small color="secondary">
+                <ion-icon name="checkmark"></ion-icon>
+                <div>Accept</div>
+              </button>
+            </ion-col>
+            <ion-col class="button-row">
+              <button ion-button icon-left round small color="light">
+                <ion-icon name="close"></ion-icon>
+                <div>Reject</div>
+              </button>
+            </ion-col>
+          </ion-row>
         </ion-card>
       </ion-col>
     </ion-row>
