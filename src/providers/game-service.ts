@@ -19,12 +19,14 @@ export class GameService {
   postGame(game) {
   let goalID = Number(game.goal);
 	 return this.http.post(SERVER_URL + `/goal/${goalID}/game`, game)
+   .toPromise()
 
  }
 
- getGameDetails() {
-   return this.http.get(SERVER_URL + `/game/1`)
+ getGameDetails(id) {
+   return this.http.get(SERVER_URL + `/game/${id}`)
    .map(response => response.json())
+   .toPromise()
  }
 
   handleError(error) {

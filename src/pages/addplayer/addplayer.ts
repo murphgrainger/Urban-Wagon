@@ -29,21 +29,18 @@ export class AddplayerPage {
 
   startGame() {
     this.gameService.postGame(this.game)
-    .subscribe(data => {
+    .then(data => {
       this.gameID = data.json().id
-      console.log(this.gameID)
-  }, error => {
+  }).catch(error => {
    console.log(error)
-  });
+ }).then(() => {
+   this.navCtrl.push(DashboardPage, {
+     id: this.gameID,
+   });
+ });
+}
 
-    this.navCtrl.push(DashboardPage, {
-      id: this.gameID,
-      game: this.game,
-      test: 'hey there!! data woo hoo'
-    });
-  }
-
-  objToArr(obj) {
+objToArr(obj) {
 let arr = [];
 for (var key in obj) {
  arr.push(obj[key]);

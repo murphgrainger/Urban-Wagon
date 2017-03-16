@@ -18,15 +18,16 @@ export class DashboardPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService) {
     this.gameID = navParams.get('id');
-    this.game = navParams.get('game');
-    this.test = navParams.get('test');
-    console.log(this.gameID)
-    console.log(this.game)
-    console.log(this.test)
   }
 
   ionViewDidLoad() {
-    this.gameService.getGameDetails()
-  }
+    this.gameService.getGameDetails(this.gameID)
+    .then(game => {
+      this.game = game
+      console.log(this.game)
+    }).catch(error => {
+      console.log(error)
+      })
+    };
 
 }
