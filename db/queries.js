@@ -93,12 +93,11 @@ postGameAndPlayer: function(body, id) {
         date_started: body.date_started,
         progress: body.progress,
         user_id: body.user_id,
-
         players: [{
           trail_name: body.players[0],
         }, {
           trail_name: body.players[1]
-        }]
+        }],
       });
     });
   },

@@ -1,3 +1,71 @@
 page-dashboard {
 
+  // Top Row
+  #moral {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  #moral ion-item {
+    font-size: .95em;
+  }
+
+  .details {
+    padding-left: 1em;
+    padding-top: .3em;
+    padding-bottom: .3em;
+  }
+
+  .summary-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .summary-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+.progress-outer {
+  margin-top: 1em;
+  color: white;
+  height: 1.5em;
+  width: 100%;
+  background-color: black;
+}
+
+.progress-inner {
+  height: 100%;
+  width: 20%;
+  background-color: blue;
+  z-index: 1;
+}
+
+.player-row {
+  width: 100%;
+}
+
+.player-row .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.player-row h5 {
+  width: 100%;
+}
+
+.person-icon {
+  font-size: 3em;
+}
+
+ion-col p {
+  margin: 0;
+}
 }
