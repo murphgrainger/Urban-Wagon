@@ -24,7 +24,7 @@ export class GameService {
  }
 
  getGameDetails(id) {
-   return this.http.get(SERVER_URL + `/game/${id}`)
+   return this.http.get(SERVER_URL + `/game/1`)
    .map(response => response.json())
    .toPromise()
  }

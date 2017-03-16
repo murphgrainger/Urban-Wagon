@@ -9,7 +9,7 @@
       <ion-col col-6 class="summary-col">
         <ion-row class="summary-row">
           <ion-icon ios="ios-pin" name="pin"></ion-icon>
-          <p class="details">10 Barrel Brewing</p>
+          <p class="details">{{game.location}}</p>
         </ion-row>
         <ion-row class="summary-row">
           <ion-icon ios="ios-calendar" name="calendar"></ion-icon>
@@ -52,10 +52,10 @@
           </div>
           <ion-card-content>
             <ion-card-title>
-              Get A Business Card
+              Get Business Card
             </ion-card-title>
             <p>
-              Bring one back to the group.
+              Get the darned card.
             </p>
           </ion-card-content>
           <ion-row>
@@ -80,25 +80,10 @@
         Players
       </ion-list-header>
       <ion-row class="player-row">
-        <ion-col col-3 align-self-center>
+        <ion-col col-3 align-self-center *ngFor="let player of players">
           <ion-icon class="person-icon" name="md-person"></ion-icon>
-          <p>Kiki</p>
-          <p>Busy</p>
-        </ion-col>
-        <ion-col col-3>
-          <ion-icon class="person-icon" name="md-person"></ion-icon>
-          <p>Murph</p>
-          <p>Free</p>
-        </ion-col>
-        <ion-col col-3>
-          <ion-icon class="person-icon" name="md-person"></ion-icon>
-          <p>JT</p>
-          <p>Free</p>
-        </ion-col>
-        <ion-col col-3>
-          <ion-icon class="person-icon" name="md-person"></ion-icon>
-          <p>Betsy</p>
-          <p>Sick</p>
+          <p>{{player.trail_name}}</p>
+          <p>{{player.health}}</p>
         </ion-col>
       </ion-row>
     </ion-row>
