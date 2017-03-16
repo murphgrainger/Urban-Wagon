@@ -8,16 +8,31 @@
     <ion-row>
       <ion-col col-6 class="summary-col">
         <ion-row class="summary-row">
-          <ion-icon ios="ios-pin" name="pin"></ion-icon>
-          <p class="details">{{game.location}}</p>
+          <ion-col col-2>
+            <ion-icon ios="ios-pin" name="pin"></ion-icon>
+          </ion-col>
+          <ion-col col-10>
+            <p class="details">{{game.location}}</p>
+          </ion-col>
         </ion-row>
         <ion-row class="summary-row">
-          <ion-icon ios="ios-calendar" name="calendar"></ion-icon>
-          <p class="details">March 15, 2017</p>
+          <ion-col col-2>
+            <ion-icon ios="ios-calendar" name="calendar"></ion-icon>
+          </ion-col>
+          <ion-col col-10>
+            <p class="details">
+              {{objDate | date :'longDate'}}</p>
+          </ion-col>
         </ion-row>
         <ion-row class="summary-row">
-          <ion-icon ios="ios-time" name="time"></ion-icon>
-          <p class="details">7:53pm</p>
+          <ion-col col-2>
+            <ion-icon ios="ios-time" name="time"></ion-icon>
+          </ion-col>
+          <ion-col col-10>
+            <p class="details">
+              {{objDate | date :'shortTime'}}</p>
+          </ion-col>
+
         </ion-row>
       </ion-col>
       <ion-col col-6 id="moral" class="summary-col">
@@ -35,8 +50,8 @@
     <ion-row class="progress-row">
       <ion-col col-12>
         <div class="progress-outer">
-          <div class="progress-inner">
-            <small>&nbsp;&nbsp;Progress</small>
+          <div [style.width]="trailProgress">
+            <small>{{trailProgress}}</small>
           </div>
         </div>
       </ion-col>

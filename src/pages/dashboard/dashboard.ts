@@ -17,10 +17,14 @@ export class DashboardPage {
   public players = [];
   public tasks = [];
   public hardships = [];
+  objDate:any;
+  public trailProgress: string = '0' + '%';
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService) {
     this.gameID = navParams.get('id');
+    this.objDate = Date.now();
+    this.updateProgress(30)
   }
 
   ionViewDidLoad() {
@@ -43,6 +47,10 @@ export class DashboardPage {
     console.log('players', this.players)
     console.log('tasks', this.tasks)
     console.log('hardships', this.hardships)
+  }
+
+  updateProgress(val) {
+    this.trailProgress = val + '%';
   }
 
 }

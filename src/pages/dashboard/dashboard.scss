@@ -13,7 +13,6 @@ page-dashboard {
   }
 
   .details {
-    padding-left: 1em;
     padding-top: .3em;
     padding-bottom: .3em;
   }
@@ -37,14 +36,17 @@ page-dashboard {
   height: 1.5em;
   width: 100%;
   background-color: black;
+
+  div {
+        text-align: center;
+        vertical-align: center;
+        height: 100%;
+        background-color: color($colors, primary);
+        transition: width .4s ease-in-out;
+    }
 }
 
-.progress-inner {
-  height: 100%;
-  width: 20%;
-  background-color: blue;
-  z-index: 1;
-}
+
 
 //Task Card
 .image-holder {
