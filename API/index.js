@@ -5,7 +5,7 @@ const queries = require("../db/queries");
 
 
 router.get('/', function(req, res, next) {
-   res.send('Modern Pioneer has loaded!')
+   res.send('Modern Pioneer has loaded!');
 });
 
 // Get Game and everything related to the game
