@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 
 const SERVER_URL = 'http://localhost:8080';
-const HEROKU_URL = 'https://modern-pioneer.herokuapp.com/'
+const HEROKU_URL = 'https://modern-pioneer.herokuapp.com'
 
 @Injectable()
 export class GameService {
@@ -21,12 +21,12 @@ export class GameService {
 
   postGame(game) {
   let goalID = Number(game.goal);
-	 return this.http.post(this.getURL() + `/goal/${goalID}/game`, game)
+	 return this.http.post(HEROKU_URL + `/goal/${goalID}/game`, game)
    .toPromise()
  }
 
  getGameDetails(id) {
-   return this.http.get(this.getURL() + `/game/${id}`)
+   return this.http.get(HEROKU_URL + `/game/${id}`)
    .map(response => response.json())
    .toPromise()
  }
