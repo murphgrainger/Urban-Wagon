@@ -39,7 +39,7 @@
         <div *ngFor="let task of tasks;  let i=index">
           <ion-card *ngIf="i<1">
             <div class="image-holder">
-              <img src="https://s3.amazonaws.com/digitaltrends-uploads-prod/2014/02/business-card.jpg" alt="">
+              <img src="{{tasks[tasks.length-1].image}}" alt="">
             </div>
             <ion-card-content>
               <div class="row task-title">
