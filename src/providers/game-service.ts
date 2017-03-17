@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 
 const SERVER_URL = 'http://localhost:8080';
+const HEROKU_URL = 'https://line-waiter-db.herokuapp.com'
 
 @Injectable()
 export class GameService {
@@ -14,7 +16,8 @@ export class GameService {
   constructor(public http: Http) {
     this.http = http;
     this.data = null;
-  }
+    this.getURL()
+}
 
   postGame(game) {
   let goalID = Number(game.goal);
@@ -51,11 +54,20 @@ export class GameService {
     .toPromise()
   }
 
+ getURL() {
+      if (window.location.host.indexOf('localhost') != -1) {
+        console.log('local server')
+          return SERVER_URL;
+      } else {
+          return HEROKU_URL;
+      }
+  }
 
   handleError(error) {
   console.log(error);
   return error.json().message || 'Server error, please try again later';
 }
+
 
 
 }

@@ -1,3 +1,5 @@
+
+
 page-dashboard {
 
   // Top Row
@@ -56,6 +58,7 @@ page-dashboard {
 .progress-row {
   padding: 1em;
 }
+
 .progress-outer {
   color: white;
   height: 1.5em;
@@ -127,5 +130,11 @@ ion-col p {
   justify-content: flex-end;
   align-items: center;
 }
+
+
+ion-range {
+  width: 100%;
+}
+
 
 }
