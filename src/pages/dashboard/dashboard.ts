@@ -96,6 +96,11 @@ export class DashboardPage {
     alert.present()
   }
 
+  skipTask() {
+    this.tasks.pop()
+    this.taskAccepted = false;
+  }
+
   completeTask(status) {
     this.tasks.pop()
     this.taskAccepted = false;
