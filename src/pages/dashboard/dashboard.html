@@ -5,36 +5,24 @@
 </ion-header>
 <ion-content padding>
   <ion-grid>
-    <ion-row>
-      <ion-col col-6 class="summary-col">
-        <ion-row class="summary-row">
-          <ion-col col-2>
-            <ion-icon ios="ios-calendar" name="calendar"></ion-icon>
-          </ion-col>
-          <ion-col col-10>
-            <p class="details">
-              {{objDate | date :'longDate'}}</p>
-          </ion-col>
-        </ion-row>
-        <ion-row class="summary-row">
-          <ion-col col-2>
-            <ion-icon ios="ios-time" name="time"></ion-icon>
-          </ion-col>
-          <ion-col col-10>
-            <p class="details">
-              {{objDate | date :'shortTime'}}</p>
-          </ion-col>
-        </ion-row>
+    <ion-row class="summary-row">
+      <ion-col col-7 class="time-icon-col">
+        <ion-col col-2>
+          <ion-icon ios="ios-calendar" name="calendar"></ion-icon>
+        </ion-col>
+        <ion-col col-10 class="time-col">
+          <p class="details">
+            {{objDate | date :'longDate'}}</p>
+        </ion-col>
       </ion-col>
-      <ion-col col-6 id="moral" class="summary-col">
-        <ion-item class="summary-label">
-          Tasks
-          <ion-badge item-right>2</ion-badge>
-        </ion-item>
-        <ion-item class="summary-label">
-          Morale
-          <ion-badge item-right>Good</ion-badge>
-        </ion-item>
+      <ion-col col-5 class="time-icon-col">
+        <ion-col col-2>
+          <ion-icon ios="ios-time" name="time"></ion-icon>
+        </ion-col>
+        <ion-col col-10 class="time-col">
+          <p class="details">
+            {{objDate | date :'shortTime'}}</p>
+        </ion-col>
       </ion-col>
     </ion-row>
     <ion-row class="progress-row">
@@ -61,9 +49,12 @@
                 {{tasks[tasks.length-1].description}}
               </p>
             </ion-card-content>
-            <ion-row align-items-center justify-content-center>
-              <button ion-button icon-center round small color="secondary" (click)="assignTask(tasks[tasks.length -1].id)">
-                <div>Accept</div>
+            <ion-row align-items-center justify-content-center *ngIf="!taskAccepted">
+              <button ion-button icon-center round small color="secondary" (click)="assignTask(tasks[tasks.length -1].id)" *ngIf="!taskAccepted">
+                <div>Accept Task</div>
+              </button>
+              <button ion-button icon-center round small color="secondary" (click)="assignTask(tasks[tasks.length -1].id)" *ngIf="taskAccepted">
+                <div>Accept Task</div>
               </button>
             </ion-row>
           </ion-card>

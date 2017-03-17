@@ -22,6 +22,7 @@ export class DashboardPage {
   public trailProgress: string = '0' + '%';
   testRadioOpen: boolean;
   testRadioResult;
+  taskAccepted: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
     this.gameID = navParams.get('id');
@@ -56,6 +57,7 @@ export class DashboardPage {
   }
 
   assignTask(id) {
+    this.taskAccepted = true;
     let taskID = id;
     let alert = this.alertCtrl.create();
     alert.setTitle('Assign Task To Player');
@@ -76,6 +78,7 @@ export class DashboardPage {
         this.testRadioResult = data;
         this.gameService.assignTask(this.testRadioResult, taskID)
         .then(response => {
+          // this.data = response.json();
           console.log(response.json());
         }).catch(error => {
           console.log(error)
