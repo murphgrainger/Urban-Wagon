@@ -107,18 +107,14 @@ export class DashboardPage {
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(candy => {
       this.updateProgress(10)
-      console.log('candy', candy)
     }).catch(err => {
       console.log(err)
     })
   }
 
   updateProgress(val) {
-    console.log(this.trailProgress)
     let withoutPercent = this.trailProgress.replace('%', '')
-    console.log(withoutPercent)
     this.trailProgress = Number(withoutPercent) + val + '%';
-    console.log(this.trailProgress)
   }
 
 }
