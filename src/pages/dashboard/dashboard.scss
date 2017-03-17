@@ -78,6 +78,12 @@ page-dashboard {
   height: 12em;
 }
 
+.task-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 //Player
 .player-row {
   width: 100%;

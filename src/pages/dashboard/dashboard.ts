@@ -23,6 +23,7 @@ export class DashboardPage {
   testRadioOpen: boolean;
   testRadioResult;
   taskAccepted: boolean;
+  activePlayer:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
     this.gameID = navParams.get('id');
@@ -57,7 +58,6 @@ export class DashboardPage {
   }
 
   assignTask(id) {
-    this.taskAccepted = true;
     let taskID = id;
     let alert = this.alertCtrl.create();
     alert.setTitle('Assign Task To Player');
@@ -66,7 +66,7 @@ export class DashboardPage {
       alert.addInput({
         type: 'radio',
         label: element.trail_name,
-        value: element.id
+        value: element
       })
     })
 
@@ -74,10 +74,12 @@ export class DashboardPage {
     alert.addButton({
       text: 'OK',
       handler: data => {
-        this.testRadioOpen = false;
-        this.testRadioResult = data;
-        this.gameService.assignTask(this.testRadioResult, taskID)
+        this.taskAccepted = true;
+        this.activePlayer = data;
+        console.log('active player', this.activePlayer)
+        this.gameService.assignTask(this.activePlayer.id, taskID)
         .then(response => {
+          this.testRadioOpen = false;
           // this.data = response.json();
           console.log(response.json());
         }).catch(error => {
