@@ -21,12 +21,12 @@ export class GameService {
 
   postGame(game) {
   let goalID = Number(game.goal);
-	 return this.http.post(HEROKU_URL + `/goal/${goalID}/game`, game)
+	 return this.http.post(this.getURL() + `/goal/${goalID}/game`, game)
    .toPromise()
  }
 
  getGameDetails(id) {
-   return this.http.get(HEROKU_URL + `/game/${id}`)
+   return this.http.get(this.getURL() + `/game/${id}`)
    .map(response => response.json())
    .toPromise()
  }
