@@ -37,8 +37,8 @@ export class GameService {
     .toPromise()
   }
 
-  getActivePlayer(id) {
-    return this.http.get(SERVER_URL + `/player/${id}`)
+  getActivePlayer() {
+    return this.http.get(SERVER_URL + `/player/active`)
     .map(response => response.json())
     .toPromise()
   }
