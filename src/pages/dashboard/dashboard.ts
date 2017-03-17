@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import {GameService} from '../../providers/game-service';
+import { AlertController } from 'ionic-angular';
 
 
 @Component({
@@ -19,9 +20,10 @@ export class DashboardPage {
   public hardships = [];
   objDate:any;
   public trailProgress: string = '0' + '%';
+  testRadioOpen: boolean;
+  testRadioResult;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
     this.gameID = navParams.get('id');
     console.log('component', this.gameID)
     this.objDate = Date.now();
@@ -32,16 +34,16 @@ export class DashboardPage {
     this.getGame()
     };
 
-    getGame() {
-      this.gameService.getGameDetails(this.gameID)
-      .then(game => {
-        this.game = game
-      }).catch(error => {
-        console.log(error)
-      }).then(() => {
-        this.splitObject()
-      })
-    }
+  getGame() {
+    this.gameService.getGameDetails(this.gameID)
+    .then(game => {
+      this.game = game
+    }).catch(error => {
+      console.log(error)
+    }).then(() => {
+      this.splitObject()
+    })
+  }
 
   splitObject() {
     this.players = this.game.players;
@@ -52,6 +54,38 @@ export class DashboardPage {
     console.log('tasks', this.tasks)
     console.log('hardships', this.hardships)
   }
+
+  assignTask(id) {
+    console.log(id)
+    let taskID = id;
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Assign Task To Player');
+
+    this.players.forEach(element => {
+      alert.addInput({
+        type: 'radio',
+        label: element.trail_name,
+        value: element.id
+      })
+    })
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+        this.testRadioOpen = false;
+        this.testRadioResult = data;
+        this.gameService.assignTask(data, id)
+        .then(response => {
+          console.log(response.json());
+        }).catch(error => {
+          console.log(error)
+        })
+      }
+    });
+    alert.present()
+  }
+
 
   updateProgress(val) {
     this.trailProgress = val + '%';

@@ -48,24 +48,26 @@
     </ion-row>
     <ion-row class="task-row">
       <ion-col col-12>
-        <ion-card>
-          <div class="image-holder">
-            <img src="https://s3.amazonaws.com/digitaltrends-uploads-prod/2014/02/business-card.jpg" alt="">
-          </div>
-          <ion-card-content>
-            <ion-card-title>
-              Get Business Card
-            </ion-card-title>
-            <p>
-              Get the darned card.
-            </p>
-          </ion-card-content>
-          <ion-row align-items-center justify-content-center>
-            <button ion-button icon-center round small color="secondary">
-              <div>Accept</div>
-            </button>
-          </ion-row>
-        </ion-card>
+        <div *ngFor="let task of tasks;  let i=index">
+          <ion-card *ngIf="i<1">
+            <div class="image-holder">
+              <img src="https://s3.amazonaws.com/digitaltrends-uploads-prod/2014/02/business-card.jpg" alt="">
+            </div>
+            <ion-card-content>
+              <ion-card-title>
+                {{tasks[tasks.length-1].title}}
+              </ion-card-title>
+              <p>
+                {{tasks[tasks.length-1].description}}
+              </p>
+            </ion-card-content>
+            <ion-row align-items-center justify-content-center>
+              <button ion-button icon-center round small color="secondary" (click)="assignTask(tasks[tasks.length -1].id)">
+                <div>Accept</div>
+              </button>
+            </ion-row>
+          </ion-card>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row class="player-row" justify-content-center>

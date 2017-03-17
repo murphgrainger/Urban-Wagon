@@ -23,7 +23,7 @@ export class GameService {
  }
 
  getGameDetails(id) {
-   return this.http.get(SERVER_URL + `/game/1`)
+   return this.http.get(SERVER_URL + `/game/2`)
    .map(response => response.json())
    .toPromise()
  }
@@ -32,5 +32,11 @@ export class GameService {
   console.log(error);
   return error.json().message || 'Server error, please try again later';
 }
+
+  assignTask(playerID, taskID) {
+    return this.http.post(SERVER_URL + `player/${playerID}/task`, taskID)
+    .toPromise()
+
+  }
 
 }

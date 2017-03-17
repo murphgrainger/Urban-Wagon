@@ -35,6 +35,17 @@ router.post('/goal/:id/game', function(req, res, next) {
   });
 });
 
+//Assign Task to Player
+router.post('/player/:id/task', function(req, res, next) {
+  console.log(req.body);
+   queries.assignTask(req.body, req.params.id)
+  .then(function (player) {
+    res.json(player);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
 // Get User by Id
 router.get('/user/:id', function(req, res, next) {
    queries.getUser(req.params.id)
