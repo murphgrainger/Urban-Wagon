@@ -30,7 +30,7 @@ export class DashboardPage {
     this.gameID = navParams.get('id');
     console.log('component', this.gameID)
     this.objDate = Date.now();
-    this.updateProgress(30)
+    this.updateProgress(0)
   }
 
   ionViewDidLoad() {
@@ -106,6 +106,7 @@ export class DashboardPage {
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(candy => {
+      this.updateProgress(10)
       console.log('candy', candy)
     }).catch(err => {
       console.log(err)
@@ -113,7 +114,11 @@ export class DashboardPage {
   }
 
   updateProgress(val) {
-    this.trailProgress = val + '%';
+    console.log(this.trailProgress)
+    let withoutPercent = this.trailProgress.replace('%', '')
+    console.log(withoutPercent)
+    this.trailProgress = Number(withoutPercent) + val + '%';
+    console.log(this.trailProgress)
   }
 
 }
