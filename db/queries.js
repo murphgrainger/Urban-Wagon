@@ -133,6 +133,14 @@ return Player
       status: 'Accepted'
     })
   })
+},
+
+updateTaskStatus: function(body, id) {
+  console.log(body);
+return Task_Status
+  .query()
+  .findById(id)
+  .patch(body)
 }
 
 };

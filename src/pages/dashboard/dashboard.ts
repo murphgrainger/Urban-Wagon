@@ -24,6 +24,7 @@ export class DashboardPage {
   testRadioResult;
   taskAccepted: boolean;
   activePlayer:any = {};
+  activeTask:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
     this.gameID = navParams.get('id');
@@ -81,6 +82,7 @@ export class DashboardPage {
           this.testRadioOpen = false;
           this.gameService.getActivePlayer()
           .then(task => {
+            this.activeTask = task;
             this.activePlayer = task[0].player
             this.taskAccepted = true;
           }).catch(err => {
@@ -92,6 +94,19 @@ export class DashboardPage {
       }
     });
     alert.present()
+  }
+
+  completeTask() {
+    console.log(this.activeTask)
+    console.log(this.tasks)
+    this.tasks.pop()
+    this.taskAccepted = false;
+    this.gameService.updateTaskStatus(this.activeTask[0].id)
+    .then(candy => {
+      console.log('candy', candy)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   updateProgress(val) {

@@ -43,6 +43,14 @@ export class GameService {
     .toPromise()
   }
 
+  updateTaskStatus(id) {
+    let obj = {
+      status: 'Completed'
+    }
+    return this.http.put(SERVER_URL + `/task_status/${id}`, obj)
+    .toPromise()
+  }
+
 
   handleError(error) {
   console.log(error);

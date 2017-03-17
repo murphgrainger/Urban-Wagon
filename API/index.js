@@ -55,6 +55,16 @@ router.get('/player/active', function(req, res, next) {
   });
 });
 
+router.put('/task_status/:id', function(req, res, next) {
+  console.log(req.body);
+   queries.updateTaskStatus(req.body, req.params.id)
+  .then(function (response) {
+    res.json(response);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
 // Get User by Id
 router.get('/user/:id', function(req, res, next) {
    queries.getUser(req.params.id)
