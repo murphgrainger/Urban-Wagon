@@ -24,6 +24,7 @@ export class DashboardPage {
   testRadioResult;
   taskAccepted: boolean;
   activePlayer:any;
+  player:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
     this.gameID = navParams.get('id');
@@ -44,13 +45,15 @@ export class DashboardPage {
       console.log(error)
     }).then(() => {
       this.splitObject()
+    }).catch(error => {
+      console.log('splitObject', error)
     })
   }
 
   splitObject() {
     this.players = this.game.players;
-    this.tasks = this.game.goal.tasks;
     this.hardships = this.game.goal.hardships;
+    this.tasks = this.game.goal.tasks;
     console.log(this.game);
     console.log('players', this.players)
     console.log('tasks', this.tasks)
@@ -76,12 +79,15 @@ export class DashboardPage {
       handler: data => {
         this.taskAccepted = true;
         this.activePlayer = data;
-        console.log('active player', this.activePlayer)
         this.gameService.assignTask(this.activePlayer.id, taskID)
         .then(response => {
           this.testRadioOpen = false;
-          // this.data = response.json();
-          console.log(response.json());
+          this.gameService.getActivePlayer(response.json().player_id)
+          .then(res => {
+            console.log('back from getActivePlayer', res.json())
+          }).catch(err => {
+            console.log(err)
+          })
         }).catch(error => {
           console.log(error)
         })
@@ -89,7 +95,6 @@ export class DashboardPage {
     });
     alert.present()
   }
-
 
   updateProgress(val) {
     this.trailProgress = val + '%';

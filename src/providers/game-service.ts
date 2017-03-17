@@ -28,10 +28,6 @@ export class GameService {
    .toPromise()
  }
 
-  handleError(error) {
-  console.log(error);
-  return error.json().message || 'Server error, please try again later';
-}
 
   assignTask(playerID, taskID) {
     let obj = {
@@ -39,7 +35,19 @@ export class GameService {
     }
     return this.http.post(SERVER_URL + `/player/${playerID}/task`, obj)
     .toPromise()
-
   }
+
+  getActivePlayer(id) {
+    return this.http.get(SERVER_URL + `/player/${id}`)
+    .map(response => response.json())
+    .toPromise()
+  }
+
+
+  handleError(error) {
+  console.log(error);
+  return error.json().message || 'Server error, please try again later';
+}
+
 
 }

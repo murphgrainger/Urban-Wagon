@@ -7,6 +7,8 @@ const Goal = require('../models/goal');
 const Task = require('../models/task');
 const Game = require('../models/game');
 const Player = require('../models/player');
+const Task_Status = require('../models/task_status');
+const Hardship_Status = require('../models/hardship_status');
 
 
 module.exports = {
@@ -23,6 +25,14 @@ module.exports = {
       .query()
       .findById(id)
       .eager('[games.players.[hardship_statuses, task_statuses], tasks.task_status, hardships.hardship_status]');
+  },
+
+  getActivePlayer: function() {
+    return Task_Status
+      .query()
+      .skipUndefined()
+      .where('status', '=', 'Accepted')
+      .eager('player')
   },
 
   getUser: function(id) {
