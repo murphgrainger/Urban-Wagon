@@ -111,6 +111,19 @@ postGameAndPlayer: function(body, id) {
     });
   },
 
+assignTask: function(body, id) {
+return Player
+  .query()
+  .findById(id)
+  .then(player => {
+    return player
+    .$relatedQuery('task_statuses')
+    .insert({
+      task_id: body.id,
+      status: 'Accepted'
+    })
+  })
+}
 
 };
 

@@ -56,7 +56,6 @@ export class DashboardPage {
   }
 
   assignTask(id) {
-    console.log(id)
     let taskID = id;
     let alert = this.alertCtrl.create();
     alert.setTitle('Assign Task To Player');
@@ -75,7 +74,7 @@ export class DashboardPage {
       handler: data => {
         this.testRadioOpen = false;
         this.testRadioResult = data;
-        this.gameService.assignTask(data, id)
+        this.gameService.assignTask(this.testRadioResult, taskID)
         .then(response => {
           console.log(response.json());
         }).catch(error => {

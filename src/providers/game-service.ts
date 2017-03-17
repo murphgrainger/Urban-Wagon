@@ -34,7 +34,10 @@ export class GameService {
 }
 
   assignTask(playerID, taskID) {
-    return this.http.post(SERVER_URL + `player/${playerID}/task`, taskID)
+    let obj = {
+      id: taskID
+    }
+    return this.http.post(SERVER_URL + `/player/${playerID}/task`, obj)
     .toPromise()
 
   }

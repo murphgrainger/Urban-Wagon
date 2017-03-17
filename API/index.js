@@ -37,10 +37,9 @@ router.post('/goal/:id/game', function(req, res, next) {
 
 //Assign Task to Player
 router.post('/player/:id/task', function(req, res, next) {
-  console.log(req.body);
    queries.assignTask(req.body, req.params.id)
-  .then(function (player) {
-    res.json(player);
+  .then(function (response) {
+    res.json(response);
   }).catch(err => {
     res.json(err);
   });
