@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 
 const SERVER_URL = 'http://localhost:8080';
-const HEROKU_URL = 'https://line-waiter-db.herokuapp.com'
+const HEROKU_URL = 'https://modern-pioneer.herokuapp.com/'
 
 @Injectable()
 export class GameService {
