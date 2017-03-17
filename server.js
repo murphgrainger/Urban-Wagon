@@ -13,7 +13,7 @@ const knex = require('./db/knex');
 app.use(bodyParser.json());
 app.set('port', process.env.PORT || 8080);
 app.use(cors()); // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
-app.use(express.static("www")); // Our Ionic app build is in the www folder (kept up-to-date by the Ionic CLI using 'ionic serve')
+app.use(express.static(path.resolve(__dirname, 'www')));
 
 app.use('/', index);
 
