@@ -21,12 +21,12 @@ export class GameService {
 
   postGame(game) {
   let goalID = Number(game.goal);
-	 return this.http.post(SERVER_URL + `/goal/${goalID}/game`, game)
+	 return this.http.post(this.getURL() + `/goal/${goalID}/game`, game)
    .toPromise()
  }
 
  getGameDetails(id) {
-   return this.http.get(SERVER_URL + `/game/${id}`)
+   return this.http.get(this.getURL() + `/game/${id}`)
    .map(response => response.json())
    .toPromise()
  }
@@ -36,12 +36,12 @@ export class GameService {
     let obj = {
       id: taskID
     }
-    return this.http.post(SERVER_URL + `/player/${playerID}/task`, obj)
+    return this.http.post(this.getURL() + `/player/${playerID}/task`, obj)
     .toPromise()
   }
 
   getActivePlayer() {
-    return this.http.get(SERVER_URL + `/player/active`)
+    return this.http.get(this.getURL() + `/player/active`)
     .map(response => response.json())
     .toPromise()
   }
@@ -50,7 +50,7 @@ export class GameService {
     let obj = {
       status: status
     }
-    return this.http.put(SERVER_URL + `/task_status/${id}`, obj)
+    return this.http.put(this.getURL() + `/task_status/${id}`, obj)
     .toPromise()
   }
 
