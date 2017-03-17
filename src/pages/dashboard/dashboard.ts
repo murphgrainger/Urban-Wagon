@@ -96,12 +96,10 @@ export class DashboardPage {
     alert.present()
   }
 
-  completeTask() {
-    console.log(this.activeTask)
-    console.log(this.tasks)
+  completeTask(status) {
     this.tasks.pop()
     this.taskAccepted = false;
-    this.gameService.updateTaskStatus(this.activeTask[0].id)
+    this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(candy => {
       console.log('candy', candy)
     }).catch(err => {

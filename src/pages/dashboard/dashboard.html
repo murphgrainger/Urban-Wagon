@@ -64,10 +64,10 @@
               </button>
             </ion-row>
             <ion-row align-items-center justify-content-center *ngIf="taskAccepted">
-              <button ion-button icon-center round small color="secondary" (click)="completeTask()">
+              <button ion-button icon-center round small color="secondary" (click)="completeTask('Completed')">
                 <div>Completed</div>
               </button>
-              <button ion-button icon-center round small color="danger">
+              <button ion-button icon-center round small color="danger" (click)="completeTask('Failed')">
                 <div>Failed</div>
               </button>
             </ion-row>
