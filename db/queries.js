@@ -98,12 +98,14 @@ postGameAndPlayer: function(body, id) {
         player_count: body.player_count,
         access_code: body.access_code,
         date_started: body.date_started,
-        progress: body.progress,
+        progress: 0,
         user_id: body.user_id,
         players: [{
           trail_name: body.players[0],
+          health: 'Great'
         }, {
-          trail_name: body.players[1]
+          trail_name: body.players[1],
+          health: 'Great'
         }],
       });
     });

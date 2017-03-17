@@ -25,7 +25,6 @@ export class AddplayerPage {
     this.game.players = this.objToArr(this.players);
     this.game.access_code = this.makeid();
     this.game.date_started = new Date();
-    this.game.progress = 0;
     this.game.user_id = 1;
     this.gameService.postGame(this.game)
     .then(data => {
