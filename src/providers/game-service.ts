@@ -19,23 +19,23 @@ export class GameService {
     this.getURL()
 }
 
-  postGame(game) {
-  let goalID = Number(game.goal);
-	 return this.http.post(this.getURL() + `/goal/${goalID}/game`, game)
-   .toPromise()
- }
+    postGame(game) {
+    let goalID = Number(game.goal);
+  	 return this.http.post(this.getURL() + `/goal/${goalID}/game`, game)
+     .toPromise()
+   }
 
- getGameDetails(id) {
-   return this.http.get(this.getURL() + `/game/1`)
-   .map(response => response.json())
-   .toPromise()
- }
+   getGameDetails(id) {
+     return this.http.get(this.getURL() + `/game/1`)
+     .map(response => response.json())
+     .toPromise()
+   }
 
- getPlayers(id) {
-   return this.http.get(this.getURL() + `/game/${id}/player`)
-   .map(response => response.json())
-   .toPromise()
- }
+   getPlayers(id) {
+     return this.http.get(this.getURL() + `/game/${id}/player`)
+     .map(response => response.json())
+     .toPromise()
+   }
 
   assignTask(playerID, taskID) {
     let obj = {
@@ -69,13 +69,13 @@ export class GameService {
 
 
 
- getURL() {
-      if (window.location.host.indexOf('localhost') != -1) {
-          return SERVER_URL;
-      } else {
-          return HEROKU_URL;
-      }
-  }
+   getURL() {
+        if (window.location.host.indexOf('localhost') != -1) {
+            return SERVER_URL;
+        } else {
+            return HEROKU_URL;
+        }
+    }
 
   handleError(error) {
   console.log(error);

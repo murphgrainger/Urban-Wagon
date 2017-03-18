@@ -37,6 +37,7 @@ export class DashboardPage {
     this.objDate = Date.now();
     this.updateProgress(0)
     this.skipCounter = 0;
+    this.completedCounter = 0;
     this.taskSkipped = false;
   }
 
@@ -50,7 +51,6 @@ export class DashboardPage {
       this.game = game
       this.gameService.getPlayers(this.game.id)
       .then(players => {
-        console.log(players)
         this.players = players;
       })
       .catch(err => {
@@ -107,7 +107,11 @@ export class DashboardPage {
   }
 
   completeTask(status) {
-    this.completedCounter++
+    if (status = 'Completed') {
+      this.completedCounter++
+    } else {
+      this.skipCounter++
+    }
     this.tasks.pop()
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
@@ -131,7 +135,13 @@ export class DashboardPage {
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
       this.gameService.updatePlayerHealth(this.illPlayer.id)
       .then(data => {
-        console.log(data)
+        this.gameService.getPlayers(this.game.id)
+        .then(players => {
+          this.players = players;
+        })
+        .catch(err => {
+          console.log('problem getting players')
+        })
       }).catch(err => {
         console.log(err)
       })
@@ -141,10 +151,16 @@ export class DashboardPage {
 
   assignHardship(hardship) {
     this.currentHardship.push(hardship)
-    console.log(this.currentHardship)
     this.skipCounter = 0;
     this.taskSkipped = false;
     this.hardships.pop()
+  }
+
+  getStyle(player){
+    console.log(player)
+    if (player.health === 'Fair') {
+      return 'secondary'
+    }
   }
 
 }
