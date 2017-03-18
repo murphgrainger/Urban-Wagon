@@ -20,6 +20,18 @@ module.exports = {
       .eager('[goal.[tasks, hardships], players.[task_statuses, hardship_statuses]]')
   },
 
+  getPlayers: function(id) {
+    return Game
+      .query()
+      .findById(id)
+      .then(function (game) {
+        if (!game) { throwNotFound(); }
+        return game
+          .$relatedQuery('players')
+          .skipUndefined()
+        });
+  },
+
   getGoalAndRelated: function(id) {
     return Goal
       .query()

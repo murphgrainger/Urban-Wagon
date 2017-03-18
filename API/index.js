@@ -18,6 +18,16 @@ router.get('/game/:id', function(req, res, next) {
   });
 });
 
+router.get('/game/:id/player', function(req, res, next) {
+   queries.getPlayers(req.params.id)
+  .then(function (player) {
+    res.json(player);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+
 // Get all games by goal ID
 router.get('/goal/:id/all', function(req, res, next) {
    queries.getGoalAndRelated(req.params.id)
@@ -83,7 +93,7 @@ router.get('/user/:id', function(req, res, next) {
   .then(function (user) {
     res.json(user);
   }).catch(err => {
-    res.json(err)
+    res.json(err);
   });
 });
 

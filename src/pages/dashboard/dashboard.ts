@@ -19,6 +19,7 @@ export class DashboardPage {
   public tasks = [];
   public hardships = [];
   public skipCounter:number;
+  public completedCounter:number;
   objDate:any;
   public trailProgress: string = '0' + '%';
   testRadioOpen: boolean;
@@ -47,6 +48,14 @@ export class DashboardPage {
     this.gameService.getGameDetails(this.gameID)
     .then(game => {
       this.game = game
+      this.gameService.getPlayers(this.game.id)
+      .then(players => {
+        console.log(players)
+        this.players = players;
+      })
+      .catch(err => {
+        console.log('problem getting players')
+      })
     }).catch(error => {
       console.log(error)
     }).then(() => {
@@ -57,7 +66,6 @@ export class DashboardPage {
   }
 
   splitObject() {
-    this.players = this.game.players;
     this.hardships = this.game.goal.hardships;
     this.tasks = this.game.goal.tasks;
   }
@@ -99,6 +107,7 @@ export class DashboardPage {
   }
 
   completeTask(status) {
+    this.completedCounter++
     this.tasks.pop()
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
@@ -115,7 +124,6 @@ export class DashboardPage {
   }
 
   skipTask() {
-    console.log(this.game.id)
     this.tasks.pop()
     this.taskAccepted = false;
     this.skipCounter++;
