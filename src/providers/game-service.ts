@@ -26,7 +26,7 @@ export class GameService {
  }
 
  getGameDetails(id) {
-   return this.http.get(this.getURL() + `/game/${id}`)
+   return this.http.get(this.getURL() + `/game/1`)
    .map(response => response.json())
    .toPromise()
  }
@@ -56,7 +56,6 @@ export class GameService {
 
  getURL() {
       if (window.location.host.indexOf('localhost') != -1) {
-        console.log('local server')
           return SERVER_URL;
       } else {
           return HEROKU_URL;

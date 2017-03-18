@@ -9,7 +9,7 @@ import { ContactPage } from '../contact/contact';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root: any = HomePage;
+  tab1Root: any = DashboardPage;
   tab2Root: any = AboutPage;
   tab3Root: any = ContactPage;
 

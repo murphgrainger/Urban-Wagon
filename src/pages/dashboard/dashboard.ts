@@ -18,19 +18,25 @@ export class DashboardPage {
   public players = [];
   public tasks = [];
   public hardships = [];
+  public skipCounter:number;
   objDate:any;
   public trailProgress: string = '0' + '%';
   testRadioOpen: boolean;
   testRadioResult;
   taskAccepted: boolean;
+  taskSkipped: boolean;
   activePlayer:any = {};
   activeTask:any;
+  public currentHardship = [];
+  public illPlayer:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
     this.gameID = navParams.get('id');
     console.log('component', this.gameID)
     this.objDate = Date.now();
     this.updateProgress(0)
+    this.skipCounter = 0;
+    this.taskSkipped = false;
   }
 
   ionViewDidLoad() {
@@ -54,10 +60,6 @@ export class DashboardPage {
     this.players = this.game.players;
     this.hardships = this.game.goal.hardships;
     this.tasks = this.game.goal.tasks;
-    console.log(this.game);
-    console.log('players', this.players)
-    console.log('tasks', this.tasks)
-    console.log('hardships', this.hardships)
   }
 
   assignTask(id) {
@@ -96,11 +98,6 @@ export class DashboardPage {
     alert.present()
   }
 
-  skipTask() {
-    this.tasks.pop()
-    this.taskAccepted = false;
-  }
-
   completeTask(status) {
     this.tasks.pop()
     this.taskAccepted = false;
@@ -115,6 +112,26 @@ export class DashboardPage {
   updateProgress(val) {
     let withoutPercent = this.trailProgress.replace('%', '')
     this.trailProgress = Number(withoutPercent) + val + '%';
+  }
+
+  skipTask() {
+    this.tasks.pop()
+    this.taskAccepted = false;
+    this.skipCounter++;
+    if (this.skipCounter > 1) {
+      this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
+      console.log('player', this.illPlayer)
+
+      this.taskSkipped = true;
+    }
+  }
+
+  assignHardship(hardship) {
+    this.currentHardship.push(hardship)
+    console.log(this.currentHardship)
+    this.skipCounter = 0;
+    this.taskSkipped = false;
+    this.hardships.pop()
   }
 
 }

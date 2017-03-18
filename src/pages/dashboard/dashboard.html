@@ -34,42 +34,72 @@
     </ion-row>
     <ion-row class="task-row">
       <ion-col col-12>
-        <div *ngFor="let task of tasks;  let i=index">
-          <ion-card *ngIf="i<1">
-            <div class="image-holder">
-              <img src="{{tasks[tasks.length-1].image}}" alt="">
-            </div>
-            <ion-card-content>
-              <div class="row task-title">
-                <ion-card-title>
-                  {{tasks[tasks.length-1].title}}
-                </ion-card-title>
-                <ion-chip *ngIf="taskAccepted">
-                  <ion-icon name="person" color="secondary"></ion-icon>
-                  <ion-label>{{activePlayer.trail_name}}</ion-label>
-                </ion-chip>
+        <div class="card-holder" *ngIf="!taskSkipped">
+          <div *ngFor="let task of tasks;  let i=index">
+            <ion-card *ngIf="i<1">
+              <div class="image-holder">
+                <img src="{{tasks[tasks.length-1].image}}" alt="">
               </div>
-              <p>
-                {{tasks[tasks.length-1].description}}
-              </p>
-            </ion-card-content>
-            <ion-row align-items-center justify-content-center *ngIf="!taskAccepted">
-              <button ion-button icon-center round small color="secondary" (click)="assignTask(tasks[tasks.length -1].id)">
-                <div>Accept</div>
-              </button>
-              <button ion-button icon-center round small color="danger" (click)="skipTask()">
-                <div>Skip</div>
-              </button>
-            </ion-row>
-            <ion-row align-items-center justify-content-center *ngIf="taskAccepted">
-              <button ion-button icon-center round small color="secondary" (click)="completeTask('Completed')">
-                <div>Completed</div>
-              </button>
-              <button ion-button icon-center round small color="danger" (click)="completeTask('Failed')">
-                <div>Failed</div>
-              </button>
-            </ion-row>
-          </ion-card>
+              <ion-card-content>
+                <div class="row task-title">
+                  <ion-card-title>
+                    {{tasks[tasks.length-1].title}}
+                  </ion-card-title>
+                  <ion-chip *ngIf="taskAccepted">
+                    <ion-icon name="person" color="secondary"></ion-icon>
+                    <ion-label>{{activePlayer.trail_name}}</ion-label>
+                  </ion-chip>
+                </div>
+                <p>
+                  {{tasks[tasks.length-1].description}}
+                </p>
+              </ion-card-content>
+              <ion-row align-items-center justify-content-center *ngIf="!taskAccepted">
+                <button ion-button icon-center round small color="secondary" (click)="assignTask(tasks[tasks.length -1].id)">
+                  <div>Accept</div>
+                </button>
+                <button ion-button icon-center round small color="danger" (click)="skipTask()">
+                  <div>Skip</div>
+                </button>
+              </ion-row>
+              <ion-row align-items-center justify-content-center *ngIf="taskAccepted">
+                <button ion-button icon-center round small color="secondary" (click)="completeTask('Completed')">
+                  <div>Completed</div>
+                </button>
+                <button ion-button icon-center round small color="danger" (click)="completeTask('Failed')">
+                  <div>Failed</div>
+                </button>
+              </ion-row>
+            </ion-card>
+          </div>
+        </div>
+        <div class="card-holder" *ngIf="taskSkipped">
+          <div *ngFor="let hardship of hardships;  let i=index">
+            <ion-card *ngIf="i<1">
+              <div class="image-holder">
+                <img src="{{hardships[hardships.length-1].image}}" alt="">
+              </div>
+              <ion-card-content>
+                <div class="row task-title">
+                  <ion-card-title>
+                    {{hardships[hardships.length-1].title}}
+                  </ion-card-title>
+                  <ion-chip>
+                    <ion-icon name="person" color="danger"></ion-icon>
+                    <ion-label>{{illPlayer.trail_name}}</ion-label>
+                  </ion-chip>
+                </div>
+                <p>
+                  {{hardships[hardships.length-1].description}}
+                </p>
+              </ion-card-content>
+              <ion-row align-items-center justify-content-center>
+                <button ion-button icon-center round small color="danger" (click)="assignHardship(hardships[hardships.length -1])">
+                  <div>OK</div>
+                </button>
+              </ion-row>
+            </ion-card>
+          </div>
         </div>
       </ion-col>
     </ion-row>
