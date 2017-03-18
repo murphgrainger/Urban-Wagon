@@ -31,6 +31,11 @@ export class GameService {
    .toPromise()
  }
 
+ getPlayers(id) {
+   return this.http.get(this.getURL() + `/game/${id}/player`)
+   .map(response => response.json())
+   .toPromise()
+ }
 
   assignTask(playerID, taskID) {
     let obj = {
@@ -50,9 +55,19 @@ export class GameService {
     let obj = {
       status: status
     }
-    return this.http.put(this.getURL() + `/task_status/${id}`, obj)
+    return this.http.patch(this.getURL() + `/task_status/${id}`, obj)
     .toPromise()
   }
+
+  updatePlayerHealth(id) {
+    let obj = {
+      health: 'Fair'
+    }
+    return this.http.patch(this.getURL() + `/player/${id}`, obj)
+    .toPromise()
+  }
+
+
 
  getURL() {
       if (window.location.host.indexOf('localhost') != -1) {

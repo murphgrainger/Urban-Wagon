@@ -59,9 +59,17 @@ router.get('/player/active', function(req, res, next) {
   });
 });
 
-router.put('/task_status/:id', function(req, res, next) {
-  console.log(req.body);
+router.patch('/task_status/:id', function(req, res, next) {
    queries.updateTaskStatus(req.body, req.params.id)
+  .then(function (response) {
+    res.json(response);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
+router.patch('/player/:id', function(req, res, next) {
+   queries.updatePlayerHealth(req.body, req.params.id)
   .then(function (response) {
     res.json(response);
   }).catch(err => {

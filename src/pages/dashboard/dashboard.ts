@@ -102,7 +102,7 @@ export class DashboardPage {
     this.tasks.pop()
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
-    .then(candy => {
+    .then(data => {
       this.updateProgress(10)
     }).catch(err => {
       console.log(err)
@@ -115,13 +115,18 @@ export class DashboardPage {
   }
 
   skipTask() {
+    console.log(this.game.id)
     this.tasks.pop()
     this.taskAccepted = false;
     this.skipCounter++;
     if (this.skipCounter > 1) {
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
-      console.log('player', this.illPlayer)
-
+      this.gameService.updatePlayerHealth(this.illPlayer.id)
+      .then(data => {
+        console.log(data)
+      }).catch(err => {
+        console.log(err)
+      })
       this.taskSkipped = true;
     }
   }

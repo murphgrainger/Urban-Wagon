@@ -136,8 +136,14 @@ return Player
 },
 
 updateTaskStatus: function(body, id) {
-  console.log(body);
 return Task_Status
+  .query()
+  .findById(id)
+  .patch(body)
+},
+
+updatePlayerHealth: function(body, id) {
+return Player
   .query()
   .findById(id)
   .patch(body)
