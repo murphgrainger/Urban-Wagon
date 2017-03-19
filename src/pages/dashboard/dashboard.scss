@@ -41,12 +41,18 @@ page-dashboard {
   }
 
   .time-icon-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     .icon {
       font-size: 1.5em;
+      display: flex;
+      justify-content: center;
     }
   }
 
-  .time-col{
+  .time-col {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -127,13 +133,6 @@ page-dashboard {
 .player-name {
   font-size: 1.2em;
 }
-
-.col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 ion-col p {
   margin: 0;
 }
