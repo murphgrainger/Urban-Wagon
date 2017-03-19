@@ -59,11 +59,11 @@ export class GameService {
     .toPromise()
   }
 
-  updatePlayerHealth(id) {
+  updatePlayerHealth(player) {
     let obj = {
-      health: 'Fair'
+      morale: player.morale
     }
-    return this.http.patch(this.getURL() + `/player/${id}`, obj)
+    return this.http.patch(this.getURL() + `/player/${player.id}`, obj)
     .toPromise()
   }
 

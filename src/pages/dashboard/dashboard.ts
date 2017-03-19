@@ -65,7 +65,7 @@ export class DashboardPage {
         })
       })
     }).catch(error => {
-      console.log(error)
+      console.log('could not get game details', error)
     }).then(() => {
       this.splitObject()
     }).catch(error => {
@@ -74,8 +74,8 @@ export class DashboardPage {
   }
 
   splitObject() {
-    this.hardships = this.game.goal.hardships;
-    this.tasks = this.game.goal.tasks;
+    this.hardships = this.shuffleArray(this.game.goal.hardships)
+    this.tasks = this.shuffleArray(this.game.goal.tasks)
   }
 
   assignTask(id) {
@@ -134,7 +134,6 @@ export class DashboardPage {
   }
 
   updateProgress(difficulty) {
-    console.log(difficulty)
     let withoutPercent = this.trailProgress.replace('%', '')
     if (difficulty === 1) {
       this.trailProgress = Number(withoutPercent) + 20 + '%';
@@ -159,19 +158,37 @@ export class DashboardPage {
   invokeHardship(){
       this.isHardship = true;
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
-      this.gameService.updatePlayerHealth(this.illPlayer.id)
-      .then(data => {
-        this.gameService.getPlayers(this.game.id)
-        .then(players => {
-          this.players = players;
-        })
-        .catch(err => {
-          console.log('problem getting players')
-        })
-      }).catch(err => {
-        console.log(err)
-      })
+      this.decreaseMorale(this.illPlayer)
+      this.updateHealth()
       this.taskSkipped = true;
+  }
+
+  decreaseMorale(player) {
+    let morale = ['dead', 'poor', 'fair', 'good', 'great']
+    for (let i = 0; i < morale.length; i++) {
+        if (player.morale === morale[i]) {
+            console.log(i)
+        }
+    }
+    let val = this.hardships[this.hardships.length - 1].morale_decrease
+    console.log(val)
+    console.log(player.morale)
+
+  }
+
+  updateHealth() {
+    this.gameService.updatePlayerHealth(this.illPlayer)
+    .then(data => {
+      this.gameService.getPlayers(this.game.id)
+      .then(players => {
+        this.players = players;
+      })
+      .catch(err => {
+        console.log('problem getting players')
+      })
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   assignHardship(hardship) {
@@ -201,5 +218,15 @@ export class DashboardPage {
       return '10px solid #FF5C30'
     }
   }
+
+shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
 
 }
