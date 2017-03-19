@@ -112,6 +112,9 @@ export class DashboardPage {
       this.updateProgress(this.game.difficulty)
     } else {
       this.skipCounter++
+      if (this.skipCounter > 1) {
+          this.invokeHardship()
+      }
     }
     this.tasks.pop();
     this.taskAccepted = false;
@@ -141,6 +144,11 @@ export class DashboardPage {
     this.taskAccepted = false;
     this.skipCounter++;
     if (this.skipCounter > 1) {
+      this.invokeHardship()
+    }
+  }
+
+  invokeHardship(){
       this.isHardship = true;
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
       this.gameService.updatePlayerHealth(this.illPlayer.id)
@@ -156,7 +164,6 @@ export class DashboardPage {
         console.log(err)
       })
       this.taskSkipped = true;
-    }
   }
 
   assignHardship(hardship) {
@@ -183,7 +190,7 @@ export class DashboardPage {
       return '10px solid #FFC55E'
     }
     else {
-      return '10 px solid #FF5C30'
+      return '10px solid #FF5C30'
     }
   }
 
