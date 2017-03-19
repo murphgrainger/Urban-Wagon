@@ -107,16 +107,16 @@ export class DashboardPage {
   }
 
   completeTask(status) {
-    if (status = 'Completed') {
+    if (status === 'Completed') {
       this.completedCounter++
+      this.updateProgress(this.game.difficulty)
     } else {
       this.skipCounter++
     }
-    this.tasks.pop()
+    this.tasks.pop();
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(data => {
-      this.updateProgress(this.game.difficulty)
     }).catch(err => {
       console.log(err)
     })

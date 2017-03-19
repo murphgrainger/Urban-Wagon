@@ -21,9 +21,13 @@
           <ion-icon name="warning-outline"></ion-icon>
         </ion-col>
         <ion-col col-9 id="counters">
-          <ion-chip id="tasks-completed">
+          <ion-chip class="tasks-completed" *ngIf="!taskAccepted">
             <ion-icon color="yel" name="checkmark"></ion-icon>
             <ion-label>{{completedCounter}}</ion-label>
+          </ion-chip>
+          <ion-chip class="tasks-completed" id="active-tasker" *ngIf="taskAccepted">
+            <ion-icon name="person" color="yel"></ion-icon>
+            <ion-label>{{activePlayer.trail_name}}</ion-label>
           </ion-chip>
           <ion-chip id="hardship-person" *ngIf="isHardship">
             <ion-icon color="ora" name="person"></ion-icon>
@@ -56,10 +60,6 @@
                   <ion-card-title>
                     {{tasks[tasks.length-1].title}}
                   </ion-card-title>
-                  <ion-chip *ngIf="taskAccepted">
-                    <ion-icon name="person" color="secondary"></ion-icon>
-                    <ion-label>{{activePlayer.trail_name}}</ion-label>
-                  </ion-chip>
                 </div>
                 <p>
                   {{tasks[tasks.length-1].description}}

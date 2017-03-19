@@ -59,13 +59,20 @@ page-dashboard {
       min-width: 75%
     }
 
-    #tasks-completed {
+    .tasks-completed {
       align-self: flex-start;
       width: 75%;
 
       .label {
         font-size: 1.75em;
         text-align: center;
+      }
+    }
+
+    #active-tasker {
+      width: 100%;
+      .label {
+        font-size: 1em;
       }
     }
   }
