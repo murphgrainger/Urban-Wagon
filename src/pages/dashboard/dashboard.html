@@ -29,12 +29,15 @@
             <ion-icon color="ora" name="person"></ion-icon>
             <ion-label>{{illPlayer.trail_name}}</ion-label>
           </ion-chip>
+          <ion-chip id="hardship-person" *ngIf="!isHardship">
+            <ion-label>All Clear</ion-label>
+          </ion-chip>
         </ion-col>
       </ion-col>
     </ion-row>
     <ion-row class="progress-row">
       <ion-col col-12>
-
+        <p class="progress-label">Progress</p>
         <div class="progress-outer">
           <div [style.width]="trailProgress"></div>
         </div>
@@ -42,9 +45,9 @@
     </ion-row>
     <ion-row class="task-row">
       <ion-col col-12>
-        <div class="card-holder" *ngIf="!taskSkipped" [style.background-color]="getBackground('task')">
-          <div *ngFor="let task of tasks;  let i=index">
-            <ion-card *ngIf="i<1">
+        <div class="card-holder" *ngIf="!taskSkipped">
+          <div class="card-ngfor" *ngFor="let task of tasks;  let i=index">
+            <ion-card *ngIf="i<1" [style.border]="getBackground('task')">
               <div class="image-holder">
                 <img src="{{tasks[tasks.length-1].image}}" alt="">
               </div>

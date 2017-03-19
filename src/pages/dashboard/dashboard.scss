@@ -3,6 +3,11 @@
 page-dashboard {
 
   // Top Row
+
+.summary-row {
+    height: 15vh;
+  }
+
 .summary-row .col {
   display: flex;
   flex-direction: column;
@@ -51,6 +56,7 @@ page-dashboard {
 
     #hardship-person {
       align-self: flex-start;
+      min-width: 75%
     }
 
     #tasks-completed {
@@ -68,7 +74,12 @@ page-dashboard {
 //Progress
 
 .progress-row {
-  padding: 1em;
+  height: 10vh;
+  padding: .5em 0;
+}
+
+.progress-label {
+  padding-bottom: .4em;
 }
 
 .progress-outer {
@@ -87,28 +98,37 @@ page-dashboard {
 }
 
 //Task Card
-.card-holder {
-  padding: .1em;
-}
+.task-row {
+  height: 60vh;
 
-.image-holder {
-  width: 100%;
-  overflow: hidden;
-  height: 12em;
-}
+  .card-holder {
+    height: 100%;
+    padding: .1em;
+  }
 
-.task-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+  .card-ngfor {
+    height: 100%;
+  }
 
-.card-title {
-  font-size: 1.5em;
-}
+  .image-holder {
+    width: 100%;
+    overflow: hidden;
+    height: 12em;
+  }
 
-.card-content p {
-  font-size: 1.2em;
+  .task-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .card-title {
+    font-size: 1.5em;
+  }
+
+  .card-content p {
+    font-size: 1.2em;
+  }
 }
 
 //Player

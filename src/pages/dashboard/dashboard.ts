@@ -160,10 +160,10 @@ export class DashboardPage {
 
   getStyle(player){
     if (player.health === 'Fair') {
-      return 'orange'
+      return '#FF5C30'
     }
     else if(player.health === 'Great'){
-      return 'green'
+      return '#FFC55E'
     }
     else if(player.health === 'Poor') {
       return 'red'
@@ -172,7 +172,7 @@ export class DashboardPage {
 
   getBackground(type) {
     if (type === "task") {
-      return '#FFC55E'
+      return '10px solid #FFC55E'
     }
     else {
       return '#FF5C30'
