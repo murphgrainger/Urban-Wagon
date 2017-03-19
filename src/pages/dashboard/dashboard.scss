@@ -75,13 +75,13 @@ page-dashboard {
   color: white;
   height: 1.5em;
   width: 100%;
-  background-color: black;
+  background-color: #6B7289;
 
   div {
         text-align: center;
         vertical-align: center;
         height: 100%;
-        background-color: color($colors, primary);
+        background-color: color($colors, yel);
         transition: width .4s ease-in-out;
     }
 }

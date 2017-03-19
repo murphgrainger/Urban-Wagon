@@ -30,6 +30,7 @@ export class DashboardPage {
   activeTask:any;
   public currentHardship = [];
   public illPlayer:any;
+  isHardship: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
     this.gameID = navParams.get('id');
@@ -132,6 +133,7 @@ export class DashboardPage {
     this.taskAccepted = false;
     this.skipCounter++;
     if (this.skipCounter > 1) {
+      this.isHardship = true;
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
       this.gameService.updatePlayerHealth(this.illPlayer.id)
       .then(data => {
@@ -170,10 +172,10 @@ export class DashboardPage {
 
   getBackground(type) {
     if (type === "task") {
-      return '#8ED7FF'
+      return '#FFC55E'
     }
     else {
-      return '#720000'
+      return '#FF5C30'
     }
   }
 

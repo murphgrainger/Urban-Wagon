@@ -22,18 +22,19 @@
         </ion-col>
         <ion-col col-9 id="counters">
           <ion-chip id="tasks-completed">
-            <ion-icon name="checkmark"></ion-icon>
-            <ion-label>2</ion-label>
+            <ion-icon color="yel" name="checkmark"></ion-icon>
+            <ion-label>{{completedCounter}}</ion-label>
           </ion-chip>
-          <ion-chip id="hardship-person">
-            <ion-icon name="person"></ion-icon>
-            <ion-label>Tommy</ion-label>
+          <ion-chip id="hardship-person" *ngIf="isHardship">
+            <ion-icon color="ora" name="person"></ion-icon>
+            <ion-label>{{illPlayer.trail_name}}</ion-label>
           </ion-chip>
         </ion-col>
       </ion-col>
     </ion-row>
     <ion-row class="progress-row">
       <ion-col col-12>
+
         <div class="progress-outer">
           <div [style.width]="trailProgress"></div>
         </div>
@@ -101,7 +102,7 @@
                 </p>
               </ion-card-content>
               <ion-row align-items-center justify-content-center>
-                <button ion-button icon-center round small color="danger" (click)="assignHardship(hardships[hardships.length -1])">
+                <button ion-button icon-center round small color="ora" (click)="assignHardship(hardships[hardships.length -1])">
                   <div>OK</div>
                 </button>
               </ion-row>
