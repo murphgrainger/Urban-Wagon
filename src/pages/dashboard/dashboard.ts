@@ -54,7 +54,14 @@ export class DashboardPage {
         this.players = players;
       })
       .catch(err => {
-        console.log('problem getting players')
+        console.log('trying to get players again')
+        this.gameService.getPlayers(this.game.id)
+        .then(players => {
+          this.players = players;
+        })
+        .catch(err => {
+          console.log('still could not retreive players');
+        })
       })
     }).catch(error => {
       console.log(error)
