@@ -17,7 +17,7 @@ module.exports = {
     return Game
       .query()
       .findById(id)
-      .eager('[goal.[tasks, hardships], players.[task_statuses, hardship_statuses]]')
+      .eager('goal.[tasks, hardships]')
   },
 
   getPlayers: function(id) {
@@ -30,13 +30,6 @@ module.exports = {
           .$relatedQuery('players')
           .skipUndefined()
         });
-  },
-
-  getGoalAndRelated: function(id) {
-    return Goal
-      .query()
-      .findById(id)
-      .eager('[games.players.[hardship_statuses, task_statuses], tasks.task_status, hardships.hardship_status]');
   },
 
   getActivePlayer: function() {
@@ -124,10 +117,10 @@ postGameAndPlayer: function(body, id) {
         user_id: body.user_id,
         players: [{
           trail_name: body.players[0],
-          health: 'Great'
+          morale: 'Great'
         }, {
           trail_name: body.players[1],
-          health: 'Great'
+          morale: 'Great'
         }],
       });
     });

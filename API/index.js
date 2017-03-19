@@ -5,7 +5,7 @@ const queries = require("../db/queries");
 
 
 router.get('/', function(req, res, next) {
-   res.send('Modern Pioneer has loaded!');
+   res.send('Trail Break has loaded!');
 });
 
 // Get Game and everything related to the game
@@ -27,16 +27,6 @@ router.get('/game/:id/player', function(req, res, next) {
   });
 });
 
-
-// Get all games by goal ID
-router.get('/goal/:id/all', function(req, res, next) {
-   queries.getGoalAndRelated(req.params.id)
-  .then(function (game) {
-    res.json(game);
-  }).catch(err => {
-    res.json(err);
-  });
-});
 
 // Master Game/Player Post Route
 router.post('/goal/:id/game', function(req, res, next) {

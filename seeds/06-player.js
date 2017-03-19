@@ -3,23 +3,23 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       const player = [{
         trail_name: 'Johnny',
-        health: 'Great',
+        morale: 'Good',
         game_id: 1,
       }, {
         trail_name: 'Susie',
-        health: 'Great',
+        morale: 'Good',
         game_id: 1,
       }, {
         trail_name: 'Georgiana',
-        health: 'Great',
+        morale: 'Good',
         game_id: 2,
       }, {
         trail_name: 'Marni',
-        health: 'Great',
+        morale: 'Good',
         game_id: 2,
       }, {
         trail_name: 'Carol',
-        health: 'Great',
+        morale: 'Good',
         game_id: 2
       }];
       return knex('player').insert(player);

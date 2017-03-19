@@ -3,7 +3,6 @@
 page-dashboard {
 
   // Top Row
-
 .summary-row {
     height: 15vh;
   }
@@ -56,6 +55,7 @@ page-dashboard {
 
     #hardship-person {
       align-self: flex-start;
+      text-align: center;
       min-width: 75%
     }
 
@@ -109,12 +109,12 @@ page-dashboard {
   height: 60vh;
 
   .card-holder {
-    height: 95%;
+    height: 50vh;
     padding: .1em;
   }
 
   .card-ngfor {
-    height: 100%;
+    height: 50vh;
   }
 
   .image-holder {
