@@ -157,9 +157,23 @@ export class DashboardPage {
   }
 
   getStyle(player){
-    console.log(player)
     if (player.health === 'Fair') {
-      return 'secondary'
+      return 'orange'
+    }
+    else if(player.health === 'Great'){
+      return 'green'
+    }
+    else if(player.health === 'Poor') {
+      return 'red'
+    }
+  }
+
+  getBackground(type) {
+    if (type === "task") {
+      return '#8ED7FF'
+    }
+    else {
+      return '#720000'
     }
   }
 

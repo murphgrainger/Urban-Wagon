@@ -49,8 +49,9 @@ page-dashboard {
   .time-col{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;;
-    align-items: flex-start;;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1.2em;
   }
 
 //Progress
@@ -75,6 +76,10 @@ page-dashboard {
 }
 
 //Task Card
+.card-holder {
+  padding: .1em;
+}
+
 .image-holder {
   width: 100%;
   overflow: hidden;
@@ -85,6 +90,14 @@ page-dashboard {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.card-title {
+  font-size: 1.5em;
+}
+
+.card-content p {
+  font-size: 1.2em;
 }
 
 //Player
