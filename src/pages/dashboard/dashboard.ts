@@ -159,21 +159,29 @@ export class DashboardPage {
       this.isHardship = true;
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
       this.decreaseMorale(this.illPlayer)
+      console.log(this.illPlayer)
       this.updateHealth()
       this.taskSkipped = true;
   }
 
   decreaseMorale(player) {
-    let morale = ['dead', 'poor', 'fair', 'good', 'great']
+    let morale = ['Dead', 'Poor', 'Fair', 'Good', 'Great'];
+    let val = this.hardships[this.hardships.length - 1].morale_decrease;
+    let newPlayerMoraleIndex;
+    let finalNewMorale;
     for (let i = 0; i < morale.length; i++) {
         if (player.morale === morale[i]) {
-            console.log(i)
+            var playerMoraleIndex = i;
+            newPlayerMoraleIndex = playerMoraleIndex - val;
+        }
+        if (newPlayerMoraleIndex < 0) {
+            finalNewMorale = morale[0]
+        }
+        else{
+          finalNewMorale = morale[newPlayerMoraleIndex]
         }
     }
-    let val = this.hardships[this.hardships.length - 1].morale_decrease
-    console.log(val)
-    console.log(player.morale)
-
+    this.illPlayer.morale = finalNewMorale;
   }
 
   updateHealth() {
