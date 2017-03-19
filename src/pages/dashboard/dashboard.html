@@ -6,22 +6,29 @@
 <ion-content padding>
   <ion-grid>
     <ion-row class="summary-row">
-      <ion-col col-8 class="time-icon-col">
-        <ion-col col-2>
-          <ion-icon ios="ios-calendar" name="calendar"></ion-icon>
-        </ion-col>
-        <ion-col col-10 class="time-col">
-          <p class="details">
-            {{objDate | date :'longDate'}}</p>
-        </ion-col>
-      </ion-col>
-      <ion-col col-4 class="time-icon-col">
-        <ion-col col-3>
+      <ion-col col-7>
+        <p class="date">
+          {{objDate | date :'longDate'}}</p>
+        <div class="time-row">
           <ion-icon ios="ios-time" name="time"></ion-icon>
-        </ion-col>
-        <ion-col col-9 class="time-col">
-          <p class="details">
+          <p class="time">
             {{objDate | date :'h:mm'}}</p>
+        </div>
+      </ion-col>
+      <ion-col col-5 id="status-column">
+        <ion-col col-3 id="counter-labels">
+          <ion-icon name="ios-clipboard-outline"></ion-icon>
+          <ion-icon name="warning-outline"></ion-icon>
+        </ion-col>
+        <ion-col col-9 id="counters">
+          <ion-chip id="tasks-completed">
+            <ion-icon name="checkmark"></ion-icon>
+            <ion-label>2</ion-label>
+          </ion-chip>
+          <ion-chip id="hardship-person">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>Tommy</ion-label>
+          </ion-chip>
         </ion-col>
       </ion-col>
     </ion-row>
