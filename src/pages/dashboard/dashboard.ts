@@ -34,9 +34,8 @@ export class DashboardPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
     this.gameID = navParams.get('id');
-    console.log('component', this.gameID)
     this.objDate = Date.now();
-    this.updateProgress(0)
+    this.trailProgress = '0%'
     this.skipCounter = 0;
     this.completedCounter = 0;
     this.taskSkipped = false;
@@ -117,15 +116,24 @@ export class DashboardPage {
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(data => {
-      this.updateProgress(10)
+      this.updateProgress(this.game.difficulty)
     }).catch(err => {
       console.log(err)
     })
   }
 
-  updateProgress(val) {
+  updateProgress(difficulty) {
+    console.log(difficulty)
     let withoutPercent = this.trailProgress.replace('%', '')
-    this.trailProgress = Number(withoutPercent) + val + '%';
+    if (difficulty === 1) {
+      this.trailProgress = Number(withoutPercent) + 20 + '%';
+    }
+    else if(difficulty === 2){
+      this.trailProgress = Number(withoutPercent) + 10 + '%';
+    }
+    else {
+      this.trailProgress = Number(withoutPercent) + 4 + '%';
+    }
   }
 
   skipTask() {
@@ -175,7 +183,7 @@ export class DashboardPage {
       return '10px solid #FFC55E'
     }
     else {
-      return '#FF5C30'
+      return '10 px solid #FF5C30'
     }
   }
 

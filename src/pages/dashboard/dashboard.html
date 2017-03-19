@@ -84,9 +84,9 @@
             </ion-card>
           </div>
         </div>
-        <div class="card-holder" *ngIf="taskSkipped" [style.background-color]="getBackground('hardship')">
+        <div class="card-holder" *ngIf="taskSkipped">
           <div *ngFor="let hardship of hardships;  let i=index">
-            <ion-card *ngIf="i<1">
+            <ion-card *ngIf="i<1" [style.border]="getBackground('hardship')">
               <div class="image-holder">
                 <img src="{{hardships[hardships.length-1].image}}" alt="">
               </div>
@@ -96,7 +96,7 @@
                     {{hardships[hardships.length-1].title}}
                   </ion-card-title>
                   <ion-chip>
-                    <ion-icon name="person" color="danger"></ion-icon>
+                    <ion-icon name="person" color="ora"></ion-icon>
                     <ion-label>{{illPlayer.trail_name}}</ion-label>
                   </ion-chip>
                 </div>
