@@ -114,6 +114,7 @@ postGameAndPlayer: function(body, id) {
         access_code: body.access_code,
         date_started: body.date_started,
         progress: 0,
+        rest_count: 0,
         user_id: body.user_id,
         players: [{
           trail_name: body.players[0],

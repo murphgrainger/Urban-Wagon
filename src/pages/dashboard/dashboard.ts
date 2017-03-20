@@ -78,6 +78,8 @@ export class DashboardPage {
 
   assignTask(id) {
     if (this.isEligible(this.players) === false) {
+      console.log(this.players)
+      console.log(false)
       this.navCtrl.push(LoserPage, {
         game: this.game
       });
