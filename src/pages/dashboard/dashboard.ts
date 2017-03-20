@@ -125,6 +125,7 @@ export class DashboardPage {
       this.completedCounter++
       this.updateProgress(this.game.difficulty)
       this.decreaseRestCount()
+      this.increaseMorale(this.activePlayer)
     } else {
       this.skipCounter++
       if (this.skipCounter > 2) {
@@ -135,6 +136,7 @@ export class DashboardPage {
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(data => {
+      console.log('refreshing players')
       this.refreshPlayers()
     }).catch(err => {
       console.log(err)
@@ -171,18 +173,25 @@ export class DashboardPage {
   }
 
   continueOn(choice) {
-    this.decreaseMorale(this.illPlayer)
-    this.skipCounter = 0;
-    this.taskSkipped = false;
-    this.hardships.pop()
     if (choice === 'Rest Player') {
       this.addRestCount(this.currentHardship.rest_value)
+      this.decreaseMorale(this.illPlayer)
       this.updateHealth()
+      this.skipCounter = 0;
+      this.taskSkipped = false;
+      this.hardships.pop()
+      this.refreshPlayers()
+
     }
     else {
+      this.decreaseMorale(this.illPlayer)
       this.updateHealth()
+      this.skipCounter = 0;
+      this.taskSkipped = false;
+      this.hardships.pop()
+      this.refreshPlayers()
+
     }
-    this.refreshPlayers()
   }
 
   otherOption(choice) {
@@ -193,13 +202,16 @@ export class DashboardPage {
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
+      this.refreshPlayers()
     }
     else {
+      this.decreaseMorale(this.illPlayer)
+      this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
+      this.refreshPlayers()
     }
-    this.refreshPlayers()
   }
 
   decreaseMorale(player) {
@@ -220,6 +232,29 @@ export class DashboardPage {
         }
     }
     return this.illPlayer.morale = finalNewMorale;
+  }
+
+  increaseMorale(player) {
+      let morale = ['Dead', 'Poor', 'Fair', 'Good', 'Great'];
+      let newPlayerMoraleIndex;
+      let finalNewMorale;
+      for (let i = 0; i < morale.length; i++) {
+          if (player.morale === morale[i]) {
+            if (player.morale !== 'Great') {
+              var playerMoraleIndex = i;
+              newPlayerMoraleIndex = playerMoraleIndex + 1;
+              finalNewMorale = morale[newPlayerMoraleIndex]
+            }
+          }
+        }
+     this.activePlayer.morale = finalNewMorale;
+     this.gameService.updatePlayerHealth(this.activePlayer)
+     .then(response => {
+       console.log('Success')
+     })
+     .catch(err => {
+       console.log(err)
+     })
   }
 
   addRestCount(count) {

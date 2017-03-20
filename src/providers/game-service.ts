@@ -76,8 +76,6 @@ export class GameService {
     .toPromise()
   }
 
-
-
    getURL() {
         if (window.location.host.indexOf('localhost') != -1) {
             return SERVER_URL;
