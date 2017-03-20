@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.text('trail_name');
     table.text('morale');
+    table.integer('rest_count');
     table.integer('game_id').references('game.id').unsigned().onDelete('cascade');
   });
 };

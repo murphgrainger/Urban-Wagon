@@ -95,18 +95,18 @@
                   <ion-card-title>
                     {{hardships[hardships.length-1].title}}
                   </ion-card-title>
-                  <ion-chip>
-                    <ion-icon name="person" color="ora"></ion-icon>
-                    <ion-label>{{illPlayer.trail_name}}</ion-label>
-                  </ion-chip>
                 </div>
                 <p>
+                  {{this.illPlayer.trail_name}}
                   {{hardships[hardships.length-1].description}}
                 </p>
               </ion-card-content>
               <ion-row align-items-center justify-content-center>
-                <button ion-button icon-center round small color="ora" (click)="assignHardship(hardships[hardships.length -1])">
-                  <div>OK</div>
+                <button ion-button icon-center round small color="ora" (click)="continueOn(hardships[hardships.length -1].button_1)">
+                  <div>{{hardships[hardships.length-1].button_1}}</div>
+                </button>
+                <button *ngIf="hardships[hardships.length -1].button_2" ion-button icon-center round small color="gra" (click)="otherOption(hardships[hardships.length -1].button_2)">
+                  <div>{{hardships[hardships.length-1].button_2}}</div>
                 </button>
               </ion-row>
             </ion-card>

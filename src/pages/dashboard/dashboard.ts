@@ -52,7 +52,6 @@ export class DashboardPage {
       this.gameService.getPlayers(this.game.id)
       .then(players => {
         this.players = players;
-        console.log(this.players)
       })
       .catch(err => {
         console.log('trying to get players again')
@@ -84,11 +83,13 @@ export class DashboardPage {
     alert.setTitle('Assign Task To Player');
 
     this.players.forEach(element => {
-      alert.addInput({
-        type: 'radio',
-        label: element.trail_name,
-        value: element.id
-      })
+      if (element.morale != 'Dead' && element.rest_count === 0) {
+        alert.addInput({
+          type: 'radio',
+          label: element.trail_name,
+          value: element.id
+        })
+      }
     })
 
     alert.addButton('Cancel');
@@ -121,7 +122,7 @@ export class DashboardPage {
     } else {
       this.skipCounter++
       if (this.skipCounter > 1) {
-          this.invokeHardship()
+          this.assignPlayerToHardship()
       }
     }
     this.tasks.pop();
@@ -151,17 +152,43 @@ export class DashboardPage {
     this.taskAccepted = false;
     this.skipCounter++;
     if (this.skipCounter > 1) {
-      this.invokeHardship()
+      this.assignPlayerToHardship()
     }
   }
 
-  invokeHardship(){
+  assignPlayerToHardship(){
       this.isHardship = true;
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
-      this.decreaseMorale(this.illPlayer)
       console.log(this.illPlayer)
-      this.updateHealth()
       this.taskSkipped = true;
+  }
+
+  continueOn(choice) {
+    console.log(choice)
+    console.log(this.illPlayer)
+    this.currentHardship.push(this.hardships[this.hardships.length -1])
+    this.decreaseMorale(this.illPlayer)
+    this.updateHealth()
+    this.skipCounter = 0;
+    this.taskSkipped = false;
+    this.hardships.pop()
+  }
+
+  otherOption(choice) {
+    if (choice === 'Rest Player') {
+      this.currentHardship.push(this.hardships[this.hardships.length -1])
+      this.decreaseMorale(this.illPlayer)
+      this.updateHealth()
+      this.skipCounter = 0;
+      this.taskSkipped = false;
+      this.hardships.pop()
+    }
+    else {
+      this.currentHardship.push(this.hardships[this.hardships.length -1])
+      this.skipCounter = 0;
+      this.taskSkipped = false;
+      this.hardships.pop()
+    }
   }
 
   decreaseMorale(player) {
@@ -181,7 +208,7 @@ export class DashboardPage {
           finalNewMorale = morale[newPlayerMoraleIndex]
         }
     }
-    this.illPlayer.morale = finalNewMorale;
+    return this.illPlayer.morale = finalNewMorale;
   }
 
   updateHealth() {
@@ -197,13 +224,6 @@ export class DashboardPage {
     }).catch(err => {
       console.log(err)
     })
-  }
-
-  assignHardship(hardship) {
-    this.currentHardship.push(hardship)
-    this.skipCounter = 0;
-    this.taskSkipped = false;
-    this.hardships.pop()
   }
 
   getStyle(player){
