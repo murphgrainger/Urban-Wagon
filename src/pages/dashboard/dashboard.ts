@@ -171,20 +171,16 @@ export class DashboardPage {
   }
 
   continueOn(choice) {
+    this.decreaseMorale(this.illPlayer)
+    this.skipCounter = 0;
+    this.taskSkipped = false;
+    this.hardships.pop()
     if (choice === 'Rest Player') {
-      this.decreaseMorale(this.illPlayer)
       this.addRestCount(this.currentHardship.rest_value)
       this.updateHealth()
-      this.skipCounter = 0;
-      this.taskSkipped = false;
-      this.hardships.pop()
     }
     else {
-      this.decreaseMorale(this.illPlayer)
       this.updateHealth()
-      this.skipCounter = 0;
-      this.taskSkipped = false;
-      this.hardships.pop()
     }
     this.refreshPlayers()
   }
@@ -290,10 +286,18 @@ export class DashboardPage {
   refreshPlayers() {
     this.gameService.getPlayers(this.game.id)
     .then(data => {
-      this.players = data.sort(this.compare);
+     this.players = data.sort(this.compare);
     })
     .catch(err => {
       console.log(err)
+    })
+    .then(players => {
+      if (this.isEligible(this.players) === false) {
+        this.navCtrl.push(LoserPage, {
+          game: this.game
+        });
+        console.log('no eligible players! you lose!')
+      }
     })
   }
 
@@ -318,11 +322,11 @@ compare(a,b) {
 isEligible(arr) {
   let arr2 = []
   arr.forEach(element => {
-    if (element > 2 && element < 11) {
+    if (element.morale !== "Dead" && element.rest_count === 0) {
       arr2.push(element);
     }
   })
-  if (arr = []) {
+  if (arr2.length === 0) {
     return false;
   }
   else {
