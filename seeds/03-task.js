@@ -50,8 +50,8 @@ exports.seed = function(knex, Promise) {
         goal_id: 4
       },
       {
-        title: 'Find Someone You Have Met Previously',
-        image: 'http://www.lifeshareusa.com/UploadedFiles/Images/news_stories/man_with_cane_9x6_72.jpg',
+        title: 'Find Someone Who',
+        image: 'http://www.theruggedmale.com/dev/wp-content/uploads/2013/07/women-sitting-at-a-bar-and-having-drinks1.jpeg',
         description: 'Besides those in your group, can you find someone you have met before?',
         allotted_time: 10,
         difficulty: 2,
@@ -74,7 +74,7 @@ exports.seed = function(knex, Promise) {
       },{
         title: 'Cheers with a Stranger',
         image: 'http://chimneypark.com/wp-content/uploads/champagne-toast.jpg',
-        description: 'Go find a stranger to cheers with.  Bonus points for a champagne toast, selfie, or group toast with strangers.',
+        description: 'Bonus points for a champagne toast, selfie, or group toast with strangers.',
         allotted_time: 5,
         difficulty: 2,
         goal_id: 4
@@ -93,6 +93,41 @@ exports.seed = function(knex, Promise) {
         difficulty: 2,
         goal_id: 4
       }, {
+        title: 'Ask Someone',
+        image: 'http://scoopempire.com/wp-content/uploads/2015/08/Joyful2.jpg',
+        description: 'What is your take on the meaning of life? Do you agree?',
+        allotted_time: 7,
+        difficulty: 2,
+        goal_id: 4
+      },{
+        title: '10 Days or 10 Nights',
+        image: 'http://www.growingyourbaby.com/wp-content/uploads/2010/12/8407056_s.jpg',
+        description: 'Ask someone: "Would you rather have 10 nights filled with incessant jackhammering, or 10 days with no sun?"',
+        allotted_time: 7,
+        difficulty: 2,
+        goal_id: 4
+      },{
+        title: 'Listen to a Joke',
+        image: 'https://www.bradmontgomery.com/wp-content/uploads/2008/09/leno.jpg',
+        description: 'Ask someone to tell you a joke. Repeat the joke back to your group.',
+        allotted_time: 7,
+        difficulty: 2,
+        goal_id: 4
+      }, {
+        title: 'Tell a Joke',
+        image: 'http://www.nbc.com/sites/nbcunbc/files/files/images/2015/4/21/140207_2721821_Little_Richard_Simmons_Show_anvver_3.jpg',
+        description: 'Tell your best joke to a complete stranger...keep it tasteful!',
+        allotted_time: 7,
+        difficulty: 2,
+        goal_id: 4
+      },{
+        title: 'Seek Advice',
+        image: 'https://bacontoday.com/wp-content/uploads/2009/08/bacon-briefcase.jpg',
+        description: 'Ask someone how you should proceed with your career.',
+        allotted_time: 7,
+        difficulty: 2,
+        goal_id: 4
+      },{
         title: 'T-Pain',
         image: 'https://static2.businessinsider.com/image/4c936cdc7f8b9a9d30030300/hulus-10-most-watched-videos-ever-snl-and-family-guy-dominate.jpg',
         description: 'Ask someone "Can I Buy You a Drank" in a T-Pain voice',

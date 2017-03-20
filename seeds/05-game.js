@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
         access_code: 'SHELBS',
         location: '10 Barrel Brewing',
         date_started: new Date(),
-        difficulty: 3,
+        difficulty: 2,
         player_count: 3,
         progress: 0,
         user_id: 2,

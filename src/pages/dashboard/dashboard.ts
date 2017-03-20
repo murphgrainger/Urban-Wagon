@@ -250,14 +250,20 @@ export class DashboardPage {
   }
 
   getStyle(player){
-    if (player.health === 'Fair') {
+    if (player.morale === 'Fair') {
       return '#FF5C30'
     }
-    else if(player.health === 'Great'){
-      return '#FFC55E'
+    else if(player.morale === 'Great'){
+      return '#32db64'
     }
-    else if(player.health === 'Poor') {
+    else if(player.morale === 'Poor') {
       return 'red'
+    }
+    else if(player.morale === 'Dead') {
+      return 'black'
+    }
+    else {
+      return '#FFC55E'
     }
   }
 

@@ -100,14 +100,14 @@ exports.seed = function(knex, Promise) {
         rest_value: 1,
         morale_decrease: 1,
         goal_id: 4
-      } , {
+      }, {
         title: 'Injury!',
-        description: 'has tripped and fallen.',
+        description: 'has tripped and fallen. She has died',
         image: 'https://www.dolmanlaw.com/wp-content/uploads/2014/09/slip-and-fall-dolman.jpg',
         button_1: 'Continue',
         button_2: '',
         rest_value: 0,
-        morale_decrease: 3,
+        morale_decrease: 4,
         goal_id: 4
       }, {
         title: 'Dysentery!',
