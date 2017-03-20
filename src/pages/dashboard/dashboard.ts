@@ -382,7 +382,6 @@ filterOutDead(arr) {
     }
   });
   let illPlayer = arr2[Math.floor(Math.random()*arr2.length)]
-  console.log(illPlayer)
   return illPlayer;
 }
 

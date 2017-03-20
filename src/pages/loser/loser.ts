@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the Loser page.
+import { CreatePage } from '../create/create';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   selector: 'page-loser',
   templateUrl: 'loser.html'
@@ -18,5 +15,7 @@ export class LoserPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoserPage');
   }
-
+  startGame() {
+    this.navCtrl.push(CreatePage);
+  }
 }
