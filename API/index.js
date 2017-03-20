@@ -77,6 +77,15 @@ router.patch('/player/:id', function(req, res, next) {
   });
 });
 
+router.patch('/player/:id/rest_count', function(req, res, next) {
+   queries.updatePlayerRest(req.params.id, req.body)
+  .then(function (player) {
+    res.json(player);
+  }).catch(err => {
+    res.json(err);
+  });
+});
+
 // Get User by Id
 router.get('/user/:id', function(req, res, next) {
    queries.getUser(req.params.id)

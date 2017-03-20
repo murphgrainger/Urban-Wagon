@@ -119,6 +119,11 @@ export class DashboardPage {
     if (status === 'Completed') {
       this.completedCounter++
       this.updateProgress(this.game.difficulty)
+      this.decreaseRestCount()
+      this.gameService.getPlayers(this.game.id)
+      .then(data => {
+        this.players = data;
+      })
     } else {
       this.skipCounter++
       if (this.skipCounter > 1) {
@@ -159,13 +164,19 @@ export class DashboardPage {
   assignPlayerToHardship(){
       this.isHardship = true;
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
-      console.log(this.illPlayer)
       this.taskSkipped = true;
   }
 
   continueOn(choice) {
-    console.log(choice)
-    console.log(this.illPlayer)
+    if (choice === 'Rest Player') {
+      this.currentHardship.push(this.hardships[this.hardships.length -1])
+      this.decreaseMorale(this.illPlayer)
+      this.addRestCount(this.currentHardship[0].rest_value)
+      this.updateHealth()
+      this.skipCounter = 0;
+      this.taskSkipped = false;
+      this.hardships.pop()
+    }
     this.currentHardship.push(this.hardships[this.hardships.length -1])
     this.decreaseMorale(this.illPlayer)
     this.updateHealth()
@@ -178,6 +189,7 @@ export class DashboardPage {
     if (choice === 'Rest Player') {
       this.currentHardship.push(this.hardships[this.hardships.length -1])
       this.decreaseMorale(this.illPlayer)
+      this.addRestCount(this.currentHardship[0].rest_value)
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
@@ -209,6 +221,26 @@ export class DashboardPage {
         }
     }
     return this.illPlayer.morale = finalNewMorale;
+  }
+
+  addRestCount(count) {
+     this.illPlayer.rest_count += count
+     return this.illPlayer.rest_count
+  }
+
+  decreaseRestCount() {
+    this.players.forEach(player => {
+      if (player.rest_count > 0) {
+        this.gameService.updatePlayerRest(player)
+        .then(data => {
+          console.log('Rest Count Update Successful')
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      }
+    })
+
   }
 
   updateHealth() {

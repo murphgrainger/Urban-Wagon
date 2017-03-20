@@ -152,7 +152,14 @@ return Player
   .query()
   .findById(id)
   .patch(body)
-}
+},
+
+updatePlayerRest: function(id, body) {
+  return Player
+    .query()
+    .findById(id)
+    .patch(body)
+  }
 
 };
 

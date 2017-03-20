@@ -61,9 +61,18 @@ export class GameService {
 
   updatePlayerHealth(player) {
     let obj = {
-      morale: player.morale
+      morale: player.morale,
+      rest_count: player.rest_count
     }
     return this.http.patch(this.getURL() + `/player/${player.id}`, obj)
+    .toPromise()
+  }
+
+  updatePlayerRest(player) {
+    let obj = {
+      rest_count: player.rest_count - 1
+    }
+    return this.http.patch(this.getURL() + `/player/${player.id}/rest_count`, obj)
     .toPromise()
   }
 
