@@ -175,6 +175,8 @@ export class DashboardPage {
       this.currentHardship = this.hardships[this.hardships.length - 1]
   }
 
+
+
   continueOn(choice) {
     if (choice === 'Rest Player') {
       this.addRestCount(this.currentHardship.rest_value)
@@ -370,6 +372,18 @@ isEligible(arr) {
   else {
     return true;
   }
+}
+
+filterOutDead(arr) {
+  let arr2 = []
+  arr.forEach(person => {
+    if (person.morale !== 'Dead') {
+        arr2.push(person)
+    }
+  });
+  let illPlayer = arr2[Math.floor(Math.random()*arr2.length)]
+  console.log(illPlayer)
+  return illPlayer;
 }
 
 }
