@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
         button_2: 'Rest Player',
         rest_value: 1,
         morale_decrease: 1,
-        goal_id: 2
+        goal_id: 4
       }, {
         title: 'Extreme Thirst!',
         description: 'is parched.  Contine on or get player something to drink.',
@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
         button_2: 'Buy Drink',
         rest_value: 0,
         morale_decrease: 1,
-        goal_id: 2
+        goal_id: 4
       },{
         title: 'Claustrophobia!',
         description: 'feels crowded!  Continue or everyone go outside for 5 minutes.',
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
         button_2: 'Go Outside',
         rest_value: 0,
         morale_decrease: 2,
-        goal_id: 2
+        goal_id: 4
       },{
         title: 'Tongue Tied!',
         description: 'is at a loss for words! Player must sit out for 2 tasks.',
@@ -36,7 +36,7 @@ exports.seed = function(knex, Promise) {
         button_2: '',
         rest_value: 2,
         morale_decrease: 1,
-        goal_id: 2
+        goal_id: 4
       },{
         title: 'Extreme Shyness!',
         description: 'is overwhelmed! Player must sit out for 3 tasks.',
@@ -45,7 +45,7 @@ exports.seed = function(knex, Promise) {
         button_2: '',
         rest_value: 3,
         morale_decrease: 1,
-        goal_id: 2
+        goal_id: 4
       }, {
         title: 'Awkward Conditions!',
         description: 'feels like this crowd is stiff. Continue on or as a group laugh as loudly as you can for 10 seconds.',
@@ -54,16 +54,16 @@ exports.seed = function(knex, Promise) {
         button_2: 'Laugh',
         rest_value: 1,
         morale_decrease: 1,
-        goal_id: 2
+        goal_id: 4
       } , {
         title: 'Injury!',
-        description: 'has tripped and fallen! Player must quit the game.',
+        description: 'has tripped and fallen.',
         image: 'https://www.dolmanlaw.com/wp-content/uploads/2014/09/slip-and-fall-dolman.jpg',
         button_1: 'Continue',
         button_2: '',
         rest_value: 0,
-        morale_decrease: 4,
-        goal_id: 2
+        morale_decrease: 3,
+        goal_id: 4
       }, {
         title: 'Dysentery!',
         description: 'has died of Dysentery.',
@@ -72,7 +72,7 @@ exports.seed = function(knex, Promise) {
         button_2: '',
         rest_value: 0,
         morale_decrease: 4,
-        goal_id: 2
+        goal_id: 4
       }];
       return knex('hardship').insert(hardship);
     });

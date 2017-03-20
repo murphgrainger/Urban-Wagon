@@ -102,10 +102,10 @@
                 </p>
               </ion-card-content>
               <ion-row align-items-center justify-content-center>
-                <button ion-button icon-center round small color="ora" (click)="continueOn(hardships[hardships.length -1].button_1)">
+                <button ion-button icon-center round small color="ora" (click)="continueOn(hardships[hardships.length - 1].button_1)">
                   <div>{{hardships[hardships.length-1].button_1}}</div>
                 </button>
-                <button *ngIf="hardships[hardships.length -1].button_2" ion-button icon-center round small color="gra" (click)="otherOption(hardships[hardships.length -1].button_2)">
+                <button *ngIf="hardships[hardships.length -1].button_2" ion-button icon-center round small color="gra" (click)="otherOption(hardships[hardships.length - 1].button_2)">
                   <div>{{hardships[hardships.length-1].button_2}}</div>
                 </button>
               </ion-row>

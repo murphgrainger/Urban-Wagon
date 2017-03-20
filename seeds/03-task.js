@@ -12,10 +12,10 @@ exports.seed = function(knex, Promise) {
       {
         title: 'Seek Advice',
         image: 'https://farm4.static.flickr.com/3567/5743969497_14dff8729e_b.jpg',
-        description: 'Ask someone for career advice.',
+        description: 'Ask someone for advice about anything!',
         allotted_time: 10,
         difficulty: 2,
-        goal_id: 1
+        goal_id: 4
       },
       {
         title: 'Meet a VP',
@@ -31,7 +31,7 @@ exports.seed = function(knex, Promise) {
         description: 'Started their career as a janitor, assistant, or bartender.',
         allotted_time: 10,
         difficulty: 2,
-        goal_id: 1
+        goal_id: 4
       },
       {
         title: 'Give Someone Your Business Card',
@@ -39,7 +39,7 @@ exports.seed = function(knex, Promise) {
         description: 'Not a red card. A business card!',
         allotted_time: 10,
         difficulty: 2,
-        goal_id: 1
+        goal_id: 4
       },
       {
         title: 'Shared Hobbies',
@@ -47,7 +47,7 @@ exports.seed = function(knex, Promise) {
         description: 'Discover someone that shares the same hobby as you. Golf? Stamp collecting?',
         allotted_time: 10,
         difficulty: 2,
-        goal_id: 1
+        goal_id: 4
       },
       {
         title: 'Find Someone You Have Met Previously',
@@ -55,7 +55,7 @@ exports.seed = function(knex, Promise) {
         description: 'Besides those in your group, can you find someone you have met before?',
         allotted_time: 10,
         difficulty: 2,
-        goal_id: 1
+        goal_id: 4
       },
       {
         title: 'Introduce Yourself to the Speaker',
@@ -70,14 +70,14 @@ exports.seed = function(knex, Promise) {
         description: 'Lives less than 100 miles from your hometown.',
         allotted_time: 10,
         difficulty: 2,
-        goal_id: 1
+        goal_id: 4
       },{
         title: 'Cheers with a Stranger',
         image: 'http://chimneypark.com/wp-content/uploads/champagne-toast.jpg',
         description: 'Go find a stranger to cheers with.  Bonus points for a champagne toast, selfie, or group toast with strangers.',
         allotted_time: 5,
         difficulty: 2,
-        goal_id: 2
+        goal_id: 4
       }, {
         title: 'Dog or Cheetos',
         image: 'https://img.wonderhowto.com/img/75/78/63494545470634/0/keep-your-fingers-clean-while-eating-cheetos-chocolate-chips-and-more.w1456.jpg',
@@ -91,7 +91,7 @@ exports.seed = function(knex, Promise) {
         description: 'Know the opening lyrics to American Pie by Don McLean',
         allotted_time: 7,
         difficulty: 2,
-        goal_id: 2
+        goal_id: 4
       }, {
         title: 'T-Pain',
         image: 'https://static2.businessinsider.com/image/4c936cdc7f8b9a9d30030300/hulus-10-most-watched-videos-ever-snl-and-family-guy-dominate.jpg',

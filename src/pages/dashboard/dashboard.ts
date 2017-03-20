@@ -28,7 +28,7 @@ export class DashboardPage {
   taskSkipped: boolean;
   activePlayer:any = {};
   activeTask:any;
-  public currentHardship = [];
+  public currentHardship:any;
   public illPlayer:any;
   isHardship: boolean;
 
@@ -124,9 +124,12 @@ export class DashboardPage {
       .then(data => {
         this.players = data;
       })
+      .catch(err => {
+        console.log(err)
+      })
     } else {
       this.skipCounter++
-      if (this.skipCounter > 1) {
+      if (this.skipCounter > 2) {
           this.assignPlayerToHardship()
       }
     }
@@ -165,42 +168,51 @@ export class DashboardPage {
       this.isHardship = true;
       this.illPlayer = this.players[Math.floor(Math.random()*this.players.length)];
       this.taskSkipped = true;
+      this.currentHardship = this.hardships[this.hardships.length - 1]
   }
 
   continueOn(choice) {
+    console.log(choice)
     if (choice === 'Rest Player') {
-      this.currentHardship.push(this.hardships[this.hardships.length -1])
       this.decreaseMorale(this.illPlayer)
-      this.addRestCount(this.currentHardship[0].rest_value)
-      this.updateHealth()
-      this.skipCounter = 0;
-      this.taskSkipped = false;
-      this.hardships.pop()
-    }
-    this.currentHardship.push(this.hardships[this.hardships.length -1])
-    this.decreaseMorale(this.illPlayer)
-    this.updateHealth()
-    this.skipCounter = 0;
-    this.taskSkipped = false;
-    this.hardships.pop()
-  }
-
-  otherOption(choice) {
-    if (choice === 'Rest Player') {
-      this.currentHardship.push(this.hardships[this.hardships.length -1])
-      this.decreaseMorale(this.illPlayer)
-      this.addRestCount(this.currentHardship[0].rest_value)
+      console.log(this.currentHardship)
+      console.log(this.currentHardship.rest_value)
+      console.log(this.illPlayer)
+      this.addRestCount(this.currentHardship.rest_value)
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
     }
     else {
-      this.currentHardship.push(this.hardships[this.hardships.length -1])
+      this.decreaseMorale(this.illPlayer)
+      this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
     }
+    this.refreshPlayers()
+  }
+
+  otherOption(choice) {
+    console.log(choice)
+    if (choice === 'Rest Player') {
+      this.decreaseMorale(this.illPlayer)
+      console.log(this.currentHardship)
+      console.log(this.currentHardship.rest_value)
+      console.log(this.illPlayer)
+      this.addRestCount(this.currentHardship.rest_value)
+      this.updateHealth()
+      this.skipCounter = 0;
+      this.taskSkipped = false;
+      this.hardships.pop()
+    }
+    else {
+      this.skipCounter = 0;
+      this.taskSkipped = false;
+      this.hardships.pop()
+    }
+    this.refreshPlayers()
   }
 
   decreaseMorale(player) {
@@ -224,7 +236,10 @@ export class DashboardPage {
   }
 
   addRestCount(count) {
+    console.log(count)
+    console.log(this.illPlayer.rest_count)
      this.illPlayer.rest_count += count
+     console.log(this.illPlayer.rest_count)
      return this.illPlayer.rest_count
   }
 
@@ -240,7 +255,6 @@ export class DashboardPage {
         })
       }
     })
-
   }
 
   updateHealth() {
@@ -277,6 +291,18 @@ export class DashboardPage {
     else {
       return '10px solid #FF5C30'
     }
+  }
+
+  refreshPlayers() {
+    this.gameService.getPlayers(this.game.id)
+    .then(data => {
+      this.players = data;
+      console.log('refreshing players')
+      console.log(this.players)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
 shuffleArray(array) {
