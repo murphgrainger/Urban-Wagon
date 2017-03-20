@@ -58,9 +58,7 @@ export class DashboardPage {
         this.players = players.sort(this.compare);
       })
       .catch(err => {
-        console.log('trying to get players')
         console.log(err)
-        this.refreshPlayers()
       })
     }).catch(error => {
       console.log('could not get game details', error)
@@ -78,8 +76,6 @@ export class DashboardPage {
 
   assignTask(id) {
     if (this.isEligible(this.players) === false) {
-      console.log(this.players)
-      console.log(false)
       this.navCtrl.push(LoserPage, {
         game: this.game
       });
@@ -139,7 +135,6 @@ export class DashboardPage {
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(data => {
-      console.log('refreshing players')
       this.refreshPlayers()
     }).catch(err => {
       console.log(err)
@@ -175,53 +170,50 @@ export class DashboardPage {
       this.currentHardship = this.hardships[this.hardships.length - 1]
   }
 
-
-
   continueOn(choice) {
+    console.log(choice)
     if (choice === 'Rest Player') {
+      console.log('resting player')
       this.addRestCount(this.currentHardship.rest_value)
       this.decreaseMorale(this.illPlayer)
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
-      console.log('refreshing players')
-      this.refreshPlayers()
-
     }
     else {
+      console.log('not resting player')
       this.decreaseMorale(this.illPlayer)
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
-      this.refreshPlayers()
-
     }
   }
 
   otherOption(choice) {
+    console.log(choice)
     if (choice === 'Rest Player') {
+      console.log('resting player')
       this.decreaseMorale(this.illPlayer)
       this.addRestCount(this.currentHardship.rest_value)
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
-      console.log('refreshing players')
-      this.refreshPlayers()
     }
     else {
+      console.log('no punishment')
       this.decreaseMorale(this.illPlayer)
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
-      this.refreshPlayers()
     }
   }
 
   decreaseMorale(player) {
+    console.log('decreasing morale')
     let morale = ['Dead', 'Poor', 'Fair', 'Good', 'Great'];
     let val = this.hardships[this.hardships.length - 1].morale_decrease;
     let newPlayerMoraleIndex;
@@ -257,7 +249,7 @@ export class DashboardPage {
      this.activePlayer.morale = finalNewMorale;
      this.gameService.updatePlayerHealth(this.activePlayer)
      .then(response => {
-       console.log('Success')
+       this.refreshPlayers()
      })
      .catch(err => {
        console.log(err)
@@ -284,15 +276,10 @@ export class DashboardPage {
   }
 
   updateHealth() {
-    this.gameService.updatePlayerHealth(this.illPlayer)
+    console.log('updating health')
+    return this.gameService.updatePlayerHealth(this.illPlayer)
     .then(data => {
-      this.gameService.getPlayers(this.game.id)
-      .then(players => {
-        this.players = players.sort(this.compare);
-      })
-      .catch(err => {
-        console.log('problem getting players')
-      })
+      this.refreshPlayers()
     }).catch(err => {
       console.log(err)
     })
@@ -326,21 +313,22 @@ export class DashboardPage {
   }
 
   refreshPlayers() {
+    console.log('refreshing players')
     this.gameService.getPlayers(this.game.id)
     .then(data => {
+      console.log('data', data)
      this.players = data.sort(this.compare);
+     console.log('mid refresh this.players', this.players)
+     if (this.isEligible(this.players) === false) {
+       console.log(false)
+       this.navCtrl.push(LoserPage, {
+         game: this.game
+       });
+       console.log('no eligible players! you lose!')
+     }
     })
     .catch(err => {
       console.log(err)
-    })
-    .then(data => {
-      if (this.isEligible(this.players) === false) {
-        console.log(false)
-        this.navCtrl.push(LoserPage, {
-          game: this.game
-        });
-        console.log('no eligible players! you lose!')
-      }
     })
   }
 
@@ -363,12 +351,14 @@ compare(a,b) {
 }
 
 isEligible(arr) {
+  console.log('players pre-eligible', arr)
   let arr2 = []
   arr.forEach(element => {
     if (element.morale !== "Dead" && element.rest_count === 0) {
       arr2.push(element);
     }
   })
+  console.log('eligible players', arr2)
   if (arr2.length === 0) {
     return false;
   }

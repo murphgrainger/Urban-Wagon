@@ -105,9 +105,7 @@ postGameAndPlayer: function(body, id) {
     .query()
     .findById(id)
     .then(goal => {
-      return goal
-      .$relatedQuery('games')
-      .insertGraph({
+      let graph = {
         location: body.location,
         difficulty: body.difficulty,
         player_count: body.player_count,
@@ -115,16 +113,20 @@ postGameAndPlayer: function(body, id) {
         date_started: body.date_started,
         progress: 0,
         user_id: body.user_id,
-        players: [{
-          trail_name: body.players[0],
+        players: [],
+      }
+
+      body.players.forEach(player => {
+        graph.players.push({
+          trail_name: player,
           morale: 'Great',
           rest_count: 0
-        }, {
-          trail_name: body.players[1],
-          morale: 'Great',
-          rest_count: 0
-        }],
-      });
+        })
+      })
+
+      return goal
+      .$relatedQuery('games')
+      .insertGraph(graph);
     });
   },
 
@@ -159,6 +161,7 @@ return Player
 updatePlayerRest: function(id, body) {
   return Player
     .query()
+    .where('rest_count')
     .findById(id)
     .patch(body)
   }

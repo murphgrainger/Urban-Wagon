@@ -18,11 +18,7 @@ exports.seed = function(knex, Promise) {
         player_count: 3,
         progress: 0,
         user_id: 2,
-<<<<<<< HEAD
-        goal_id: 2
-=======
         goal_id: 4
->>>>>>> master
       }];
       return knex('game').insert(game);
     });
