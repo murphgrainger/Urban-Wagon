@@ -10,21 +10,23 @@ import { AddplayerPage } from '../pages/addplayer/addplayer';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { WinnerPage } from '../pages/winner/winner';
 import { LoserPage } from '../pages/loser/loser';
+import { PlayersPage } from '../pages/players/players';
+import { GuidePage } from '../pages/guide/guide';
 
 
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
     CreatePage,
     AddplayerPage,
     DashboardPage,
     WinnerPage,
-    LoserPage
+    LoserPage,
+    PlayersPage,
+    GuidePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,15 +34,15 @@ import { LoserPage } from '../pages/loser/loser';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
     CreatePage,
     AddplayerPage,
     DashboardPage,
     WinnerPage,
-    LoserPage
+    LoserPage,
+    PlayersPage,
+    GuidePage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
