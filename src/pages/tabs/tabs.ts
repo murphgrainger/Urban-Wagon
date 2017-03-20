@@ -9,7 +9,7 @@ import { GuidePage } from '../guide/guide';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root: any = DashboardPage;
+  tab1Root: any = HomePage;
   tab2Root: any = PlayersPage;
   tab3Root: any = GuidePage;
 

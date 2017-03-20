@@ -58,7 +58,8 @@ export class DashboardPage {
         this.players = players.sort(this.compare);
       })
       .catch(err => {
-        console.log('trying to get players again')
+        console.log('trying to get players')
+        console.log(err)
         this.refreshPlayers()
       })
     }).catch(error => {
