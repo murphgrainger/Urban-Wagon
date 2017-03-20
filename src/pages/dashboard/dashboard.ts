@@ -51,17 +51,11 @@ export class DashboardPage {
       this.game = game
       this.gameService.getPlayers(this.game.id)
       .then(players => {
-        this.players = players;
+        this.players = players.sort(this.compare);
       })
       .catch(err => {
         console.log('trying to get players again')
-        this.gameService.getPlayers(this.game.id)
-        .then(players => {
-          this.players = players;
-        })
-        .catch(err => {
-          console.log('still could not retreive players');
-        })
+        this.refreshPlayers()
       })
     }).catch(error => {
       console.log('could not get game details', error)
@@ -78,7 +72,6 @@ export class DashboardPage {
   }
 
   assignTask(id) {
-    console.log(this.players)
     let taskID = id;
     let alert = this.alertCtrl.create();
     alert.setTitle('Assign Task To Player');
@@ -121,7 +114,6 @@ export class DashboardPage {
       this.completedCounter++
       this.updateProgress(this.game.difficulty)
       this.decreaseRestCount()
-      console.log('complete task', this.players)
     } else {
       this.skipCounter++
       if (this.skipCounter > 2) {
@@ -168,7 +160,6 @@ export class DashboardPage {
   }
 
   continueOn(choice) {
-    console.log(choice)
     if (choice === 'Rest Player') {
       this.decreaseMorale(this.illPlayer)
       this.addRestCount(this.currentHardship.rest_value)
@@ -202,7 +193,6 @@ export class DashboardPage {
       this.hardships.pop()
     }
     this.refreshPlayers()
-    console.log('players at end of update', this.players)
   }
 
   decreaseMorale(player) {
@@ -227,18 +217,15 @@ export class DashboardPage {
 
   addRestCount(count) {
      this.illPlayer.rest_count += count
-     console.log('updated rest count', this.illPlayer.rest_count)
      return this.illPlayer.rest_count
   }
 
   decreaseRestCount() {
     this.players.forEach(player => {
       if (player.rest_count > 0) {
-        console.log('player being updated', player)
         this.gameService.updatePlayerRest(player)
         .then(data => {
           this.refreshPlayers()
-          console.log('Rest Count Update Successful')
         })
         .catch(error => {
           console.log(error)
@@ -252,7 +239,7 @@ export class DashboardPage {
     .then(data => {
       this.gameService.getPlayers(this.game.id)
       .then(players => {
-        this.players = players;
+        this.players = players.sort(this.compare);
       })
       .catch(err => {
         console.log('problem getting players')
@@ -286,8 +273,7 @@ export class DashboardPage {
   refreshPlayers() {
     this.gameService.getPlayers(this.game.id)
     .then(data => {
-      console.log('data', data)
-      this.players = data;
+      this.players = data.sort(this.compare);
     })
     .catch(err => {
       console.log(err)
@@ -302,6 +288,14 @@ shuffleArray(array) {
         array[j] = temp;
     }
     return array;
+}
+
+compare(a,b) {
+  if (a.trail_name < b.trail_name)
+    return -1;
+  if (a.trail_name > b.trail_name)
+    return 1;
+  return 0;
 }
 
 }
