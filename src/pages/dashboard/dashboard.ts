@@ -185,6 +185,7 @@ export class DashboardPage {
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
+      console.log('refreshing players')
       this.refreshPlayers()
 
     }
@@ -207,6 +208,7 @@ export class DashboardPage {
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
+      console.log('refreshing players')
       this.refreshPlayers()
     }
     else {
@@ -331,8 +333,9 @@ export class DashboardPage {
     .catch(err => {
       console.log(err)
     })
-    .then(players => {
+    .then(data => {
       if (this.isEligible(this.players) === false) {
+        console.log(false)
         this.navCtrl.push(LoserPage, {
           game: this.game
         });
