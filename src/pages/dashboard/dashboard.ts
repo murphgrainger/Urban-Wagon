@@ -53,13 +53,7 @@ export class DashboardPage {
     this.gameService.getGameDetails(this.gameID)
     .then(game => {
       this.game = game
-      this.gameService.getPlayers(this.game.id)
-      .then(players => {
-        this.players = players.sort(this.compare);
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      this.refreshPlayers()
     }).catch(error => {
       console.log('could not get game details', error)
     }).then(() => {
@@ -79,7 +73,6 @@ export class DashboardPage {
       this.navCtrl.push(LoserPage, {
         game: this.game
       });
-      console.log('no eligible players! you lose!')
     }
     else {
       let taskID = id;
@@ -171,9 +164,7 @@ export class DashboardPage {
   }
 
   continueOn(choice) {
-    console.log(choice)
     if (choice === 'Rest Player') {
-      console.log('resting player')
       this.addRestCount(this.currentHardship.rest_value)
       this.decreaseMorale(this.illPlayer)
       this.updateHealth()
@@ -182,7 +173,6 @@ export class DashboardPage {
       this.hardships.pop()
     }
     else {
-      console.log('not resting player')
       this.decreaseMorale(this.illPlayer)
       this.updateHealth()
       this.skipCounter = 0;
@@ -192,9 +182,7 @@ export class DashboardPage {
   }
 
   otherOption(choice) {
-    console.log(choice)
     if (choice === 'Rest Player') {
-      console.log('resting player')
       this.decreaseMorale(this.illPlayer)
       this.addRestCount(this.currentHardship.rest_value)
       this.updateHealth()
@@ -203,7 +191,6 @@ export class DashboardPage {
       this.hardships.pop()
     }
     else {
-      console.log('no punishment')
       this.decreaseMorale(this.illPlayer)
       this.updateHealth()
       this.skipCounter = 0;
@@ -213,7 +200,6 @@ export class DashboardPage {
   }
 
   decreaseMorale(player) {
-    console.log('decreasing morale')
     let morale = ['Dead', 'Poor', 'Fair', 'Good', 'Great'];
     let val = this.hardships[this.hardships.length - 1].morale_decrease;
     let newPlayerMoraleIndex;
@@ -276,7 +262,6 @@ export class DashboardPage {
   }
 
   updateHealth() {
-    console.log('updating health')
     return this.gameService.updatePlayerHealth(this.illPlayer)
     .then(data => {
       this.refreshPlayers()
@@ -313,18 +298,13 @@ export class DashboardPage {
   }
 
   refreshPlayers() {
-    console.log('refreshing players')
     this.gameService.getPlayers(this.game.id)
     .then(data => {
-      console.log('data', data)
      this.players = data.sort(this.compare);
-     console.log('mid refresh this.players', this.players)
      if (this.isEligible(this.players) === false) {
-       console.log(false)
        this.navCtrl.push(LoserPage, {
          game: this.game
        });
-       console.log('no eligible players! you lose!')
      }
     })
     .catch(err => {
