@@ -1,9 +1,9 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "trail-break",
+  "author": "Murph Grainger",
   "private": true,
   "scripts": {
+    "start": "node server.js",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
@@ -54,5 +54,5 @@
       "locator": "ios"
     }
   ],
-  "description": "modern-trail: An Ionic project"
+  "description": "Trail Break: Networking with inspiration from the Oregon Trail"
 }

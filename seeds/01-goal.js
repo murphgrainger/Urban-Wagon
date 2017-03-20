@@ -12,10 +12,10 @@ exports.seed = function(knex, Promise) {
         name: 'laugh',
       }, {
         id: 4,
-        name: 'flirt',
+        name: 'friend',
       }, {
         id: 5,
-        name: 'friend'
+        name: 'flirt'
       }];
       return knex('goal').insert(goal);
     });

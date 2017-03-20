@@ -14,6 +14,7 @@ import {GameService} from '../../providers/game-service';
 export class AddplayerPage {
   game:any;
   players:any = {};
+  public gameID:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService) {
   this.game = navParams.get('game');
@@ -24,21 +25,26 @@ export class AddplayerPage {
     this.game.players = this.objToArr(this.players);
     this.game.access_code = this.makeid();
     this.game.date_started = new Date();
-    this.game.progress = 0;
     this.game.user_id = 1;
     this.gameService.postGame(this.game)
-    this.navCtrl.push(DashboardPage, {
-      game: this.game
-    });
-  }
+    .then(data => {
+      this.gameID = data.json().id
+  }).catch(error => {
+   console.log(error)
+ }).then(() => {
+   this.navCtrl.push(DashboardPage, {
+     id: this.gameID,
+   });
+ });
+}
 
-  objToArr(obj) {
- let arr = [];
- for (var key in obj) {
-   arr.push(obj[key]);
- }
-   return arr;
- }
+objToArr(obj) {
+let arr = [];
+for (var key in obj) {
+ arr.push(obj[key]);
+}
+ return arr;
+}
 
 makeid() {
      let text = "";

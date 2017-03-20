@@ -3,41 +3,129 @@
     <ion-title>Game Dashboard</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <ion-list-header>
-    Progress
-  </ion-list-header>
-  <ion-item>
-    <ion-icon name="clipboard" item-left></ion-icon>
-    <h2>Tasks Completed</h2>
-    <h3>3</h3>
-  </ion-item>
-  <ion-item>
-    <ion-icon name="star" item-left></ion-icon>
-    <h2>Points</h2>
-    <h3>233</h3>
-  </ion-item>
-  <ion-list-header>
-    Tasks
-  </ion-list-header>
-  <ion-item>
-    <ion-icon name="clipboard" item-left></ion-icon>
-    <h2>Get Business Card</h2>
-    <h3>Johnny</h3>
-  </ion-item>
-  <ion-item>
-    <ion-icon name="clipboard" item-left></ion-icon>
-    <h2>Meet 2 People</h2>
-    <h3>Stan</h3>
-  </ion-item>
-  <ion-list-header>
-    <ion-icon name="star"></ion-icon>
-    Hardhips
-  </ion-list-header>
-  <ion-item>
-    <ion-icon name="alert" item-left></ion-icon>
-    <h2>Sit In Corner</h2>
-    <h3>Joan</h3>
-  </ion-item>
+  <ion-grid>
+    <ion-row class="summary-row">
+      <ion-col col-6>
+        <p class="date">
+          {{objDate | date :'longDate'}}</p>
+        <div class="time-row">
+          <ion-icon ios="ios-time" name="time"></ion-icon>
+          <p class="time">
+            {{objDate | date :'h:mm'}}</p>
+        </div>
+      </ion-col>
+      <ion-col col-6 id="status-column">
+        <ion-col col-2 id="counter-labels">
+          <ion-icon name="ios-clipboard-outline"></ion-icon>
+          <ion-icon name="warning-outline"></ion-icon>
+        </ion-col>
+        <ion-col col-10 id="counters">
+          <ion-chip class="tasks-completed" *ngIf="!taskAccepted">
+            <ion-icon color="yel" name="checkmark"></ion-icon>
+            <ion-label>{{completedCounter}}</ion-label>
+          </ion-chip>
+          <ion-chip class="tasks-completed" id="active-tasker" *ngIf="taskAccepted">
+            <ion-icon name="person" color="yel"></ion-icon>
+            <ion-label>{{activePlayer.trail_name}}</ion-label>
+          </ion-chip>
+          <ion-chip id="hardship-person" *ngIf="isHardship">
+            <ion-icon color="ora" name="person"></ion-icon>
+            <ion-label>{{illPlayer.trail_name}}</ion-label>
+          </ion-chip>
+          <ion-chip id="hardship-person" *ngIf="!isHardship">
+            <ion-label>All Clear</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row class="progress-row">
+      <ion-col col-12>
+        <p class="progress-label">Progress</p>
+        <div class="progress-outer">
+          <div [style.width]="trailProgress"></div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="task-row">
+      <ion-col col-12>
+        <div class="card-holder" *ngIf="!taskSkipped">
+          <div class="card-ngfor" *ngFor="let task of tasks;  let i=index">
+            <ion-card *ngIf="i<1" [style.border]="getBackground('task')">
+              <div class="image-holder">
+                <img src="{{tasks[tasks.length-1].image}}" alt="">
+              </div>
+              <ion-card-content>
+                <div class="row task-title">
+                  <ion-card-title>
+                    {{tasks[tasks.length-1].title}}
+                  </ion-card-title>
+                </div>
+                <p>
+                  {{tasks[tasks.length-1].description}}
+                </p>
+              </ion-card-content>
+              <ion-row align-items-center justify-content-center *ngIf="!taskAccepted">
+                <button ion-button icon-center round medium color="yel" (click)="assignTask(tasks[tasks.length -1].id)">
+                  <div>Accept</div>
+                </button>
+                <button ion-button icon-center round medium color="gra" (click)="skipTask()">
+                  <div>Skip</div>
+                </button>
+              </ion-row>
+              <ion-row align-items-center justify-content-center *ngIf="taskAccepted">
+                <button ion-button icon-center round medium color="yel" (click)="completeTask('Completed')">
+                  <div>Completed</div>
+                </button>
+                <button ion-button icon-center round medium color="gra" (click)="completeTask('Failed')">
+                  <div>Failed</div>
+                </button>
+              </ion-row>
+            </ion-card>
+          </div>
+        </div>
+        <div class="card-holder" *ngIf="taskSkipped">
+          <div *ngFor="let hardship of hardships;  let i=index">
+            <ion-card *ngIf="i<1" [style.border]="getBackground('hardship')">
+              <div class="image-holder">
+                <img src="{{hardships[hardships.length-1].image}}" alt="">
+              </div>
+              <ion-card-content>
+                <div class="row task-title">
+                  <ion-card-title>
+                    {{hardships[hardships.length-1].title}}
+                  </ion-card-title>
+                </div>
+                <p>
+                  {{this.illPlayer.trail_name}}
+                  {{hardships[hardships.length-1].description}}
+                </p>
+              </ion-card-content>
+              <ion-row align-items-center justify-content-center>
+                <button ion-button icon-center round small color="ora" (click)="continueOn(hardships[hardships.length - 1].button_1)">
+                  <div>{{hardships[hardships.length-1].button_1}}</div>
+                </button>
+                <button *ngIf="hardships[hardships.length -1].button_2" ion-button icon-center round small color="gra" (click)="otherOption(hardships[hardships.length - 1].button_2)">
+                  <div>{{hardships[hardships.length-1].button_2}}</div>
+                </button>
+              </ion-row>
+            </ion-card>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="player-row" justify-content-center>
+      <ion-list-header>
+        Players
+      </ion-list-header>
+      <ion-row class="player-row">
+        <ion-col class="player-col" col-3 align-self-center *ngFor="let player of players">
+          <ion-icon class="person-icon" name="md-person"></ion-icon>
+          <p class="player-name">{{player.trail_name}}</p>
+          <ion-badge [style.background-color]="getStyle(player)">{{player.morale}}</ion-badge>
+          <ion-badge class="rest_count" color="ora" *ngIf="player.rest_count">{{player.rest_count}}</ion-badge>
+        </ion-col>
+      </ion-row>
+    </ion-row>
+  </ion-grid>
 </ion-content>

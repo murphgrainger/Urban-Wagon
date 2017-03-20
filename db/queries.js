@@ -7,69 +7,86 @@ const Goal = require('../models/goal');
 const Task = require('../models/task');
 const Game = require('../models/game');
 const Player = require('../models/player');
+const Task_Status = require('../models/task_status');
+const Hardship_Status = require('../models/hardship_status');
 
 
 module.exports = {
 
+  getGameAndRelated: function(id) {
+    return Game
+      .query()
+      .findById(id)
+      .eager('goal.[tasks, hardships]')
+  },
+
+  getPlayers: function(id) {
+    return Game
+      .query()
+      .findById(id)
+      .then(function (game) {
+        if (!game) { throwNotFound(); }
+        return game
+          .$relatedQuery('players')
+          .skipUndefined()
+        });
+  },
+
+  getActivePlayer: function() {
+    return Task_Status
+      .query()
+      .skipUndefined()
+      .where('status', '=', 'Accepted')
+      .eager('player')
+  },
+
   getUser: function(id) {
     return User
       .query()
-      .findById(id)
+      .findById(id);
   },
 
   postNewUser: function(body) {
-    console.log(body);
     return User
       .query()
-      .insert(body)
+      .insert(body);
   },
 
   getGoals: function() {
     return Goal
       .query()
-      .skipUndefined()
+      .skipUndefined();
   },
 
-  getGoalsAndTasks: function() {
+  getGoalWithTasks: function(id) {
     return Goal
       .query()
+      .findById(id)
       .eager('tasks');
   },
 
-  getGame: function(id) {
-    console.log(id);
-    return Game
+  getTasksbyGoalID: function(id) {
+    return Goal
       .query()
       .findById(id)
+      .then(function(goal) {
+        if (!goal) {
+          throwNotFound();
+        }
+        return goal
+          .$relatedQuery('tasks')
+          .skipUndefined()
+      });
   },
 
-  postNewGame: function(body) {
-    let gameBody = {
-      location: body.location,
-      difficulty: body.difficulty,
-      player_count: body.player_count,
-      access_code: body.access_code,
-      date_started: body.date_started,
-      progress: body.progress,
-      user_id: body.user_id
-    };
-
-    let playerBody = {
-      trail_name: body.trail_name
-    };
-
-    let goalBody = {
-      name: body.name
-    };
-
+  getGame: function(id) {
     return Game
       .query()
-      .insert(gameBody);
+      .findById(id);
   },
 
+// Not in use but is useful to see auto-ties of game to user
 postNewGameFromUser: function(body, id) {
-  console.log(body);
-  console.log('posting game from user!');
     return User
       .query()
       .findById(id)
@@ -78,27 +95,73 @@ postNewGameFromUser: function(body, id) {
         return user
           .$relatedQuery('games')
           .insert(body);
-      })
+      });
 },
 
-postGoalToGame: function(body, id) {
 
-  // Add existing Person as an actor to a movie.
-  // Add existing Goal as goal for a game
-  return Game
-      .query()
-      .findById(id)
-      .then(function (game) {
-        if (!game) { throwNotFound(); }
-        return game
-          .$relatedQuery('goals')
-          .relate(body.id);
-      })
+//Master game and player insert at once, need to map players instead of hard code
+postGameAndPlayer: function(body, id) {
+  return Goal
+    .query()
+    .findById(id)
+    .then(goal => {
+      return goal
+      .$relatedQuery('games')
+      .insertGraph({
+        location: body.location,
+        difficulty: body.difficulty,
+        player_count: body.player_count,
+        access_code: body.access_code,
+        date_started: body.date_started,
+        progress: 0,
+        user_id: body.user_id,
+        players: [{
+          trail_name: body.players[0],
+          morale: 'Great',
+          rest_count: 0
+        }, {
+          trail_name: body.players[1],
+          morale: 'Great',
+          rest_count: 0
+        }],
+      });
+    });
+  },
 
-}
+assignTask: function(body, id) {
+return Player
+  .query()
+  .findById(id)
+  .then(player => {
+    return player
+    .$relatedQuery('task_statuses')
+    .insert({
+      task_id: body.id,
+      status: 'Accepted'
+    })
+  })
+},
 
+updateTaskStatus: function(body, id) {
+return Task_Status
+  .query()
+  .findById(id)
+  .patch(body)
+},
 
+updatePlayerHealth: function(body, id) {
+return Player
+  .query()
+  .findById(id)
+  .patch(body)
+},
 
+updatePlayerRest: function(id, body) {
+  return Player
+    .query()
+    .findById(id)
+    .patch(body)
+  }
 
 };
 
