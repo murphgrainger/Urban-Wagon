@@ -115,9 +115,9 @@ export class DashboardPage {
   completeTask(status) {
     if (status === 'Completed') {
       this.completedCounter++
-      this.updateProgress(this.game.difficulty)
       this.decreaseRestCount()
       this.increaseMorale(this.activePlayer)
+      this.asyncAwait()
     } else {
       this.skipCounter++
       if (this.skipCounter > 2) {
@@ -138,15 +138,39 @@ export class DashboardPage {
     let withoutPercent = this.trailProgress.replace('%', '')
     if (difficulty === 1) {
       this.trailProgress = Number(withoutPercent) + 20 + '%';
+      return this.trailProgress
     }
     else if(difficulty === 2){
       this.trailProgress = Number(withoutPercent) + 10 + '%';
+      return this.trailProgress
     }
     else {
       this.trailProgress = Number(withoutPercent) + 4 + '%';
+      return this.trailProgress
     }
   }
 
+  checkProgress(progress) {
+    console.log(progress)
+    if (progress === '100%') {
+      this.navCtrl.push(WinnerPage, {
+        game: this.game,
+        players: this.players,
+      });
+    }
+  }
+
+  delay(ms: number) {
+      return new Promise<void>(function(resolve) {
+          setTimeout(resolve, 1000);
+      });
+  }
+
+  async asyncAwait() {
+    this.updateProgress(this.game.difficulty)
+        await this.delay(1000);
+    this.checkProgress(this.trailProgress)
+  }
   skipTask() {
     this.tasks.pop()
     this.taskAccepted = false;
@@ -301,7 +325,6 @@ export class DashboardPage {
     this.gameService.getPlayers(this.game.id)
     .then(data => {
      this.players = data.sort(this.compare);
-     console.log(this.players)
      if (this.isEligible(this.players) === false) {
        this.navCtrl.push(LoserPage, {
          game: this.game
@@ -332,14 +355,12 @@ compare(a,b) {
 }
 
 isEligible(arr) {
-  console.log('players pre-eligible', arr)
   let arr2 = []
   arr.forEach(element => {
     if (element.morale !== "Dead" && element.rest_count === 0) {
       arr2.push(element);
     }
   })
-  console.log('eligible players', arr2)
   if (arr2.length === 0) {
     return false;
   }
