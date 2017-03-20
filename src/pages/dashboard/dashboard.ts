@@ -78,6 +78,7 @@ export class DashboardPage {
   }
 
   assignTask(id) {
+    console.log(this.players)
     let taskID = id;
     let alert = this.alertCtrl.create();
     alert.setTitle('Assign Task To Player');
@@ -120,13 +121,7 @@ export class DashboardPage {
       this.completedCounter++
       this.updateProgress(this.game.difficulty)
       this.decreaseRestCount()
-      this.gameService.getPlayers(this.game.id)
-      .then(data => {
-        this.players = data;
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      console.log('complete task', this.players)
     } else {
       this.skipCounter++
       if (this.skipCounter > 2) {
@@ -137,6 +132,7 @@ export class DashboardPage {
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(data => {
+      this.refreshPlayers()
     }).catch(err => {
       console.log(err)
     })
@@ -175,9 +171,6 @@ export class DashboardPage {
     console.log(choice)
     if (choice === 'Rest Player') {
       this.decreaseMorale(this.illPlayer)
-      console.log(this.currentHardship)
-      console.log(this.currentHardship.rest_value)
-      console.log(this.illPlayer)
       this.addRestCount(this.currentHardship.rest_value)
       this.updateHealth()
       this.skipCounter = 0;
@@ -195,12 +188,8 @@ export class DashboardPage {
   }
 
   otherOption(choice) {
-    console.log(choice)
     if (choice === 'Rest Player') {
       this.decreaseMorale(this.illPlayer)
-      console.log(this.currentHardship)
-      console.log(this.currentHardship.rest_value)
-      console.log(this.illPlayer)
       this.addRestCount(this.currentHardship.rest_value)
       this.updateHealth()
       this.skipCounter = 0;
@@ -213,6 +202,7 @@ export class DashboardPage {
       this.hardships.pop()
     }
     this.refreshPlayers()
+    console.log('players at end of update', this.players)
   }
 
   decreaseMorale(player) {
@@ -236,18 +226,18 @@ export class DashboardPage {
   }
 
   addRestCount(count) {
-    console.log(count)
-    console.log(this.illPlayer.rest_count)
      this.illPlayer.rest_count += count
-     console.log(this.illPlayer.rest_count)
+     console.log('updated rest count', this.illPlayer.rest_count)
      return this.illPlayer.rest_count
   }
 
   decreaseRestCount() {
     this.players.forEach(player => {
       if (player.rest_count > 0) {
+        console.log('player being updated', player)
         this.gameService.updatePlayerRest(player)
         .then(data => {
+          this.refreshPlayers()
           console.log('Rest Count Update Successful')
         })
         .catch(error => {
@@ -296,9 +286,8 @@ export class DashboardPage {
   refreshPlayers() {
     this.gameService.getPlayers(this.game.id)
     .then(data => {
+      console.log('data', data)
       this.players = data;
-      console.log('refreshing players')
-      console.log(this.players)
     })
     .catch(err => {
       console.log(err)

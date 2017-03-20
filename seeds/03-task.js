@@ -105,7 +105,7 @@ exports.seed = function(knex, Promise) {
         description: 'Wink at someone looking at you.  Bonus points for the double wink to the same person.',
         allotted_time: 9,
         difficulty: 1,
-        goal_id: 4
+        goal_id: 3
       }];
       return knex('task').insert(task);
     });

@@ -10,6 +10,24 @@ exports.seed = function(knex, Promise) {
         rest_value: 1,
         morale_decrease: 1,
         goal_id: 4
+      },{
+        title: 'Exhaustion!',
+        description: 'is extremely tired.  Continue on or sit player out for the next task.',
+        image: 'https://roeselienraimond.files.wordpress.com/2013/11/yawning_fox_side.jpg',
+        button_1: 'Continue',
+        button_2: 'Rest Player',
+        rest_value: 1,
+        morale_decrease: 1,
+        goal_id: 4
+      },{
+        title: 'Exhaustion!',
+        description: 'is extremely tired.  Continue on or sit player out for the next task.',
+        image: 'https://roeselienraimond.files.wordpress.com/2013/11/yawning_fox_side.jpg',
+        button_1: 'Continue',
+        button_2: 'Rest Player',
+        rest_value: 1,
+        morale_decrease: 1,
+        goal_id: 4
       }, {
         title: 'Extreme Thirst!',
         description: 'is parched.  Contine on or get player something to drink.',
@@ -19,7 +37,25 @@ exports.seed = function(knex, Promise) {
         rest_value: 0,
         morale_decrease: 1,
         goal_id: 4
-      },{
+      }, {
+        title: 'Extreme Thirst!',
+        description: 'is parched.  Contine on or get player something to drink.',
+        image: 'https://images.contentful.com/hqceq7tr0t1k/00000002000090a100000000/f5a78004b3aee90f371ba9b4bbdb6fdb/TERI-Extreme-Thirst-300.jpg?fm=jpg&q=65&fl=progressive&fit=thumb&w=400&h=300',
+        button_1: 'Continue',
+        button_2: 'Buy Drink',
+        rest_value: 0,
+        morale_decrease: 1,
+        goal_id: 4
+      }, {
+        title: 'Extreme Thirst!',
+        description: 'is parched.  Contine on or get player something to drink.',
+        image: 'https://images.contentful.com/hqceq7tr0t1k/00000002000090a100000000/f5a78004b3aee90f371ba9b4bbdb6fdb/TERI-Extreme-Thirst-300.jpg?fm=jpg&q=65&fl=progressive&fit=thumb&w=400&h=300',
+        button_1: 'Continue',
+        button_2: 'Buy Drink',
+        rest_value: 0,
+        morale_decrease: 1,
+        goal_id: 4
+      }, {
         title: 'Claustrophobia!',
         description: 'feels crowded!  Continue or everyone go outside for 5 minutes.',
         image: 'https://pbs.twimg.com/media/B0WCQwkCYAAD3bW.jpg:large',
@@ -37,7 +73,16 @@ exports.seed = function(knex, Promise) {
         rest_value: 2,
         morale_decrease: 1,
         goal_id: 4
-      },{
+      }, {
+        title: 'Tongue Tied!',
+        description: 'is at a loss for words! Player must sit out for 2 tasks.',
+        image: 'http://az616578.vo.msecnd.net/files/2016/08/18/63607086471849654642803183_Michael-in-Branch-Closing-michael-scott-1468612-1280-720.jpg',
+        button_1: 'Rest Player',
+        button_2: '',
+        rest_value: 2,
+        morale_decrease: 1,
+        goal_id: 4
+      }, {
         title: 'Extreme Shyness!',
         description: 'is overwhelmed! Player must sit out for 3 tasks.',
         image: 'https://cynicritics.files.wordpress.com/2011/04/actresska_jeff_55633306_max-thumb-500xauto-4668.jpg',
