@@ -301,6 +301,7 @@ export class DashboardPage {
     this.gameService.getPlayers(this.game.id)
     .then(data => {
      this.players = data.sort(this.compare);
+     console.log(this.players)
      if (this.isEligible(this.players) === false) {
        this.navCtrl.push(LoserPage, {
          game: this.game
