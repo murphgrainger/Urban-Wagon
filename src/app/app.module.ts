@@ -8,6 +8,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { CreatePage } from '../pages/create/create';
 import { AddplayerPage } from '../pages/addplayer/addplayer';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { WinnerPage } from '../pages/winner/winner';
+import { LoserPage } from '../pages/loser/loser';
 
 
 
@@ -20,7 +22,9 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
     TabsPage,
     CreatePage,
     AddplayerPage,
-    DashboardPage
+    DashboardPage,
+    WinnerPage,
+    LoserPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -34,7 +38,9 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
     TabsPage,
     CreatePage,
     AddplayerPage,
-    DashboardPage
+    DashboardPage,
+    WinnerPage,
+    LoserPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

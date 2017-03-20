@@ -4,6 +4,10 @@ import { NavController, NavParams } from 'ionic-angular';
 import {GameService} from '../../providers/game-service';
 import { AlertController } from 'ionic-angular';
 
+import { LoserPage } from '../loser/loser';
+import { WinnerPage } from '../winner/winner';
+
+
 
 @Component({
   selector: 'page-dashboard',
@@ -72,11 +76,17 @@ export class DashboardPage {
   }
 
   assignTask(id) {
-    let taskID = id;
-    let alert = this.alertCtrl.create();
-    alert.setTitle('Assign Task To Player');
-
-    this.players.forEach(element => {
+    if (this.isEligible(this.players) === false) {
+      this.navCtrl.push(LoserPage, {
+        game: this.game
+      });
+      console.log('no eligible players! you lose!')
+    }
+    else {
+      let taskID = id;
+      let alert = this.alertCtrl.create();
+      alert.setTitle('Assign Task To Player');
+      this.players.forEach(element => {
       if (element.morale != 'Dead' && element.rest_count === 0) {
         alert.addInput({
           type: 'radio',
@@ -108,6 +118,7 @@ export class DashboardPage {
     });
     alert.present()
   }
+}
 
   completeTask(status) {
     if (status === 'Completed') {
@@ -302,6 +313,21 @@ compare(a,b) {
   if (a.trail_name > b.trail_name)
     return 1;
   return 0;
+}
+
+isEligible(arr) {
+  let arr2 = []
+  arr.forEach(element => {
+    if (element > 2 && element < 11) {
+      arr2.push(element);
+    }
+  })
+  if (arr = []) {
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 }
