@@ -20,14 +20,14 @@
         </ion-item>
         <ion-list-header>
           <ion-icon name="clipboard"></ion-icon>
-          Goals
+          Goal
         </ion-list-header>
         <ion-item>
-          <ion-select name="goal" placeholder="Select your goal for the game" [(ngModel)]="game.goal">
-            <ion-option value="4">Meet Friends</ion-option>
-            <ion-option disabled value="1">Network (Coming Soon)</ion-option>
-            <ion-option disabled value="2">Drink (Coming Soon)</ion-option>
-            <ion-option disabled value="5">Flirt (Coming Soon)</ion-option>
+          <ion-select name="goal" [(ngModel)]="game.goal" placeholder="Select your goal for the game">
+            <ion-option selected="true" value="4">Meet Friends</ion-option>
+            <ion-option disabled value="1">Network</ion-option>
+            <ion-option disabled value="2">Drink</ion-option>
+            <ion-option disabled value="3">Flirt</ion-option>
           </ion-select>
         </ion-item>
         <ion-list-header>

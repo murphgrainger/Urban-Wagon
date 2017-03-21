@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import {GameService} from '../../providers/game-service';
+import {TabsService} from '../../providers/tabs-service';
+
 import { AlertController } from 'ionic-angular';
 
 import { LoserPage } from '../loser/loser';
@@ -12,7 +14,7 @@ import { WinnerPage } from '../winner/winner';
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
-  providers: [GameService]
+  providers: [GameService, TabsService]
 
 })
 export class DashboardPage {
@@ -36,7 +38,7 @@ export class DashboardPage {
   public illPlayer:any;
   isHardship: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController, public tabs: TabsService) {
     this.gameID = navParams.get('id');
     this.objDate = Date.now();
     this.trailProgress = '0%'
@@ -46,6 +48,7 @@ export class DashboardPage {
   }
 
   ionViewDidLoad() {
+    this.tabs.show()
     this.getGame()
     };
 
