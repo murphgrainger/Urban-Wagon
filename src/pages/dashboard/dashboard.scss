@@ -4,7 +4,6 @@ page-dashboard {
 
   // Top Row
 .summary-row {
-    height: 15vh;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     background: color($colors, yel);
 
@@ -92,8 +91,18 @@ page-dashboard {
 //Progress
 
 .progress-row {
-  height: 10vh;
-  padding: .5em 0;
+  padding: 1.3em 0 .4em 0;
+
+  img {
+    height: 2.75em;
+  }
+}
+
+.progress-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
 }
 
 .progress-label {
@@ -102,7 +111,7 @@ page-dashboard {
 
 .progress-outer {
   color: white;
-  height: 1.5em;
+  height: .75em;
   width: 100%;
   background-color: color($colors, danger);
 
@@ -117,15 +126,8 @@ page-dashboard {
 
 //Task Card
 .task-row {
-  height: 60vh;
-
   .card-holder {
-    height: 50vh;
     padding: .1em;
-  }
-
-  .card-ngfor {
-    height: 50vh;
   }
 
   .image-holder {
@@ -141,11 +143,15 @@ page-dashboard {
   }
 
   .card-title {
-    font-size: 1.5em;
+    font-size: 1.2em;
+  }
+
+  .card-content {
+    padding: 0 1em 1em 1em;
   }
 
   .card-content p {
-    font-size: 1.2em;
+    font-size: 1em;
   }
 }
 
