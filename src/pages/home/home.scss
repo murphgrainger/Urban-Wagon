@@ -16,7 +16,7 @@ page-home {
     h1 {
       font-size: 4.5em;
       margin: 0;
-      text-shadow: 1px 1px 2px #E8D8A7;
+      text-shadow: 1px 1px 2px color($colors, yel);
       color: color($colors, danger);
     }
   }
@@ -26,8 +26,7 @@ page-home {
     justify-content: center;
 
      .item {
-       background-color:  #E8D8A7;
-       margin-bottom: .3em;
+       background-color:  color($colors, yel);
        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
      }
   }
