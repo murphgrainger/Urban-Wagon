@@ -14,7 +14,7 @@ import { WinnerPage } from '../winner/winner';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root: any = WinnerPage;
+  tab1Root: any = HomePage;
   tab2Root: any = PlayersPage;
   tab3Root: any = GuidePage;
 

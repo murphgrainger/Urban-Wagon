@@ -1,11 +1,44 @@
 page-home {
-.start-game {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+
+  .scroll-content {
+    background-color: color($colors, drkgra)
+  }
+
+  .header-row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2em;
+
+    h1 {
+      font-size: 5em;
+      margin: 0;
+      text-shadow: 1px 1px 2px #E8D8A7;
+      color: color($colors, danger)
+    }
+  }
+
+  .details-row {
+    display: flex;
+    justify-content: center;
+
+    .list {
+       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+     .item {
+       background-color:  #E8D8A7;
+       margin-bottom: .3em
+     }
+    }
+  }
+
+  .start-game {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 }

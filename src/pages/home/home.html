@@ -5,10 +5,34 @@
 </ion-header>
 
 <ion-content>
+  <div class="header-row">
+    <h1>Modern Pioneer</h1>
+    <h5>Oregon Trail in Today's Social Setting</h5>
+  </div>
+  <div class="details-row">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-icon name="people" item-left></ion-icon>
+        Play with 1 - 4 Players
+      </ion-item>
+      <ion-item>
+        <ion-icon name="clipboard" item-left></ion-icon>
+        Complete Tasks To Progress
+      </ion-item>
+      <ion-item>
+        <ion-icon name="warning" item-left></ion-icon>
+        Overcome Hardships
+      </ion-item>
+      <ion-item>
+        <ion-icon name="star" item-left></ion-icon>
+        Reach the End of the Trail!
+      </ion-item>
+    </ion-list>
+  </div>
   <div class="start-game">
-    <button ion-button color="secondary" round large icon-right (click)="startGame()">
-      Create New Game
-      <ion-icon name="star"></ion-icon>
+    <button ion-button color="dan" round large icon-right (click)="startGame()">
+      New Game
+      <ion-icon name="add"></ion-icon>
     </button>
   </div>
 </ion-content>
