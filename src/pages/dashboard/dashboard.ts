@@ -56,7 +56,13 @@ export class DashboardPage {
     this.gameService.getGameDetails(this.gameID)
     .then(game => {
       this.game = game
-      this.refreshPlayers()
+      this.gameService.getPlayers(this.game.id)
+      .then(data => {
+       this.players = data.sort(this.compare);
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }).catch(error => {
       console.log('could not get game details', error)
     }).then(() => {
@@ -328,7 +334,6 @@ export class DashboardPage {
   }
 
   refreshPlayers() {
-    console.log('refreshing players')
     this.gameService.getPlayers(this.game.id)
     .then(data => {
      this.players = data.sort(this.compare);
