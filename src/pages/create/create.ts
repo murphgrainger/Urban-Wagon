@@ -21,7 +21,8 @@ export class CreatePage {
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public tabs: TabsService) {
-
+    this.game.difficulty = 1;
+    this.game.players = 1;
   }
 
 
