@@ -30,6 +30,7 @@ export class DashboardPage {
   public completedCounter:number;
   objDate:any;
   public trailProgress: string = '0' + '%';
+  public wagonProgress: string = '0' + '%';
   testRadioOpen: boolean;
   testRadioResult;
   taskAccepted: boolean;
@@ -46,6 +47,7 @@ export class DashboardPage {
     this.gameID = navParams.get('id');
     this.objDate = Date.now();
     this.trailProgress = '0%'
+    this.wagonProgress = '100%'
     this.skipCounter = 0;
     this.completedCounter = 0;
     this.taskSkipped = false;
@@ -54,7 +56,7 @@ export class DashboardPage {
   ionViewWillEnter() {
       this.view.showBackButton(false);
      }
-     
+
   ionViewDidLoad() {
     this.tabs.show()
     this.getGame()
@@ -167,6 +169,12 @@ export class DashboardPage {
     }
   }
 
+  getWagonProgress(progress) {
+    let withoutPercent = progress.replace('%', '')
+    this.wagonProgress = 108 - withoutPercent + '%'
+    return this.wagonProgress
+  }
+
   checkProgress(progress) {
     if (progress === '100%') {
       this.navCtrl.push(WinnerPage, {
@@ -185,9 +193,11 @@ export class DashboardPage {
 
   async asyncAwait() {
     this.updateProgress(this.game.difficulty)
+    this.getWagonProgress(this.trailProgress)
         await this.delay(1000);
     this.checkProgress(this.trailProgress)
   }
+
   skipTask() {
     this.tasks.pop()
     this.taskAccepted = false;

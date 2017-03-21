@@ -40,7 +40,11 @@
       </ion-col>
     </ion-row>
     <ion-row class="progress-row">
-      <img src="../../assets/icon/wagon.ico" alt="">
+      <div class="wagon-outer">
+        <div class="wagon-holder" [style.width]="wagonProgress">
+          <img src="../../assets/icon/wagon.ico" alt="">
+        </div>
+      </div>
       <ion-col col-12 class="progress-col">
         <div class="progress-outer">
           <div [style.width]="trailProgress"></div>

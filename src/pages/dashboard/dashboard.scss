@@ -124,6 +124,18 @@ page-dashboard {
     }
 }
 
+.wagon-outer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  .wagon-holder {
+    width: 100%;
+    transition: width .4s ease-in-out;
+
+  }
+}
+
 //Task Card
 .task-row {
   .card-holder {
