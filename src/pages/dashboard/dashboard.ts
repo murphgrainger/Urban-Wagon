@@ -272,11 +272,14 @@ export class DashboardPage {
   }
 
   decreaseRestCount() {
+    console.log('pre update rest count', this.players)
     this.players.forEach(player => {
       if (player.rest_count > 0) {
+        console.log(player)
         this.gameService.updatePlayerRest(player)
         .then(data => {
           this.refreshPlayers()
+          console.log(this.players)
         })
         .catch(error => {
           console.log(error)
@@ -322,6 +325,7 @@ export class DashboardPage {
   }
 
   refreshPlayers() {
+    console.log('refreshing players')
     this.gameService.getPlayers(this.game.id)
     .then(data => {
      this.players = data.sort(this.compare);

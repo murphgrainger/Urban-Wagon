@@ -161,7 +161,6 @@ return Player
 updatePlayerRest: function(id, body) {
   return Player
     .query()
-    .where('rest_count')
     .findById(id)
     .patch(body)
   }
