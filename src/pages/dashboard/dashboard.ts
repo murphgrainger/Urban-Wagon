@@ -151,11 +151,11 @@ export class DashboardPage {
   }
 
   checkProgress(progress) {
-    console.log(progress)
     if (progress === '100%') {
       this.navCtrl.push(WinnerPage, {
         game: this.game,
-        players: this.players,
+        players: this.sendHealthyPlayers(this.players),
+        tasks: this.completedCounter
       });
     }
   }
@@ -382,6 +382,16 @@ filterOutDead(arr) {
   });
   let illPlayer = arr2[Math.floor(Math.random()*arr2.length)]
   return illPlayer;
+}
+
+sendHealthyPlayers(arr) {
+  let arr2 = []
+  arr.forEach(person => {
+    if (person.morale !== 'Dead') {
+        arr2.push(person)
+    }
+  });
+  return arr2;
 }
 
 }

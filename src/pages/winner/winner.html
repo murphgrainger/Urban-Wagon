@@ -1,9 +1,7 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Winner!</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
@@ -13,13 +11,21 @@
   </div>
   <div class="winner-row">
     <ion-list>
+      <ion-list-header>
+        Task Completed
+      </ion-list-header>
       <ion-item>
         <ion-icon name="clipboard" item-left></ion-icon>
-        Tasks Completed
+        {{taskCount}}
       </ion-item>
-      <ion-item>
-        <ion-icon name="clipboard" item-left></ion-icon>
-        Hardships Overcome
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        Living Players
+      </ion-list-header>
+      <ion-item *ngFor="let player of players;">
+        <ion-icon name="person" item-left></ion-icon>
+        {{player.trail_name}}
       </ion-item>
     </ion-list>
   </div>

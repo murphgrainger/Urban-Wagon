@@ -17,6 +17,10 @@ page-dashboard {
   font-size: 1.5em
 }
 
+.time-col {
+  padding-left: 1em;
+}
+
 .time-row {
   display: flex;
   flex-direction: row;
@@ -35,6 +39,7 @@ page-dashboard {
 #status-column {
   display: flex;
   flex-direction: row;
+  padding-left: 2em;
 
   .icon {
   font-size: 2.5em;
