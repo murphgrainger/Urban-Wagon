@@ -320,10 +320,10 @@ export class DashboardPage {
 
   getBackground(type) {
     if (type === "task") {
-      return '10px solid #FFC55E'
+      return '10px solid #E8D8A7'
     }
     else {
-      return '10px solid #FF5C30'
+      return '10px solid #B74949'
     }
   }
 
