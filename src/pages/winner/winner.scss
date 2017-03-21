@@ -36,7 +36,17 @@ page-winner {
     padding-bottom: 3em;
 
     .list {
-      width: 60%;
+      width: 70%;
+    }
+
+    .item {
+      background-color: color($colors, gre);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+
+    .list-header {
+      background-color: color($colors, gre);
+      box-sizing: none;
     }
 
 

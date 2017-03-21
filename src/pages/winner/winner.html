@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Winner!</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>Urban Wagon</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -12,15 +12,6 @@
   <div class="winner-row">
     <ion-list>
       <ion-list-header>
-        Task Completed
-      </ion-list-header>
-      <ion-item>
-        <ion-icon name="clipboard" item-left></ion-icon>
-        {{taskCount}}
-      </ion-item>
-    </ion-list>
-    <ion-list>
-      <ion-list-header>
         Living Players
       </ion-list-header>
       <ion-item *ngFor="let player of players;">
@@ -30,7 +21,7 @@
     </ion-list>
   </div>
   <div class="start-game">
-    <button ion-button color="yel" round large icon-right (click)="startGame()">
+    <button ion-button color="danger" round large icon-right (click)="startGame()">
       Play Again
       <ion-icon name="star"></ion-icon>
     </button>

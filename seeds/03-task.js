@@ -79,12 +79,12 @@ exports.seed = function(knex, Promise) {
         difficulty: 2,
         goal_id: 4
       }, {
-        title: 'Dog or Cheetos',
+        title: 'Would You Rather',
         image: 'https://img.wonderhowto.com/img/75/78/63494545470634/0/keep-your-fingers-clean-while-eating-cheetos-chocolate-chips-and-more.w1456.jpg',
-        description: 'Ask a stranger: Would you rather smell dog breath every morning when you wake up, or have cheetos on your fingers every day between 2pm and 5pm?',
+        description: 'Dog breath when you wakeup, or cheetos on your fingers when going to bed? Ask a stranger!',
         allotted_time: 7,
         difficulty: 2,
-        goal_id: 2
+        goal_id: 4
       }, {
         title: 'Find 3 People Who...',
         image: 'http://i2.cdn.cnn.com/cnnnext/dam/assets/150406130230-american-pie-lyrics-exlarge-169.jpeg',
@@ -100,15 +100,15 @@ exports.seed = function(knex, Promise) {
         difficulty: 2,
         goal_id: 4
       },{
-        title: '10 Days or 10 Nights',
+        title: 'Would You Rather',
         image: 'http://www.growingyourbaby.com/wp-content/uploads/2010/12/8407056_s.jpg',
-        description: 'Ask someone: "Would you rather have 10 nights filled with incessant jackhammering, or 10 days with no sun?"',
+        description: 'Have 10 nights filled with incessant jackhammering, or 10 days with no sun? Ask someone!',
         allotted_time: 7,
         difficulty: 2,
         goal_id: 4
       },{
         title: 'Listen to a Joke',
-        image: 'https://www.bradmontgomery.com/wp-content/uploads/2008/09/leno.jpg',
+        image: 'http://www.bradleyjobling.com/wp-content/uploads/2014/02/180956603.jpg',
         description: 'Ask someone to tell you a joke. Repeat the joke back to your group.',
         allotted_time: 7,
         difficulty: 2,

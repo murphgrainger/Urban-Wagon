@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 
+import { CreatePage } from '../create/create';
 
 @Component({
   selector: 'page-winner',
@@ -18,19 +19,14 @@ export class WinnerPage {
     this.game = navParams.get('game');
     this.players = navParams.get('players');
     this.taskCount = navParams.get('tasks');
-
-    console.log(this.game)
-    console.log(this.players)
-    console.log(this.taskCount)
-
   }
 
-  ionViewWillEnter() {
-      this.view.showBackButton(false);
-     }
+ionViewWillEnter() {
+    this.view.showBackButton(false);
+   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad WinnerPage');
+startGame() {
+  this.navCtrl.push(CreatePage);
   }
 
 }
