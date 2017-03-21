@@ -18,7 +18,9 @@ export class TabsPage {
   tab2Root: any = PlayersPage;
   tab3Root: any = GuidePage;
 
+
   constructor() {
 
   }
+
 }

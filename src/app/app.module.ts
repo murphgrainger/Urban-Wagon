@@ -13,6 +13,9 @@ import { LoserPage } from '../pages/loser/loser';
 import { PlayersPage } from '../pages/players/players';
 import { GuidePage } from '../pages/guide/guide';
 
+import { TabsService } from '../providers/tabs-service';
+
+
 
 
 @NgModule({
@@ -44,6 +47,6 @@ import { GuidePage } from '../pages/guide/guide';
     PlayersPage,
     GuidePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, TabsService]
 })
 export class AppModule {}
