@@ -11,12 +11,13 @@ page-home {
     align-items: center;
     text-align: center;
     padding: 2em;
+    padding-top: 1.5em;
 
     h1 {
-      font-size: 5em;
+      font-size: 4.5em;
       margin: 0;
       text-shadow: 1px 1px 2px #E8D8A7;
-      color: color($colors, danger)
+      color: color($colors, danger);
     }
   }
 
@@ -24,14 +25,11 @@ page-home {
     display: flex;
     justify-content: center;
 
-    .list {
-       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
      .item {
        background-color:  #E8D8A7;
-       margin-bottom: .3em
+       margin-bottom: .3em;
+       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
      }
-    }
   }
 
   .start-game {

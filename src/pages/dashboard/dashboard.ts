@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
+
 
 import {GameService} from '../../providers/game-service';
 import {TabsService} from '../../providers/tabs-service';
@@ -37,8 +39,10 @@ export class DashboardPage {
   public currentHardship:any;
   public illPlayer:any;
   isHardship: boolean;
+  menuIsHidden: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController, public tabs: TabsService) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController, public tabs: TabsService, private view: ViewController) {
     this.gameID = navParams.get('id');
     this.objDate = Date.now();
     this.trailProgress = '0%'
@@ -47,6 +51,10 @@ export class DashboardPage {
     this.taskSkipped = false;
   }
 
+  ionViewWillEnter() {
+      this.view.showBackButton(false);
+     }
+     
   ionViewDidLoad() {
     this.tabs.show()
     this.getGame()
