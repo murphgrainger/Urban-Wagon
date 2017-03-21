@@ -1,12 +1,45 @@
 page-create {
 
-  ion-list {
-    background: #D0DBE3;
-  }
+.header-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  text-align: center;
 
-  ion-select {
-    max-width: 100%;
+
+  h2 {
+    font-size: 3em;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
   }
+}
+
+.form-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    width: 80%;
+
+    .item {
+      background-color: color($colors, yel)
+    }
+    .list-header {
+      background: color($colors, drkgra)
+    }
+    ion-select {
+      max-width: 100%!important;
+    }
+    .select-icon {
+      margin-left: 2em;
+    }
+  }
+}
 
 
 }

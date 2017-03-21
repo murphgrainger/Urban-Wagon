@@ -5,50 +5,56 @@
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="logForm()">
-    <ion-list>
-      <ion-list-header>
-        <ion-icon name="pin"></ion-icon>
-        Location
-      </ion-list-header>
-      <ion-item>
-        <ion-input placeholder="Name" type="text" name="location" [(ngModel)]="game.location"></ion-input>
-      </ion-item>
-      <ion-list-header>
-        <ion-icon name="clipboard"></ion-icon>
-        Goals
-      </ion-list-header>
-      <ion-item>
-        <ion-select name="goal" placeholder="Select your game preferences" [(ngModel)]="game.goal" [ngModelOptions]="{standalone: true}">
-          <ion-option value="1">Professionally Network</ion-option>
-          <ion-option value="4">Meet Friends</ion-option>
-          <ion-option value="2">Drink</ion-option>
-          <ion-option value="5">Flirt</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-list-header>
-        <ion-icon name="star"></ion-icon>
-        Difficulty
-        <ion-badge item-right>{{game.difficulty}}</ion-badge>
-      </ion-list-header>
-      <ion-item>
-        <ion-range min="1" max="3" step="1" snaps="true" name="difficulty" [(ngModel)]="game.difficulty">
-          <ion-label range-left class=" small-text">Easy</ion-label>
-          <ion-label range-right class="small-text">Hard</ion-label>
-        </ion-range>
-      </ion-item>
-      <ion-list-header>
-        <ion-icon name="people"></ion-icon>
-        Player Count
-        <ion-badge item-right>{{game.player_count}}</ion-badge>
-      </ion-list-header>
-      <ion-item>
-        <ion-range min="1" max="4" step="1" snaps="true" name="playerCount" [(ngModel)]="game.player_count">
-          <ion-label range-left class=" small-text">1</ion-label>
-          <ion-label range-right class="small-text">4</ion-label>
-        </ion-range>
-      </ion-item>
-    </ion-list>
-    <button ion-button color="secondary" type="submit" block>Add Players</button>
-  </form>
+  <div class="header-row">
+    <h2>Game Preferences</h2>
+  </div>
+  <div class="form-row">
+    <form (ngSubmit)="logForm()">
+      <ion-list>
+        <ion-list-header>
+          <ion-icon name="pin"></ion-icon>
+          Location
+        </ion-list-header>
+        <ion-item>
+          <ion-input placeholder="Name" type="text" name="location" [(ngModel)]="game.location"></ion-input>
+        </ion-item>
+        <ion-list-header>
+          <ion-icon name="clipboard"></ion-icon>
+          Goals
+        </ion-list-header>
+        <ion-item>
+          <ion-select name="goal" placeholder="Select your goal for the game" [(ngModel)]="game.goal">
+            <ion-option value="4">Meet Friends</ion-option>
+            <ion-option disabled value="1">Network (Coming Soon)</ion-option>
+            <ion-option disabled value="2">Drink (Coming Soon)</ion-option>
+            <ion-option disabled value="5">Flirt (Coming Soon)</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-list-header>
+          <ion-icon name="star"></ion-icon>
+          Difficulty
+          <ion-badge item-right>{{game.difficulty}}</ion-badge>
+        </ion-list-header>
+        <ion-item>
+          <ion-range min="1" max="3" step="1" snaps="true" name="difficulty" [(ngModel)]="game.difficulty">
+            <ion-label range-left class=" small-text">Easy</ion-label>
+            <ion-label range-right class="small-text">Hard</ion-label>
+          </ion-range>
+        </ion-item>
+        <ion-list-header>
+          <ion-icon name="people"></ion-icon>
+          Player Count
+          <ion-badge item-right>{{game.player_count}}</ion-badge>
+        </ion-list-header>
+        <ion-item>
+          <ion-range min="1" max="4" step="1" snaps="true" name="playerCount" [(ngModel)]="game.player_count">
+            <ion-label range-left class=" small-text">1</ion-label>
+            <ion-label range-right class="small-text">4</ion-label>
+          </ion-range>
+        </ion-item>
+      </ion-list>
+      <button ion-button color="secondary" type="submit" block>Add Players</button>
+    </form>
+  </div>
+
 </ion-content>

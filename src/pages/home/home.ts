@@ -14,6 +14,9 @@ import { CreatePage } from '../create/create';
 export class HomePage {
 
   constructor(public navCtrl: NavController, public tabs: TabsService) {
+  }
+
+  ionViewDidLoad() {
     this.tabs.hide()
   }
 
