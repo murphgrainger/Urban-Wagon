@@ -1,17 +1,56 @@
-<!--
-  Generated template for the Guide page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>Guide Book</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <h3>Guide Book</h3>
+  <div class="row">
+    <ion-card color="gra">
+      <ion-card-header>
+        <ion-icon name="book-outline"></ion-icon>
+        General Play
+      </ion-card-header>
+      <ion-card-content>
+        Your group has to complete a certain number of tasks to reach the end of the trail. You can select a specific player to complete each task, or skip it. Beware, skipping too many tasks may cause a hardship to present itself to a randomized player. You
+        lose the game if no one is eligible to complete a task to progress the group.
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="row">
+    <ion-card color="yel">
+      <ion-card-header>
+        <ion-icon name="clipboard-outline"></ion-icon>
+        Tasks
+      </ion-card-header>
+      <ion-card-content>
+        Tasks are designed for players to meet new people. They can be anything from asking a "Would You Rather" question, to getting a business card. You can complete, fail, or skip a task. The only way to progress down the trail is to complete tasks.
+        Morale increases for the player who completes the task.
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="row">
+    <ion-card color="danger">
+      <ion-card-header>
+        <ion-icon name="warning-outline"></ion-icon>
+        Hardships
+      </ion-card-header>
+      <ion-card-content>
+        If you skip or fail too many tasks, someone on your team might encounter a hardship. Player morale will decrease when faced with a hardship. Beware - some hardships may demand that a player rest. During this time they are unable to complete tasks.
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="row">
+    <ion-card color="gra">
+      <ion-card-header>
+        <ion-icon name="people-outline"></ion-icon>
+        Players
+      </ion-card-header>
+      <ion-card-content>
+        Player morale can increase or decrease during the game. Beware - if a player's morale slips below 'Poor' they will die. Resting players and dead players cannot complete tasks for the group.
+      </ion-card-content>
+    </ion-card>
+  </div>
+
 </ion-content>
