@@ -443,4 +443,12 @@ deathAlert(player) {
     alert.present();
   }
 
+  addTask(task) {
+    //if tasks array is [], then allow user to add more tasks
+    //allow users to add tasks at any time?
+    if (this.tasks.length === 0) {
+        
+    }
+  }
+
 }

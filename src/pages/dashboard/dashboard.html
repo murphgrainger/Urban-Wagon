@@ -118,9 +118,9 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row class="player-row" justify-content-center>
+    <ion-row class="player-row">
       <ion-row class="player-row">
-        <ion-col class="player-col" col-3 align-self-center *ngFor="let player of players">
+        <ion-col class="player-col" col-3 *ngFor="let player of players">
           <ion-icon class="person-icon" name="md-person"></ion-icon>
           <p class="player-name">{{player.trail_name}}</p>
           <ion-badge [style.background-color]="getStyle(player)">{{player.morale}}</ion-badge>
