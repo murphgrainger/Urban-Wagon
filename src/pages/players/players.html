@@ -8,4 +8,16 @@
 
 <ion-content padding>
   <h3>Players</h3>
+
+  <ion-list-header>
+    Players
+  </ion-list-header>
+  <ion-row class="player-row">
+    <ion-col class="player-col" col-3 align-self-center *ngFor="let player of players">
+      <ion-icon class="person-icon" name="md-person"></ion-icon>
+      <p class="player-name">{{player.trail_name}}</p>
+      <ion-badge>{{player.morale}}</ion-badge>
+      <ion-badge class="rest_count" color="ora" *ngIf="player.rest_count">{{player.rest_count}}</ion-badge>
+    </ion-col>
+  </ion-row>
 </ion-content>

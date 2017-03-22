@@ -13,6 +13,7 @@ import { LoserPage } from '../pages/loser/loser';
 import { PlayersPage } from '../pages/players/players';
 import { GuidePage } from '../pages/guide/guide';
 
+import { GameService } from '../providers/game-service';
 import { TabsService } from '../providers/tabs-service';
 
 
@@ -47,6 +48,6 @@ import { TabsService } from '../providers/tabs-service';
     PlayersPage,
     GuidePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, TabsService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, TabsService, GameService]
 })
 export class AppModule {}

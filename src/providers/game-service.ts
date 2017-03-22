@@ -12,12 +12,27 @@ const HEROKU_URL = 'https://modern-pioneer.herokuapp.com'
 export class GameService {
   data:any;
   game:any = {};
+  public gameID:number;
 
   constructor(public http: Http) {
     this.http = http;
     this.data = null;
     this.getURL()
+    this.gameID;
+
 }
+
+  setGameID(value) {
+      console.log(value)
+      this.gameID = value;
+    }
+
+  getGameID() {
+    console.log(this.gameID)
+    return this.gameID;
+  }
+
+
 
     postGame(game) {
     let goalID = Number(game.goal);

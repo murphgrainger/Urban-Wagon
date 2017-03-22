@@ -66,10 +66,14 @@ export class DashboardPage {
       this.game = game
       this.gameService.getPlayers(this.game.id)
       .then(data => {
+        console.log('returning players')
        this.players = data.sort(this.compare);
       })
       .catch(err => {
         console.log(err)
+      })
+      .then(() => {
+        this.gameService.setGameID(this.game.id)
       })
     }).catch(error => {
       console.log('could not get game details', error)
