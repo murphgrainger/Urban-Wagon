@@ -9,10 +9,11 @@ page-dashboard {
   // Top Row
 .summary-row {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    background: color($colors, yel);
+    background: color($colors, gre);
+    color: color($colors, dark);
 
     .chip .icon {
-      background: color($colors, drkgra);
+      background: color($colors, ora);
     }
   }
 
@@ -124,7 +125,7 @@ page-dashboard {
         text-align: center;
         vertical-align: center;
         height: 100%;
-        background-color: color($colors, yel);
+        background-color: color($colors, ora);
         transition: width .4s ease-in-out;
     }
 }

@@ -70,7 +70,7 @@
                 </p>
               </ion-card-content>
               <ion-row align-items-center justify-content-center *ngIf="!taskAccepted">
-                <button ion-button icon-center round medium color="yel" (click)="assignTask(tasks[tasks.length -1].id)">
+                <button ion-button icon-center round medium color="ora" (click)="assignTask(tasks[tasks.length -1].id)">
                   <div>Accept</div>
                 </button>
                 <button ion-button icon-center round medium color="gra" (click)="skipTask()">
@@ -78,7 +78,7 @@
                 </button>
               </ion-row>
               <ion-row align-items-center justify-content-center *ngIf="taskAccepted">
-                <button ion-button icon-center round medium color="yel" (click)="completeTask('Completed')">
+                <button ion-button icon-center round medium color="ora" (click)="completeTask('Completed')">
                   <div>Completed</div>
                 </button>
                 <button ion-button icon-center round medium color="gra" (click)="completeTask('Failed')">
@@ -119,9 +119,6 @@
       </ion-col>
     </ion-row>
     <ion-row class="player-row" justify-content-center>
-      <ion-list-header>
-        Players
-      </ion-list-header>
       <ion-row class="player-row">
         <ion-col class="player-col" col-3 align-self-center *ngFor="let player of players">
           <ion-icon class="person-icon" name="md-person"></ion-icon>

@@ -327,28 +327,28 @@ export class DashboardPage {
 
   getStyle(player){
     if (player.morale === 'Fair') {
-      return '#FF5C30'
+      return '#F75733'
     }
     else if(player.morale === 'Great'){
-      return '#32db64'
+      return '#6AC669'
     }
     else if(player.morale === 'Poor') {
-      return 'red'
+      return 'E02F2F'
     }
     else if(player.morale === 'Dead') {
       return 'black'
     }
     else {
-      return '#FFC55E'
+      return '#A1AA5A'
     }
   }
 
   getBackground(type) {
     if (type === "task") {
-      return '10px solid #E8D8A7'
+      return '10px solid #6AC669'
     }
     else {
-      return '10px solid #B74949'
+      return '10px solid #F7B233'
     }
   }
 
