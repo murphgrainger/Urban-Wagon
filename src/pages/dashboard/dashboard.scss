@@ -2,6 +2,10 @@
 
 page-dashboard {
 
+  .scroll-content {
+    padding: 0;
+  }
+
   // Top Row
 .summary-row {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -92,7 +96,7 @@ page-dashboard {
 //Progress
 
 .progress-row {
-  padding: 1.3em 0 .4em 0;
+  padding: 1em 1em 0 1em;
 
   img {
     height: 2.75em;
@@ -114,7 +118,7 @@ page-dashboard {
   color: white;
   height: .75em;
   width: 100%;
-  background-color: color($colors, danger);
+  background-color: color($colors, dark);
 
   div {
         text-align: center;
