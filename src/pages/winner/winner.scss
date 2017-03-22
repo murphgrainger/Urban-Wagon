@@ -12,6 +12,7 @@ page-winner {
     text-align: center;
     h2 {
       font-size: 3em;
+      color: color($colors, gre)
     }
 
     p {
@@ -40,12 +41,13 @@ page-winner {
     }
 
     .item {
-      background-color: color($colors, yel);
+      background-color: color($colors, gre);
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     }
 
     .list-header {
-      background-color: color($colors, drkyel);
+      background-color: color($colors, dark);
+      color: white;
       box-sizing: none;
     }
 

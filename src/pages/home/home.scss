@@ -16,8 +16,12 @@ page-home {
     h1 {
       font-size: 4.5em;
       margin: 0;
-      text-shadow: 1px 1px 2px color($colors, yel);
-      color: color($colors, danger);
+      text-shadow: 1px 1px 2px color($colors, dark);
+      color: color($colors, ora);
+    }
+
+    h5 {
+      color: color($colors, drktext)
     }
   }
 
@@ -26,8 +30,9 @@ page-home {
     justify-content: center;
 
      .item {
-       background-color:  color($colors, yel);
+       background-color:  color($colors, gre);
        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+       color: color($colors, dark)
      }
   }
 
@@ -37,5 +42,9 @@ page-home {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    button {
+      color: color($colors, drktext)
+    }
   }
 }
