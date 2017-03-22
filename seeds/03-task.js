@@ -141,6 +141,118 @@ exports.seed = function(knex, Promise) {
         allotted_time: 9,
         difficulty: 1,
         goal_id: 3
+      } , {
+        title: 'Twins!',
+        image: 'http://www.funpedia.net/imgs/apr12/celebs-look-like-01.jpg',
+        description: 'Find someone who is a twin!',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Open Mic',
+        image: 'http://artinest.com/wp-content/uploads/2015/09/openmic.jpg',
+        description: 'Find someone who has sung at an open mic night.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Limbo?',
+        image: 'http://dazedimg.dazedgroup.netdna-cdn.com/786/azure/dazed-prod/1120/2/1122563.jpg',
+        description: 'Find someone who can explain the ending of inception.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'To be or not to be...',
+        image: 'https://usercontent1.hubstatic.com/6928866_f520.jpg',
+        description: 'that is the question! Discuss with someone the meaning of this line.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Patterned Shirt',
+        image: 'https://www.heddels.com/wp-content/uploads/2015/05/hawaiianshirts_magnumpi2.jpg',
+        description: 'Compliment someone with a patterned shirt.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Industry Specific',
+        image: 'https://tradegov.files.wordpress.com/2016/11/istock_85340257_small.jpg?w=603&h=338',
+        description: 'Can you find to someone who works in an industry you are interested in?',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Shout it Out',
+        image: 'https://static.domain.com.au/domainblog/uploads/2016/02/24202352/2_gn2bu6.jpg',
+        description: "Yell out your sibing's name and talk to the first person who looks over.",
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Repeat Convo',
+        image: 'http://blindgossip.com/wp-content/uploads/2015/08/circle-back.png',
+        description: 'Circle back with someone you have already talked to.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Repeat Convo',
+        image: 'http://blindgossip.com/wp-content/uploads/2015/08/circle-back.png',
+        description: 'Circle back with someone you have already talked to.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'About Me',
+        image: 'https://assets3.thrillist.com/v1/image/1477368/size/tmg-article_default_mobile;jpeg_quality=20.jpg',
+        description: 'Tell someone a fun fact about yourself.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'About Me',
+        image: 'http://insiderlouisville.com/wp-content/uploads/2015/05/Taco_Bell_Night.jpg',
+        description: 'Tell someone a fun fact about yourself.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Would You Rather',
+        image: 'http://blindgossip.com/wp-content/uploads/2015/08/circle-back.png',
+        description: 'Control space or time?  Did you both agree?',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Would You Rather',
+        image: 'https://s-media-cache-ak0.pinimg.com/736x/8b/c5/bd/8bc5bdbf5fa27633baeaad06f8e3a58f.jpg',
+        description: 'Wear clown shoes every day or a clown wig every day?',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Gift',
+        image: 'https://s-media-cache-ak0.pinimg.com/736x/41/2e/9a/412e9a3ad44462ae6fcffe81260d7669.jpg',
+        description: 'Gift something to somone. Anything.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Hoite Toite',
+        image: 'https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAIIAAAAJDVmMmU0MDZkLWQzNjQtNGYzYS1iNDM0LTVjNjA4NWVmODQwMw.jpg',
+        description: 'Put a napkin in your shirt for 5 minutes.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
+      } , {
+        title: 'Accent',
+        image: 'https://cdn3.whatculture.com/images/2013/11/the-weather-man-michael-caine.jpg',
+        description: 'Have a conversation with someone in any accent.  Bonus points for Australian.',
+        allotted_time: 9,
+        difficulty: 1,
+        goal_id: 4
       }];
       return knex('task').insert(task);
     });
