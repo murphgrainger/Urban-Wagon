@@ -216,5 +216,9 @@ ion-range {
   width: 100%;
 }
 
+.alert-death {
+  background-color: color($colors, danger);
+  color: black;
+}
 
 }

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
-
+import { AlertController } from 'ionic-angular';
 
 import {GameService} from '../../providers/game-service';
 import {TabsService} from '../../providers/tabs-service';
-
-import { AlertController } from 'ionic-angular';
 
 import { LoserPage } from '../loser/loser';
 import { WinnerPage } from '../winner/winner';
@@ -217,7 +215,6 @@ export class DashboardPage {
   continueOn(choice) {
     if (choice === 'Rest Player') {
       this.addRestCount(this.currentHardship.rest_value)
-      this.decreaseMorale(this.illPlayer)
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
@@ -234,7 +231,6 @@ export class DashboardPage {
 
   otherOption(choice) {
     if (choice === 'Rest Player') {
-      this.decreaseMorale(this.illPlayer)
       this.addRestCount(this.currentHardship.rest_value)
       this.updateHealth()
       this.skipCounter = 0;
@@ -242,7 +238,6 @@ export class DashboardPage {
       this.hardships.pop()
     }
     else {
-      this.decreaseMorale(this.illPlayer)
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
@@ -267,7 +262,14 @@ export class DashboardPage {
           finalNewMorale = morale[newPlayerMoraleIndex]
         }
     }
-    return this.illPlayer.morale = finalNewMorale;
+    this.illPlayer.morale = finalNewMorale
+    if (this.illPlayer.morale === 'Dead') {
+        this.deathAlert(this.illPlayer)
+    }
+    if (this.illPlayer.morale === 'Poor') {
+        this.poorAlert(this.illPlayer)
+    }
+    return this.illPlayer.morale
   }
 
   increaseMorale(player) {
@@ -299,10 +301,8 @@ export class DashboardPage {
   }
 
   decreaseRestCount() {
-    console.log('pre update rest count', this.players)
     this.players.forEach(player => {
       if (player.rest_count > 0) {
-        console.log(player)
         this.gameService.updatePlayerRest(player)
         .then(data => {
           this.refreshPlayers()
@@ -419,5 +419,27 @@ sendHealthyPlayers(arr) {
   });
   return arr2;
 }
+
+deathAlert(player) {
+   let alert = this.alertCtrl.create({
+     title: `${player.trail_name} has Died!`,
+     subTitle: 'Mourn the loss for 2 minutes then continue.',
+     cssClass: 'alert-death',
+     buttons: ['Continue']
+
+   });
+   alert.present();
+ }
+
+ poorAlert(player) {
+    let alert = this.alertCtrl.create({
+      title: `${player.trail_name}'s Morale is Poor!`,
+      subTitle: `${player.trail_name} should complete a task to increase morale.`,
+      cssClass: 'alert-death',
+      buttons: ['Continue']
+
+    });
+    alert.present();
+  }
 
 }
