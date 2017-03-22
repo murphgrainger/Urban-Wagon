@@ -72,9 +72,6 @@ export class DashboardPage {
       .catch(err => {
         console.log(err)
       })
-      .then(() => {
-        this.gameService.setGameID(this.game.id)
-      })
     }).catch(error => {
       console.log('could not get game details', error)
     }).then(() => {
