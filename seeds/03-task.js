@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
       },
       {
         title: 'Find Two People Who...',
-        image: 'https://farm6.static.flickr.com/5338/31278686722_2b5f9e17e1_b.jpg',
+        image: 'https://1.bp.blogspot.com/-vWtYKsNkCCI/U6RM9rNmfiI/AAAAAAAAAK4/dPp0aofFdCc/s1600/fhd003BAY_Morgan_Freeman_002.jpg',
         description: 'Started their career as a janitor, assistant, or bartender.',
         allotted_time: 10,
         difficulty: 2,
@@ -94,14 +94,14 @@ exports.seed = function(knex, Promise) {
         goal_id: 4
       }, {
         title: 'Ask Someone',
-        image: 'http://scoopempire.com/wp-content/uploads/2015/08/Joyful2.jpg',
+        image: 'http://www.simoncamilleri.com/wp-content/uploads/2014/09/monty-python-meaning-of-life-god-and-earth-terry-gilliam.jpg',
         description: 'What is your take on the meaning of life? Do you agree?',
         allotted_time: 7,
         difficulty: 2,
         goal_id: 4
       },{
         title: 'Would You Rather',
-        image: 'http://www.growingyourbaby.com/wp-content/uploads/2010/12/8407056_s.jpg',
+        image: 'http://www.photoshoppix.com/modules/coppermine/albums/userpics/10008/hard_nut.jpg',
         description: 'Have 10 nights filled with incessant jackhammering, or 10 days with no sun? Ask someone!',
         allotted_time: 7,
         difficulty: 2,
@@ -163,9 +163,9 @@ exports.seed = function(knex, Promise) {
         difficulty: 1,
         goal_id: 4
       } , {
-        title: 'To be or not to be...',
+        title: 'To Be or Not to Be',
         image: 'https://usercontent1.hubstatic.com/6928866_f520.jpg',
-        description: 'that is the question! Discuss with someone the meaning of this line.',
+        description: 'That is the question! Discuss with someone the meaning of this line.',
         allotted_time: 9,
         difficulty: 1,
         goal_id: 4
@@ -220,7 +220,7 @@ exports.seed = function(knex, Promise) {
         goal_id: 4
       } , {
         title: 'Would You Rather',
-        image: 'http://blindgossip.com/wp-content/uploads/2015/08/circle-back.png',
+        image: 'http://orig10.deviantart.net/2554/f/2014/078/8/e/controlling_time_by_mrchapindesigns-d7au6i7.png',
         description: 'Control space or time?  Did you both agree?',
         allotted_time: 9,
         difficulty: 1,
@@ -240,7 +240,7 @@ exports.seed = function(knex, Promise) {
         difficulty: 1,
         goal_id: 4
       } , {
-        title: 'Hoite Toite',
+        title: 'Hoity-Toity',
         image: 'https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAIIAAAAJDVmMmU0MDZkLWQzNjQtNGYzYS1iNDM0LTVjNjA4NWVmODQwMw.jpg',
         description: 'Put a napkin in your shirt for 5 minutes.',
         allotted_time: 9,
