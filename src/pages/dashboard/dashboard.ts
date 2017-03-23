@@ -143,6 +143,9 @@ export class DashboardPage {
       }
     }
     this.tasks.pop();
+    if (this.tasks.length === 0) {
+        this.reseedTasksAndHardships()
+    }
     this.taskAccepted = false;
     this.gameService.updateTaskStatus(this.activeTask[0].id, status)
     .then(data => {
@@ -199,6 +202,9 @@ export class DashboardPage {
 
   skipTask() {
     this.tasks.pop()
+    if (this.tasks.length === 0) {
+        this.reseedTasksAndHardships()
+    }
     this.taskAccepted = false;
     this.skipCounter++;
     if (this.skipCounter > 1) {
@@ -220,6 +226,9 @@ export class DashboardPage {
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
+      if (this.hardships.length === 0) {
+          this.reseedTasksAndHardships()
+      }
     }
     else {
       this.decreaseMorale(this.illPlayer)
@@ -227,6 +236,9 @@ export class DashboardPage {
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
+      if (this.hardships.length === 0) {
+          this.reseedTasksAndHardships()
+      }
     }
   }
 
@@ -237,12 +249,18 @@ export class DashboardPage {
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
+      if (this.hardships.length === 0) {
+          this.reseedTasksAndHardships()
+      }
     }
     else {
       this.updateHealth()
       this.skipCounter = 0;
       this.taskSkipped = false;
       this.hardships.pop()
+      if (this.hardships.length === 0) {
+          this.reseedTasksAndHardships()
+      }
     }
   }
 
@@ -333,13 +351,13 @@ export class DashboardPage {
       return '#6AC669'
     }
     else if(player.morale === 'Poor') {
-      return 'E02F2F'
+      return 'CE1212'
     }
     else if(player.morale === 'Dead') {
       return 'black'
     }
     else {
-      return '#C6D34E'
+      return '#F7B233'
     }
   }
 
@@ -443,12 +461,17 @@ deathAlert(player) {
     alert.present();
   }
 
-  addTask(task) {
-    //if tasks array is [], then allow user to add more tasks
-    //allow users to add tasks at any time?
-    if (this.tasks.length === 0) {
-
+    reseedTasksAndHardships() {
+      this.gameService.getGameDetails(this.gameID)
+      .then(game => {
+        this.game = game
+      }).catch(error => {
+        console.log('could not get game details', error)
+      }).then(() => {
+        this.splitObject()
+      }).catch(error => {
+        console.log('splitObject', error)
+      })
     }
-  }
 
 }
