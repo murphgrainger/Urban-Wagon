@@ -10,15 +10,13 @@
     <p>You made it! Your team successfully pioneered the modern social setting!</p>
   </div>
   <div class="winner-row">
-    <ion-list>
-      <ion-list-header>
-        Living Players
-      </ion-list-header>
-      <ion-item *ngFor="let player of players;">
-        <ion-icon name="person" item-left></ion-icon>
-        {{player.trail_name}}
-      </ion-item>
-    </ion-list>
+    <ion-row class="player-row">
+      <ion-col class="player-col" col-3 *ngFor="let player of players">
+        <ion-icon class="person-icon" name="md-person"></ion-icon>
+        <p class="player-name">{{player.trail_name}}</p>
+        <ion-badge [style.background-color]="getStyle(player)">{{player.morale}}</ion-badge>
+      </ion-col>
+    </ion-row>
   </div>
   <div class="start-game">
     <button ion-button color="ora" round large icon-right (click)="startGame()">

@@ -178,7 +178,7 @@ export class DashboardPage {
     if (progress === '100%') {
       this.navCtrl.push(WinnerPage, {
         game: this.game,
-        players: this.sendHealthyPlayers(this.players),
+        players: this.players,
         tasks: this.completedCounter
       });
     }

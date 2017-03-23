@@ -29,4 +29,22 @@ startGame() {
   this.navCtrl.push(CreatePage);
   }
 
+  getStyle(player){
+    if (player.morale === 'Fair') {
+      return '#F75733'
+    }
+    else if(player.morale === 'Great'){
+      return '#6AC669'
+    }
+    else if(player.morale === 'Poor') {
+      return 'E02F2F'
+    }
+    else if(player.morale === 'Dead') {
+      return 'black'
+    }
+    else {
+      return '#C6D34E'
+    }
+  }
+
 }
