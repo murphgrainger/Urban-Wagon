@@ -5,11 +5,12 @@ page-loser {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 2.5em 3em;
+  padding: 1em 3em 0 2.5em;
   text-align: center;
 
   h2 {
-    font-size: 3.5em;
+    font-size: 4em;
+    color: color($colors, ora)
   }
 
   p {
@@ -30,10 +31,10 @@ page-loser {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-bottom: 3em;
+  padding-bottom: 2em;
 
   img {
-    width: 60%;
+    width: 50%;
   }
 }
 }
