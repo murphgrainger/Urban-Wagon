@@ -101,14 +101,14 @@ exports.seed = function(knex, Promise) {
         goal_id: 4
       },{
         title: 'Would You Rather',
-        image: 'http://www.photoshoppix.com/modules/coppermine/albums/userpics/10008/hard_nut.jpg',
+        image: 'https://cookieforyourthoughts.files.wordpress.com/2011/02/img_5079.jpg',
         description: 'Have 10 nights filled with incessant jackhammering, or 10 days with no sun? Ask someone!',
         allotted_time: 7,
         difficulty: 2,
         goal_id: 4
       },{
         title: 'Listen to a Joke',
-        image: 'http://www.bradleyjobling.com/wp-content/uploads/2014/02/180956603.jpg',
+        image: 'http://www.parent.co/wp-content/uploads/2016/05/caddyshack-parenting.jpg',
         description: 'Ask someone to tell you a joke. Repeat the joke back to your group.',
         allotted_time: 7,
         difficulty: 2,
