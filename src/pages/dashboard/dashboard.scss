@@ -78,6 +78,7 @@ page-dashboard {
     .tasks-completed {
       align-self: flex-start;
       width: 75%;
+      color: color($colors, dark);
 
       .label {
         font-size: 1.75em;
@@ -160,6 +161,10 @@ page-dashboard {
     justify-content: space-between;
   }
 
+  .card {
+    padding-bottom: 1em;
+  }
+
   .card-title {
     font-size: 1.2em;
   }
@@ -201,6 +206,7 @@ page-dashboard {
 
 .person-icon {
   font-size: 3em;
+  color: color($colors, dark);
 }
 
 .player-name {

@@ -339,7 +339,7 @@ export class DashboardPage {
       return 'black'
     }
     else {
-      return '#A1AA5A'
+      return '#C6D34E'
     }
   }
 
@@ -447,7 +447,7 @@ deathAlert(player) {
     //if tasks array is [], then allow user to add more tasks
     //allow users to add tasks at any time?
     if (this.tasks.length === 0) {
-        
+
     }
   }
 
