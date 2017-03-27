@@ -1,23 +1,20 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import {TabsService} from '../../providers/tabs-service';
 
 import { CreatePage } from '../create/create';
 
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers:[TabsService]
+  templateUrl: 'home.html'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public tabs: TabsService) {
+  constructor(public navCtrl: NavController) {
   }
 
   ionViewDidLoad() {
-    this.tabs.hide()
   }
 
 

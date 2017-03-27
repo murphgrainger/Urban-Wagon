@@ -30,7 +30,6 @@ router.get('/game/:id/player', function(req, res, next) {
 
 // Master Game/Player Post Route
 router.post('/goal/:id/game', function(req, res, next) {
-  console.log(req.body);
    queries.postGameAndPlayer(req.body, req.params.id)
   .then(function (player) {
     res.json(player);
@@ -142,7 +141,6 @@ router.get('/game/:id', function(req, res, next) {
 router.post('/user/:id/games', function(req, res, next) {
    queries.postNewGameFromUser(req.body, req.params.id)
   .then(function (game) {
-    console.log('through query', game);
     res.json(game);
   }).catch(err => {
     console.log(err);
@@ -155,7 +153,6 @@ router.post('/user/:id/games', function(req, res, next) {
 router.get('/goal/:id/tasks', function(req, res, next) {
   queries.getTasksbyGoalID(req.params.id)
     .then(function(tasks) {
-      console.log(tasks);
       res.json(tasks);
     });
 

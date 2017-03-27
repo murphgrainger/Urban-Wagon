@@ -18,7 +18,6 @@ export class AddplayerPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService) {
   this.game = navParams.get('game');
-  console.log(this.game)
   }
 
 

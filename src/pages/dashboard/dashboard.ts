@@ -4,17 +4,18 @@ import { ViewController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import {GameService} from '../../providers/game-service';
-import {TabsService} from '../../providers/tabs-service';
 
 import { LoserPage } from '../loser/loser';
 import { WinnerPage } from '../winner/winner';
+import { GuidePage } from '../guide/guide';
+
 
 
 
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
-  providers: [GameService, TabsService]
+  providers: [GameService]
 
 })
 export class DashboardPage {
@@ -41,7 +42,7 @@ export class DashboardPage {
   menuIsHidden: boolean = false;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController, public tabs: TabsService, private view: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public gameService: GameService, public alertCtrl: AlertController, private view: ViewController) {
     this.gameID = navParams.get('id');
     this.objDate = Date.now();
     this.trailProgress = '0%'
@@ -56,7 +57,6 @@ export class DashboardPage {
      }
 
   ionViewDidLoad() {
-    this.tabs.show()
     this.getGame()
     };
 
@@ -66,7 +66,6 @@ export class DashboardPage {
       this.game = game
       this.gameService.getPlayers(this.game.id)
       .then(data => {
-        console.log('returning players')
        this.players = data.sort(this.compare);
       })
       .catch(err => {
@@ -325,7 +324,6 @@ export class DashboardPage {
         this.gameService.updatePlayerRest(player)
         .then(data => {
           this.refreshPlayers()
-          console.log(this.players)
         })
         .catch(error => {
           console.log(error)
@@ -473,5 +471,9 @@ deathAlert(player) {
         console.log('splitObject', error)
       })
     }
+
+    openGuideBook() {
+      this.navCtrl.push(GuidePage, {
+      });    }
 
 }

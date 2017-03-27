@@ -1,6 +1,5 @@
 const knex = require('./knex');
 const queries = require("../db/queries");
-// const transaction = require('objection').transaction;
 const objection = require('objection');
 const User = require('../models/user');
 const Goal = require('../models/goal');
@@ -17,7 +16,7 @@ module.exports = {
     return Game
       .query()
       .findById(id)
-      .eager('goal.[tasks, hardships]')
+      .eager('goal.[tasks, hardships]');
   },
 
   getPlayers: function(id) {
@@ -28,7 +27,7 @@ module.exports = {
         if (!game) { throwNotFound(); }
         return game
           .$relatedQuery('players')
-          .skipUndefined()
+          .skipUndefined();
         });
   },
 
@@ -37,7 +36,7 @@ module.exports = {
       .query()
       .skipUndefined()
       .where('status', '=', 'Accepted')
-      .eager('player')
+      .eager('player');
   },
 
   getUser: function(id) {
@@ -75,7 +74,7 @@ module.exports = {
         }
         return goal
           .$relatedQuery('tasks')
-          .skipUndefined()
+          .skipUndefined();
       });
   },
 
@@ -121,8 +120,8 @@ postGameAndPlayer: function(body, id) {
           trail_name: player,
           morale: 'Great',
           rest_count: 0
-        })
-      })
+        });
+      });
 
       return goal
       .$relatedQuery('games')
@@ -140,29 +139,29 @@ return Player
     .insert({
       task_id: body.id,
       status: 'Accepted'
-    })
-  })
+    });
+  });
 },
 
 updateTaskStatus: function(body, id) {
 return Task_Status
   .query()
   .findById(id)
-  .patch(body)
+  .patch(body);
 },
 
 updatePlayerHealth: function(body, id) {
 return Player
   .query()
   .findById(id)
-  .patch(body)
+  .patch(body);
 },
 
 updatePlayerRest: function(id, body) {
   return Player
     .query()
     .findById(id)
-    .patch(body)
+    .patch(body);
   }
 
 };
