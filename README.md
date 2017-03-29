@@ -17,3 +17,6 @@ Apple has approved this app for beta testing. If you wish to be a beta tester pl
 * Knex.js
 * Postgres
 * Heroku
+
+## Video Demo
+https://www.youtube.com/watch?v=LS9AJ_vmN8I
