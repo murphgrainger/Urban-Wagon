@@ -1,11 +1,14 @@
-# Modern Trail
+# Urban Wagon
 Pioneer the Modern Social Setting
 
 ### Project Description
 Inspired by the Oregon Trail, Urban Wagon is a native mobile app designed to gamify meeting new people. Get a group together and complete an assortment of tasks that encourage each player to branch out from the group and make new connections. Your group progresses further down the "trail" with each task completed. If your group skips too many tasks, a hardship may present itself for your team to overcome.
 
-### Become a Beta Tester
-Apple has approved this app for beta testing. If you wish to be a beta tester please Direct Message me with your email address so I can sign you up!
+### Available on App Store
+https://itunes.apple.com/us/app/urban-wagon/id1218891620
+
+## Video Demo
+https://www.youtube.com/watch?v=LS9AJ_vmN8I
 
 ## Technologies
 * Ionic 2
@@ -17,6 +20,3 @@ Apple has approved this app for beta testing. If you wish to be a beta tester pl
 * Knex.js
 * Postgres
 * Heroku
-
-## Video Demo
-https://www.youtube.com/watch?v=LS9AJ_vmN8I
